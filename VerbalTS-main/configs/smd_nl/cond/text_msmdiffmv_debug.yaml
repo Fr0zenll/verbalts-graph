@@ -1,0 +1,19 @@
+device: cpu
+cond_modal: simple_text
+generator_pretrain_path: ""
+
+text:
+  text_projector: var_scale_diffstep_multi
+  num_stages: 2
+
+  # These paths follow the original config style. For simple_text, run.py still
+  # needs a tokenizer path; set this to your local LongCLIP/tokenizer directory.
+  pretrain_model_path: ./save/Longclip
+  pretrain_model_dim: 768
+  textemb_hidden_dim: 512
+  text_emb: 32
+  output_type: all
+
+  tokenizer_path: ./save/Longclip
+  word_size: 49408
+  pos_emb: none

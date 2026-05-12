@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.venv/
+conda-env/
+anaconda/
+miniconda/
+
+# IDE
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Data and outputs
+data/
+datasets/
+outputs/
+results/
+checkpoints/
+runs/
+wandb/
+
+# Model files
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+
+# Numpy large files,按需决定是否忽略
+# *.npy
+# *.npz

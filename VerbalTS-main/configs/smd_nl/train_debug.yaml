@@ -1,0 +1,16 @@
+### Dataset ###
+data:
+  name: custom
+  folder: ../data/smd_nl
+
+### Debug Train ###
+train:
+  epochs: 1
+  batch_size: 2
+  num_workers: 0
+  lr: 1.0e-3
+  itr_per_epoch: 0
+  model_path: ""
+  output_folder: debug_smd_nl
+  val_epoch_interval: 999
+  display_interval: 1

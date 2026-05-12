@@ -1,0 +1,36 @@
+device: cuda:0
+
+diffusion:
+  type: Text2Ts
+  condition_type: adaLN
+  layers: 3
+  channels: 64
+  nheads: 8
+  diffusion_embedding_dim: 128
+  is_linear: False  # linear transformer
+
+  # multi-patch
+  L_patch_len: 2
+  multipatch_num: 2
+  attention_mask_type: parallel
+  
+  beta_start: 0.0001
+  beta_end: 0.5
+  schedule: "quad"
+  num_steps: 50
+  n_var: 2
+  var_dep_type: "DEP"
+
+  # graph module, disabled by default to preserve original VerbalTS behavior
+  use_gnn: false
+  graph_adj_path: ""
+  gnn_hidden_dim: 64
+  gnn_num_layers: 1
+  gnn_dropout: 0.0
+  gnn_residual: true
+  debug_shape: false
+
+  side:
+    num_var: 2
+    var_emb: 16
+    time_emb: 112
