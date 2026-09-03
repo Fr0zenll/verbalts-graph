@@ -1,0 +1,18 @@
+### Dataset ###
+data:
+  name: custom
+  folder: ../data/smd_nl
+
+### Full Train ###
+train:
+  epochs: 30
+  batch_size: 16
+  num_workers: 4
+  lr: 5.0e-5
+  itr_per_epoch: 999999
+  model_path: ""
+  output_folder: smd_nl_full
+  val_epoch_interval: 10
+  display_interval: 1
+  gradient_clip: 1.0
+  max_skip_ratio: 0.2

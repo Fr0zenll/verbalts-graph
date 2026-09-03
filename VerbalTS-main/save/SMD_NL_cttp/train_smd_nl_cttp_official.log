@@ -1,0 +1,163 @@
+nohup: ignoring input
+Saved CTTP config to: ./save/SMD_NL_cttp/model_configs.yaml
+Train samples: 4104
+Valid samples: 587
+Config seq_len: 240 n_var: 10
+Token indices sequence length is longer than the specified maximum sequence length for this model (298 > 248). Running this sequence through the model will result in indexing errors
+Epoch [1/30] Batch [0/64] Loss: 5.500197
+Epoch [1/30] Batch [20/64] Loss: 4.546429
+Epoch [1/30] Batch [40/64] Loss: 4.220015
+Epoch [1/30] Batch [60/64] Loss: 4.298714
+Epoch [1/30] Train Loss: 4.505261 Valid Loss: 4.008591
+Best CTTP updated: 4.008591. Saved to ./save/SMD_NL_cttp/clip_model_best.pth
+Epoch [2/30] Batch [0/64] Loss: 4.246017
+Epoch [2/30] Batch [20/64] Loss: 4.200807
+Epoch [2/30] Batch [40/64] Loss: 4.203401
+Epoch [2/30] Batch [60/64] Loss: 4.163293
+Epoch [2/30] Train Loss: 4.193916 Valid Loss: 3.989577
+Best CTTP updated: 3.989577. Saved to ./save/SMD_NL_cttp/clip_model_best.pth
+Epoch [3/30] Batch [0/64] Loss: 4.129714
+Epoch [3/30] Batch [20/64] Loss: 4.324751
+Epoch [3/30] Batch [40/64] Loss: 4.213577
+Epoch [3/30] Batch [60/64] Loss: 4.197509
+Epoch [3/30] Train Loss: 4.156982 Valid Loss: 4.023218
+Epoch [4/30] Batch [0/64] Loss: 4.128833
+Epoch [4/30] Batch [20/64] Loss: 4.122142
+Epoch [4/30] Batch [40/64] Loss: 4.136991
+Epoch [4/30] Batch [60/64] Loss: 4.060710
+Epoch [4/30] Train Loss: 4.145934 Valid Loss: 4.013998
+Epoch [5/30] Batch [0/64] Loss: 4.145051
+Epoch [5/30] Batch [20/64] Loss: 4.212162
+Epoch [5/30] Batch [40/64] Loss: 4.222901
+Epoch [5/30] Batch [60/64] Loss: 4.055903
+Epoch [5/30] Train Loss: 4.133783 Valid Loss: 4.019338
+Epoch [6/30] Batch [0/64] Loss: 4.060582
+Epoch [6/30] Batch [20/64] Loss: 4.058903
+Epoch [6/30] Batch [40/64] Loss: 4.056621
+Epoch [6/30] Batch [60/64] Loss: 4.090490
+Epoch [6/30] Train Loss: 4.089543 Valid Loss: 4.059056
+Epoch [7/30] Batch [0/64] Loss: 4.105171
+Epoch [7/30] Batch [20/64] Loss: 4.061271
+Epoch [7/30] Batch [40/64] Loss: 4.095109
+Epoch [7/30] Batch [60/64] Loss: 4.195408
+Epoch [7/30] Train Loss: 4.056521 Valid Loss: 4.084354
+Epoch [8/30] Batch [0/64] Loss: 4.007490
+Epoch [8/30] Batch [20/64] Loss: 3.902898
+Epoch [8/30] Batch [40/64] Loss: 4.018467
+Epoch [8/30] Batch [60/64] Loss: 3.954575
+Epoch [8/30] Train Loss: 4.003481 Valid Loss: 4.069631
+Epoch [9/30] Batch [0/64] Loss: 3.962265
+Epoch [9/30] Batch [20/64] Loss: 3.871821
+Epoch [9/30] Batch [40/64] Loss: 3.906192
+Epoch [9/30] Batch [60/64] Loss: 3.924606
+Epoch [9/30] Train Loss: 3.972973 Valid Loss: 4.005492
+Epoch [10/30] Batch [0/64] Loss: 3.998352
+Epoch [10/30] Batch [20/64] Loss: 4.008359
+Epoch [10/30] Batch [40/64] Loss: 3.825217
+Epoch [10/30] Batch [60/64] Loss: 3.917102
+Epoch [10/30] Train Loss: 3.926366 Valid Loss: 4.046014
+Saved epoch checkpoint to: ./save/SMD_NL_cttp/cttp_epoch_10.pth
+Epoch [11/30] Batch [0/64] Loss: 3.843890
+Epoch [11/30] Batch [20/64] Loss: 3.867230
+Epoch [11/30] Batch [40/64] Loss: 4.031580
+Epoch [11/30] Batch [60/64] Loss: 3.817540
+Epoch [11/30] Train Loss: 3.881419 Valid Loss: 4.048424
+Epoch [12/30] Batch [0/64] Loss: 3.784804
+Epoch [12/30] Batch [20/64] Loss: 3.940711
+Epoch [12/30] Batch [40/64] Loss: 3.896215
+Epoch [12/30] Batch [60/64] Loss: 3.860445
+Epoch [12/30] Train Loss: 3.865078 Valid Loss: 4.001089
+Epoch [13/30] Batch [0/64] Loss: 3.841897
+Epoch [13/30] Batch [20/64] Loss: 3.884980
+Epoch [13/30] Batch [40/64] Loss: 3.879081
+Epoch [13/30] Batch [60/64] Loss: 4.095821
+Epoch [13/30] Train Loss: 3.854461 Valid Loss: 4.187513
+Epoch [14/30] Batch [0/64] Loss: 3.857431
+Epoch [14/30] Batch [20/64] Loss: 3.794700
+Epoch [14/30] Batch [40/64] Loss: 3.709919
+Epoch [14/30] Batch [60/64] Loss: 3.884261
+Epoch [14/30] Train Loss: 3.830359 Valid Loss: 4.001069
+Epoch [15/30] Batch [0/64] Loss: 3.752698
+Epoch [15/30] Batch [20/64] Loss: 3.718053
+Epoch [15/30] Batch [40/64] Loss: 3.919060
+Epoch [15/30] Batch [60/64] Loss: 3.801272
+Epoch [15/30] Train Loss: 3.816469 Valid Loss: 4.006356
+Epoch [16/30] Batch [0/64] Loss: 3.809943
+Epoch [16/30] Batch [20/64] Loss: 3.758582
+Epoch [16/30] Batch [40/64] Loss: 3.915937
+Epoch [16/30] Batch [60/64] Loss: 3.750071
+Epoch [16/30] Train Loss: 3.782092 Valid Loss: 4.039861
+Epoch [17/30] Batch [0/64] Loss: 3.535291
+Epoch [17/30] Batch [20/64] Loss: 3.875513
+Epoch [17/30] Batch [40/64] Loss: 3.599891
+Epoch [17/30] Batch [60/64] Loss: 3.883527
+Epoch [17/30] Train Loss: 3.743496 Valid Loss: 4.017154
+Epoch [18/30] Batch [0/64] Loss: 3.626575
+Epoch [18/30] Batch [20/64] Loss: 3.644878
+Epoch [18/30] Batch [40/64] Loss: 3.893568
+Epoch [18/30] Batch [60/64] Loss: 3.717393
+Epoch [18/30] Train Loss: 3.730162 Valid Loss: 4.002156
+Epoch [19/30] Batch [0/64] Loss: 3.841788
+Epoch [19/30] Batch [20/64] Loss: 3.924306
+Epoch [19/30] Batch [40/64] Loss: 3.803244
+Epoch [19/30] Batch [60/64] Loss: 3.450085
+Epoch [19/30] Train Loss: 3.710199 Valid Loss: 4.035431
+Epoch [20/30] Batch [0/64] Loss: 3.590546
+Epoch [20/30] Batch [20/64] Loss: 3.681586
+Epoch [20/30] Batch [40/64] Loss: 3.524422
+Epoch [20/30] Batch [60/64] Loss: 3.535122
+Epoch [20/30] Train Loss: 3.677063 Valid Loss: 3.994222
+Saved epoch checkpoint to: ./save/SMD_NL_cttp/cttp_epoch_20.pth
+Epoch [21/30] Batch [0/64] Loss: 3.692342
+Epoch [21/30] Batch [20/64] Loss: 3.406664
+Epoch [21/30] Batch [40/64] Loss: 3.582474
+Epoch [21/30] Batch [60/64] Loss: 3.558731
+Epoch [21/30] Train Loss: 3.690168 Valid Loss: 4.067435
+Epoch [22/30] Batch [0/64] Loss: 3.685124
+Epoch [22/30] Batch [20/64] Loss: 3.728762
+Epoch [22/30] Batch [40/64] Loss: 3.853556
+Epoch [22/30] Batch [60/64] Loss: 3.697783
+Epoch [22/30] Train Loss: 3.664043 Valid Loss: 4.005687
+Epoch [23/30] Batch [0/64] Loss: 3.641026
+Epoch [23/30] Batch [20/64] Loss: 3.467420
+Epoch [23/30] Batch [40/64] Loss: 3.643702
+Epoch [23/30] Batch [60/64] Loss: 3.538681
+Epoch [23/30] Train Loss: 3.635489 Valid Loss: 4.043714
+Epoch [24/30] Batch [0/64] Loss: 3.486595
+Epoch [24/30] Batch [20/64] Loss: 3.753109
+Epoch [24/30] Batch [40/64] Loss: 3.860350
+Epoch [24/30] Batch [60/64] Loss: 3.688532
+Epoch [24/30] Train Loss: 3.656436 Valid Loss: 4.049994
+Epoch [25/30] Batch [0/64] Loss: 3.635157
+Epoch [25/30] Batch [20/64] Loss: 3.349667
+Epoch [25/30] Batch [40/64] Loss: 3.229665
+Epoch [25/30] Batch [60/64] Loss: 3.699444
+Epoch [25/30] Train Loss: 3.571313 Valid Loss: 4.012721
+Epoch [26/30] Batch [0/64] Loss: 3.586518
+Epoch [26/30] Batch [20/64] Loss: 3.522709
+Epoch [26/30] Batch [40/64] Loss: 3.743415
+Epoch [26/30] Batch [60/64] Loss: 3.547561
+Epoch [26/30] Train Loss: 3.569325 Valid Loss: 4.013196
+Epoch [27/30] Batch [0/64] Loss: 3.397590
+Epoch [27/30] Batch [20/64] Loss: 3.447727
+Epoch [27/30] Batch [40/64] Loss: 3.386788
+Epoch [27/30] Batch [60/64] Loss: 3.795401
+Epoch [27/30] Train Loss: 3.575312 Valid Loss: 4.018985
+Epoch [28/30] Batch [0/64] Loss: 3.584774
+Epoch [28/30] Batch [20/64] Loss: 3.424721
+Epoch [28/30] Batch [40/64] Loss: 3.639900
+Epoch [28/30] Batch [60/64] Loss: 3.475291
+Epoch [28/30] Train Loss: 3.592828 Valid Loss: 3.978585
+Best CTTP updated: 3.978585. Saved to ./save/SMD_NL_cttp/clip_model_best.pth
+Epoch [29/30] Batch [0/64] Loss: 3.289951
+Epoch [29/30] Batch [20/64] Loss: 3.398804
+Epoch [29/30] Batch [40/64] Loss: 3.459362
+Epoch [29/30] Batch [60/64] Loss: 3.599746
+Epoch [29/30] Train Loss: 3.537150 Valid Loss: 4.086703
+Epoch [30/30] Batch [0/64] Loss: 3.360195
+Epoch [30/30] Batch [20/64] Loss: 3.665150
+Epoch [30/30] Batch [40/64] Loss: 3.717219
+Epoch [30/30] Batch [60/64] Loss: 3.261284
+Epoch [30/30] Train Loss: 3.495311 Valid Loss: 4.068173
+Saved epoch checkpoint to: ./save/SMD_NL_cttp/cttp_epoch_30.pth
+CTTP training done. Final checkpoint: ./save/SMD_NL_cttp/cttp_final.pth

@@ -1,0 +1,42 @@
+device: cuda:0
+
+diffusion:
+  type: Text2Ts
+  condition_type: adaLN
+  layers: 3
+  channels: 64
+  nheads: 4
+  diffusion_embedding_dim: 128
+  is_linear: False
+
+  # SMD-NL: train_ts.npy shape is (N, 240, 10).
+  seq_len: 240
+  window_size: 240
+  num_variables: 10
+
+  # multi-patch
+  base_patch: 1
+  L_patch_len: 3
+  multipatch_num: 3
+  attention_mask_type: parallel
+
+  beta_start: 0.0001
+  beta_end: 0.5
+  schedule: "quad"
+  num_steps: 50
+  n_var: 10
+  var_dep_type: "DEP"
+
+  # Graph-VerbalTS: fixed graph loaded from Pearson-correlation adjacency.
+  use_gnn: true
+  graph_adj_path: /data/kangjiale/verbalts-graph/data/smd_nl/graph_adj_random.npy
+  gnn_hidden_dim: 64
+  gnn_num_layers: 2
+  gnn_dropout: 0.1
+  gnn_residual: true
+  debug_shape: false
+
+  side:
+    num_var: 10
+    var_emb: 8
+    time_emb: 56

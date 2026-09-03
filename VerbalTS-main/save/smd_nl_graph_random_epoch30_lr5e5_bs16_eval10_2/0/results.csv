@@ -1,0 +1,2 @@
+,mode,sampler,n_samples,steps,cttp,fid,jftsd
+0,cond_gen,ddim,10,-1,10.981330068316707,7.120528877569576,7.700838878371801

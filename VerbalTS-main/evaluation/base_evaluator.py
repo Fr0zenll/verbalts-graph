@@ -110,7 +110,9 @@ class BaseEvaluator:
         self.model = model
         if self.model_path != "":
             print("Loading pretrained model from {}".format(self.model_path))
-            load_info = self.model.load_state_dict(torch.load(self.model_path), strict=False)
+            load_info = self.model.load_state_dict(
+                torch.load(self.model_path, map_location=self.model.device), strict=False
+            )
             if load_info.missing_keys:
                 print("Missing keys when loading model checkpoint:", load_info.missing_keys)
             if load_info.unexpected_keys:

@@ -36,6 +36,8 @@ class Trainer:
 
         self.lr = self.configs["lr"]
         self.batch_size = self.configs["batch_size"]
+        self.gradient_clip = self.configs.get("gradient_clip", 1.0)
+        self.max_skip_ratio = self.configs.get("max_skip_ratio", 0.2)
 
         self.model_path = self.configs["model_path"]
         self.output_folder = configs["output_folder"]
@@ -45,7 +47,9 @@ class Trainer:
         self.model = model
         if self.model_path != "":
             print("Loading pretrained model from {}".format(self.model_path))
-            load_info = self.model.load_state_dict(torch.load(self.model_path), strict=False)
+            load_info = self.model.load_state_dict(
+                torch.load(self.model_path, map_location=self.model.device), strict=False
+            )
             if load_info.missing_keys:
                 print("Missing keys when loading model checkpoint:", load_info.missing_keys)
             if load_info.unexpected_keys:
@@ -72,11 +76,15 @@ class Trainer:
     """
     def train(self):
         self._reset_train()
+        has_validated = False
         for epoch_no in range(self.n_epochs):
             self._train_epoch(epoch_no)
             if self.valid_loader is not None and (epoch_no + 1) % self.valid_epoch_interval == 0:
                 self.valid(epoch_no)
                 self.evaluate(epoch_no)
+                has_validated = True
+        if self.valid_loader is not None and not has_validated:
+            self.valid(self.n_epochs - 1)
     
     def evaluate(self, epoch_no):
         self.model.eval()
@@ -89,6 +97,8 @@ class Trainer:
     def _train_epoch(self, epoch_no):
             start_time = time.time()
             avg_loss = 0
+            updated_batches = 0
+            skipped_batches = 0
             self.model.train()
 
             for batch_no, train_batch in enumerate(self.train_loader):
@@ -96,24 +106,66 @@ class Trainer:
                 self.opt.zero_grad()
                 loss_dict = self.model(train_batch, is_train=True)
 
+                if not torch.isfinite(loss_dict["all"]):
+                    print(
+                        f"Non-finite training loss at epoch {epoch_no}, "
+                        f"batch {batch_no}: {loss_dict['all'].item()}"
+                    )
+                    self.opt.zero_grad(set_to_none=True)
+                    skipped_batches += 1
+                    continue
+
                 loss_dict["all"].backward()
+                if self.gradient_clip is not None and self.gradient_clip > 0:
+                    grad_norm = torch.nn.utils.clip_grad_norm_(
+                        self.model.parameters(),
+                        max_norm=self.gradient_clip,
+                        error_if_nonfinite=False,
+                    )
+                    if not torch.isfinite(grad_norm):
+                        print(
+                            f"Skip non-finite gradient at epoch {epoch_no}, "
+                            f"batch {batch_no}, grad_norm={grad_norm}"
+                        )
+                        self.opt.zero_grad(set_to_none=True)
+                        skipped_batches += 1
+                        continue
                 self.opt.step()
 
                 avg_loss += loss_dict["all"].item()
+                updated_batches += 1
                 for k in loss_dict.keys():
                     self.tf_writer.add_scalar(fr"Train/{k}", loss_dict[k].item(), self._global_batch_no)
 
                 if batch_no >= self.itr_per_epoch:
                     break
             self.lr_scheduler.step()
-            avg_loss /= len(self.train_loader)
+            seen_batches = updated_batches + skipped_batches
+            skip_ratio = skipped_batches / max(seen_batches, 1)
+            if updated_batches == 0:
+                raise RuntimeError(
+                    f"No valid training batches at epoch {epoch_no}; "
+                    f"skipped {skipped_batches}/{seen_batches} batches."
+                )
+            if skip_ratio > self.max_skip_ratio:
+                raise RuntimeError(
+                    f"Too many skipped batches at epoch {epoch_no}: "
+                    f"{skipped_batches}/{seen_batches} = {skip_ratio:.2%}. "
+                    f"Stop this run and lower lr or batch size."
+                )
+            avg_loss /= updated_batches
             self.tf_writer.add_scalar("Train/epoch_loss", avg_loss, epoch_no)
+            self.tf_writer.add_scalar("Train/skipped_batches", skipped_batches, epoch_no)
+            self.tf_writer.add_scalar("Train/skip_ratio", skip_ratio, epoch_no)
             self.tf_writer.add_scalar("Train/lr", self.opt.param_groups[0]['lr'], epoch_no)
             end_time = time.time()
             
             if (epoch_no+1)%self.display_epoch_interval==0:
                 print("Epoch:", epoch_no,
                       "Loss:", avg_loss,
+                      "Updated:", updated_batches,
+                      "Skipped:", skipped_batches,
+                      "SkipRatio: {:.2%}".format(skip_ratio),
                       "Time: {:.2f}".format(end_time-start_time))
 
     """

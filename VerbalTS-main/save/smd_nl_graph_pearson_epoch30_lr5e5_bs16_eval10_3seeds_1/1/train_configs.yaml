@@ -1,0 +1,15 @@
+data:
+  folder: /data/kangjiale/verbalts-graph/data/smd_nl
+  name: custom
+train:
+  batch_size: 16
+  display_interval: 1
+  epochs: 30
+  gradient_clip: 1.0
+  itr_per_epoch: 999999
+  lr: 5.0e-05
+  max_skip_ratio: 0.2
+  model_path: ''
+  num_workers: 4
+  output_folder: ./save/smd_nl_graph_pearson_epoch30_lr5e5_bs16_eval10_3seeds_1/1
+  val_epoch_interval: 10

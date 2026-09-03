@@ -1,0 +1,11 @@
+data:
+  folder: /data/kangjiale/verbalts-graph/data/smd_nl
+  name: custom
+eval:
+  batch_size: 16
+  cache_folder: ./cache/smd_nl_full
+  device: cuda:0
+  display_interval: 1
+  model_path: ./save/smd_nl_baseline_full/0/ckpts/model_best_loss.pth
+  n_samples: 10
+  num_workers: 4

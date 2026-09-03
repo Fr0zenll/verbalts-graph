@@ -1,0 +1,29 @@
+clip_type: clip_patchtst
+device: cuda:0
+loss_type: CE
+text:
+  coemb_dim: 512
+  device: cuda:0
+  llm_finetune: frozen
+  pretrain_model_dim: 768
+  pretrain_model_path: /data/kangjiale/verbalts-graph/VerbalTS-main/save/Longclip
+  textemb_hidden_dim: 1024
+  output_type: all
+ts:
+  activation: gelu
+  coemb_dim: 512
+  d_ff: 256
+  d_model: 128
+  device: cuda:0
+  dropout: 0.1
+  e_layers: 2
+  factor: 1
+  n_heads: 8
+  n_var: 10
+  output_attention: true
+  padding: 8
+  patch_len: 16
+  pretrain_encoder_path: ''
+  seq_len: 240
+  stride: 8
+  type: patchtst_mae_pretrain

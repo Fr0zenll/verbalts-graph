@@ -1,0 +1,3 @@
+,mode,sampler,steps,n_samples,run,run
+,,,,,mean,std
+0,cond_gen,ddim,-1,10,0.0,

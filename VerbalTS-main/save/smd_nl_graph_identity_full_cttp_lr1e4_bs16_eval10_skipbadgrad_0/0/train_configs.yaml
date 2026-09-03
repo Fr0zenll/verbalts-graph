@@ -1,0 +1,14 @@
+data:
+  folder: /data/kangjiale/verbalts-graph/data/smd_nl
+  name: custom
+train:
+  batch_size: 16
+  display_interval: 1
+  epochs: 50
+  gradient_clip: 1.0
+  itr_per_epoch: 999999
+  lr: 0.0001
+  model_path: ''
+  num_workers: 4
+  output_folder: ./save/smd_nl_graph_identity_full_cttp_lr1e4_bs16_eval10_skipbadgrad_0/0
+  val_epoch_interval: 10

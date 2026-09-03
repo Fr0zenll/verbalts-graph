@@ -45,3 +45,18 @@ wandb/
 # Numpy large files,按需决定是否忽略
 # *.npy
 # *.npz
+
+# ---- Backup policy (2026-09-03): exclude heavy artifacts from GitHub backup ----
+VerbalTS-main/cache/
+*.tar.gz
+*.bak_*
+
+# Keep small experiment artifacts under save/ (results, logs, tb-events, samples)
+!VerbalTS-main/save/**/*.csv
+!VerbalTS-main/save/**/*.log
+!VerbalTS-main/save/**/*.txt
+!VerbalTS-main/save/**/*.json
+!VerbalTS-main/save/**/*.yaml
+!VerbalTS-main/save/**/*.png
+!VerbalTS-main/save/**/*.npz
+!VerbalTS-main/save/**/events.out.tfevents.*

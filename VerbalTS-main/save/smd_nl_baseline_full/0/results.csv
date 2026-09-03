@@ -1,0 +1,2 @@
+,mode,sampler,n_samples,steps
+0,cond_gen,ddim,10,-1

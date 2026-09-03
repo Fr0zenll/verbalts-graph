@@ -53,7 +53,8 @@ class ConditionalGenerator(nn.Module):
         self.generator = UnConditionalGenerator(configs=configs)
         if configs["generator_pretrain_path"] != "":
             load_info = self.generator.load_state_dict(
-                torch.load(configs["generator_pretrain_path"]), strict=False
+                torch.load(configs["generator_pretrain_path"], map_location=self.device),
+                strict=False,
             )
             if load_info.missing_keys:
                 print("Missing keys when loading generator checkpoint:", load_info.missing_keys)

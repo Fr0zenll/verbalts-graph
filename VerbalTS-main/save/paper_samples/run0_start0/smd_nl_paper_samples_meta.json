@@ -1,0 +1,114 @@
+{
+  "indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "captions": [
+    "Initial observations: All time series are showing similar trends. Detailed analysis: The CPU usage (cpu_r) starts at ~0.08 and ends at ~0.09, with an overall amplitude of 0.01. The load_1 sequence begins at around 0.03 and concludes at approximately 0.01, experiencing an overall amplitude of -0.01. The mem_u_e remains nearly constant between 0.99 and 0.99, indicating no significant trend. Disk usage (disk_u) starts at ~0.09 and ends at ~0.04, with an overall amplitude of -0.05. The disk read (disk_r) series begins at around 0.00 and concludes at approximately 0.00, with an overall amplitude of 0.00. The disk write (disk_w) starts at ~0.76 and ends at ~0.35, with an overall amplitude of -0.41. Network traffic (eth1_pi and eth1_po) shows an upward trend, starting from around 0.18 and ending at around 0.22 for pi, and from around 0.19 to around 0.22 for po, both with an overall amplitude of 0.04. TCP usage (tcp_use) begins at around 0.23 and ends at around 0.32",
+    "The system demonstrates stable baseline trends across most metrics, except for increasing disk write activity. CPU utilization shows moderate fluctuations, while memory usage remains steady. Network traffic is consistent, but there are irregular peaks in disk read operations. Notably, a significant spike in load average occurs at point 190, which coincides with a sharp increase in disk writes and a slight dip in network output. This suggests a potential resource contention issue between disk I/O and network operations during peak loads.",
+    "The system exhibits stable baseline trends for most variables (e.g., CPU usage at ~0.10) except for load_1, which shows an increasing trend. An upward spike occurs between points 211-215 in cpu_r and load_1, suggesting potential resource contention. Disk metrics indicate increased write activity (0.53 amplitude rise) starting at point 134, possibly due to log or data writes. Network traffic remains steady, but TCP usage and established connections show moderate activity. No memory pressure is observed. Recommendations: Investigate the root cause of the load spike and monitor disk I/O patterns.",
+    "The system exhibits stable baseline trends in most metrics except for load_1, which shows a slight decline. CPU usage (cpu_r) and memory usage (mem_u_e) remain steady, while disk activity (disk_u, disk_r, disk_w) displays moderate fluctuations. Network traffic (eth1_pi, eth1_po) and TCP usage (tcp_use, curr_estab) indicate consistent but noisy activity. Notable anomalies include a sharp spike in cpu_r between points 91-100 and a brief dip in load_1 at point 216. The positive correlation between disk read/write operations (disk_r/w) suggests active data processing, while the inverse relationship between network input/output (eth1_pi/eth1_po) implies potential congestion. Recommended actions: Investigate the cause of the cpu_r spike and monitor disk_w thresholds.",
+    "The system exhibits stable baseline trends for most metrics (CPU, memory, disk usage) but shows anomalies in network activity. CPU usage fluctuates within a narrow range (0.09-0.10), memory usage remains steady at 98%, and disk usage decreases slightly (0.09→0.08). However, network traffic (eth1_pi/eth1_po) displays abnormal patterns: input/output rates exceed normal ranges (0.25→0.35), with sudden spikes at points 200-210. TCP usage is unusually high (0.6), and established connections are abnormally low (0.2). These discrepancies suggest potential malicious activity, such as a DDoS attack or unauthorized data exfiltration. Recommendation: Investigate traffic sources and block suspicious IPs.",
+    "The system exhibits stable baseline trends across most metrics, but anomalies are present. cpu_r shows consistent values between 0.08-0.10 with minor noise (std 0.01). load_1 fluctuates around 0.04 with high-frequency periodicity (~22.4 points) and random noise (std 0.01). A notable anomaly occurs at point 126: load_1 spikes to 0.06 for 3 points, coinciding with a cpu_r increase to 0.11. This suggests a transient overload event. mem_u_e and disk_u remain steady at 0.99 and 0.04 respectively. Network activity (eth1_pi/eth1_po) is stable around 0.25 with no significant changes. The anomaly at point 126 indicates a potential CPU/memory bottleneck, requiring investigation into concurrent processes. Recommendation: Monitor resource allocation and identify tasks running at that timestamp.",
+    "The system exhibits stable baseline trends in most variables except for disk_u, which shows a slight decrease. Anomalies include an upward spike in disk_u at point 27-29 and corresponding fluctuations in disk_r and disk_w. Notable correlations exist between disk_u/w and r, indicating potential resource contention. The TCP metrics suggest stable connection management. Recommendations include monitoring disk performance and investigating the cause of the spikes.",
+    "Initial observations show stable baseline trends except for disk_u, disk_r, and disk_w which exhibit increasing trends. Notable anomalies include a sudden increase in disk_u (points 89-93), upward spikes in disk_r (points 87-89) and disk_w (points 93-100), and an unusual pattern in cpu_r (point 1). The time series are generally smooth with minimal noise. Correlation analysis reveals strong relationships between disk-related metrics (disk_u-disk_r: 0.89; disk_u-disk_w: 0.84; disk_r-disk_w: 0.76) and moderate correlation between network metrics (eth1_pi-eth1_po: 0.67). No periodic fluctuations were observed. Recommendations include investigating the root cause of the sudden disk_u increase and monitoring the transient drop in cpu_r."
+  ],
+  "attrs": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "real_shape": [
+    8,
+    240,
+    10
+  ],
+  "baseline_pred_shape": [
+    8,
+    240,
+    10
+  ],
+  "pearson_pred_shape": [
+    8,
+    240,
+    10
+  ],
+  "baseline_multi_shape": [
+    10,
+    8,
+    240,
+    10
+  ],
+  "pearson_multi_shape": [
+    10,
+    8,
+    240,
+    10
+  ],
+  "n_samples": 10,
+  "sampler": "ddim",
+  "seed": 2026,
+  "sample_start": 0,
+  "batch_size": 8,
+  "baseline_ckpt": "./save/smd_nl_baseline_epoch30_lr5e5_bs16_eval10_3seeds_1/0/ckpts/model_best_loss.pth",
+  "pearson_ckpt": "./save/smd_nl_graph_pearson_epoch30_lr5e5_bs16_eval10_3seeds_1/0/ckpts/model_best_loss.pth"
+}

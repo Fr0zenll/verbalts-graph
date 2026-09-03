@@ -10,6 +10,6 @@ eval:
   batch_size: 2
   num_workers: 0
   display_interval: 1
-  device: cpu
+  device: cuda:0
 
   cache_folder: ./cache/smd_nl_debug

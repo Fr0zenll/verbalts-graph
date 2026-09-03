@@ -1,0 +1,15 @@
+cond_modal: simple_text
+device: cuda:0
+generator_pretrain_path: ''
+text:
+  device: cuda:0
+  num_stages: 3
+  output_type: all
+  pos_emb: none
+  pretrain_model_dim: 768
+  pretrain_model_path: ./save/Longclip
+  text_emb: 64
+  text_projector: var_scale_diffstep_multi
+  textemb_hidden_dim: 512
+  tokenizer_path: ./save/Longclip
+  word_size: 49408

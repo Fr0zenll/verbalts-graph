@@ -1,0 +1,4754 @@
+nohup: ignoring input
+All files will be saved to './save/smd_nl_baseline_full'
+
+Run: 0
+Learn from scratch
+
+***** Train Configs *****
+{
+    "data": {
+        "name": "custom",
+        "folder": "/data/kangjiale/verbalts-graph/data/smd_nl"
+    },
+    "train": {
+        "epochs": 50,
+        "batch_size": 16,
+        "num_workers": 4,
+        "lr": 0.001,
+        "itr_per_epoch": 999999,
+        "model_path": "",
+        "output_folder": "./save/smd_nl_baseline_full/0",
+        "val_epoch_interval": 1,
+        "display_interval": 1
+    }
+}
+
+***** Model Configs *****
+{
+    "device": "cuda:0",
+    "diffusion": {
+        "type": "Text2Ts",
+        "condition_type": "adaLN",
+        "layers": 3,
+        "channels": 64,
+        "nheads": 4,
+        "diffusion_embedding_dim": 128,
+        "is_linear": false,
+        "seq_len": 240,
+        "window_size": 240,
+        "num_variables": 10,
+        "base_patch": 1,
+        "L_patch_len": 3,
+        "multipatch_num": 3,
+        "attention_mask_type": "parallel",
+        "beta_start": 0.0001,
+        "beta_end": 0.5,
+        "schedule": "quad",
+        "num_steps": 50,
+        "n_var": 10,
+        "var_dep_type": "DEP",
+        "use_gnn": false,
+        "graph_adj_path": "",
+        "gnn_hidden_dim": 64,
+        "gnn_num_layers": 2,
+        "gnn_dropout": 0.1,
+        "gnn_residual": true,
+        "debug_shape": false,
+        "side": {
+            "num_var": 10,
+            "var_emb": 8,
+            "time_emb": 56,
+            "device": "cuda:0"
+        },
+        "text_projector": "var_scale_diffstep_multi",
+        "device": "cuda:0"
+    },
+    "generator_pretrain_path": ""
+}
+{
+    "device": "cuda:0",
+    "cond_modal": "simple_text",
+    "generator_pretrain_path": "",
+    "text": {
+        "text_projector": "var_scale_diffstep_multi",
+        "num_stages": 3,
+        "pretrain_model_path": "./save/Longclip",
+        "pretrain_model_dim": 768,
+        "textemb_hidden_dim": 512,
+        "text_emb": 64,
+        "output_type": "all",
+        "tokenizer_path": "./save/Longclip",
+        "word_size": 49408,
+        "pos_emb": "none",
+        "device": "cuda:0"
+    }
+}
+Split: train, total samples 4104.
+Split: valid, total samples 587.
+Split: test, total samples 1173.
+Begin training!
+Token indices sequence length is longer than the specified maximum sequence length for this model (319 > 248). Running this sequence through the model will result in indexing errors
+Epoch: 0 Loss: 0.09184200090540987 Time: 128.14
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+*** Best loss is updated to 0.05974203942192567 at 0.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 66.42s
+Batch 1 Batch Time 65.76s
+Batch 2 Batch Time 67.27s
+Batch 3 Batch Time 63.83s
+Batch 4 Batch Time 65.63s
+Batch 5 Batch Time 65.69s
+Batch 6 Batch Time 64.57s
+Batch 7 Batch Time 67.04s
+Batch 8 Batch Time 66.24s
+Batch 9 Batch Time 66.85s
+Batch 10 Batch Time 66.27s
+Batch 11 Batch Time 66.35s
+Batch 12 Batch Time 67.00s
+Batch 13 Batch Time 67.31s
+Batch 14 Batch Time 66.06s
+Batch 15 Batch Time 65.83s
+Batch 16 Batch Time 67.51s
+Batch 17 Batch Time 65.40s
+Batch 18 Batch Time 64.84s
+Batch 19 Batch Time 65.01s
+Batch 20 Batch Time 66.90s
+Batch 21 Batch Time 67.63s
+Batch 22 Batch Time 65.38s
+Batch 23 Batch Time 65.53s
+Batch 24 Batch Time 64.06s
+Batch 25 Batch Time 67.27s
+Batch 26 Batch Time 65.06s
+Batch 27 Batch Time 64.98s
+Batch 28 Batch Time 65.72s
+Batch 29 Batch Time 66.06s
+Batch 30 Batch Time 66.58s
+Batch 31 Batch Time 64.75s
+Batch 32 Batch Time 66.41s
+Batch 33 Batch Time 65.90s
+Batch 34 Batch Time 65.60s
+Batch 35 Batch Time 66.17s
+Batch 36 Batch Time 66.48s
+Batch 37 Batch Time 66.27s
+Batch 38 Batch Time 67.19s
+Batch 39 Batch Time 66.19s
+Batch 40 Batch Time 65.81s
+Batch 41 Batch Time 66.56s
+Batch 42 Batch Time 67.02s
+Batch 43 Batch Time 66.76s
+Batch 44 Batch Time 64.07s
+Batch 45 Batch Time 61.49s
+Batch 46 Batch Time 62.06s
+Batch 47 Batch Time 61.36s
+Batch 48 Batch Time 61.48s
+Batch 49 Batch Time 61.06s
+Batch 50 Batch Time 61.20s
+Batch 51 Batch Time 61.60s
+Batch 52 Batch Time 61.77s
+Batch 53 Batch Time 61.57s
+Batch 54 Batch Time 61.62s
+Batch 55 Batch Time 60.58s
+Batch 56 Batch Time 60.20s
+Batch 57 Batch Time 60.90s
+Batch 58 Batch Time 55.59s
+Batch 59 Batch Time 44.39s
+Batch 60 Batch Time 44.19s
+Batch 61 Batch Time 44.24s
+Batch 62 Batch Time 44.16s
+Batch 63 Batch Time 44.18s
+Batch 64 Batch Time 44.26s
+Batch 65 Batch Time 44.18s
+Batch 66 Batch Time 44.40s
+Batch 67 Batch Time 44.32s
+Batch 68 Batch Time 44.55s
+Batch 69 Batch Time 44.30s
+Batch 70 Batch Time 44.24s
+Batch 71 Batch Time 44.52s
+Batch 72 Batch Time 44.29s
+Batch 73 Batch Time 15.44s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 1 Loss: 0.04085124390750602 Time: 76.18
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+*** Best loss is updated to 0.04911593599496661 at 1.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.45s
+Batch 1 Batch Time 44.43s
+Batch 2 Batch Time 44.22s
+Batch 3 Batch Time 44.15s
+Batch 4 Batch Time 44.17s
+Batch 5 Batch Time 44.41s
+Batch 6 Batch Time 44.23s
+Batch 7 Batch Time 44.26s
+Batch 8 Batch Time 44.49s
+Batch 9 Batch Time 44.37s
+Batch 10 Batch Time 44.24s
+Batch 11 Batch Time 44.42s
+Batch 12 Batch Time 44.24s
+Batch 13 Batch Time 44.28s
+Batch 14 Batch Time 44.26s
+Batch 15 Batch Time 44.20s
+Batch 16 Batch Time 44.26s
+Batch 17 Batch Time 44.27s
+Batch 18 Batch Time 44.28s
+Batch 19 Batch Time 44.24s
+Batch 20 Batch Time 44.39s
+Batch 21 Batch Time 44.24s
+Batch 22 Batch Time 44.08s
+Batch 23 Batch Time 44.25s
+Batch 24 Batch Time 44.48s
+Batch 25 Batch Time 44.17s
+Batch 26 Batch Time 44.18s
+Batch 27 Batch Time 44.52s
+Batch 28 Batch Time 44.34s
+Batch 29 Batch Time 44.29s
+Batch 30 Batch Time 44.23s
+Batch 31 Batch Time 44.24s
+Batch 32 Batch Time 44.25s
+Batch 33 Batch Time 44.60s
+Batch 34 Batch Time 44.28s
+Batch 35 Batch Time 44.37s
+Batch 36 Batch Time 44.36s
+Batch 37 Batch Time 44.47s
+Batch 38 Batch Time 44.52s
+Batch 39 Batch Time 44.16s
+Batch 40 Batch Time 44.25s
+Batch 41 Batch Time 44.26s
+Batch 42 Batch Time 44.29s
+Batch 43 Batch Time 44.44s
+Batch 44 Batch Time 44.16s
+Batch 45 Batch Time 44.25s
+Batch 46 Batch Time 44.21s
+Batch 47 Batch Time 44.25s
+Batch 48 Batch Time 44.25s
+Batch 49 Batch Time 44.38s
+Batch 50 Batch Time 44.35s
+Batch 51 Batch Time 44.25s
+Batch 52 Batch Time 44.90s
+Batch 53 Batch Time 46.19s
+Batch 54 Batch Time 56.34s
+Batch 55 Batch Time 62.69s
+Batch 56 Batch Time 62.79s
+Batch 57 Batch Time 62.49s
+Batch 58 Batch Time 62.50s
+Batch 59 Batch Time 62.43s
+Batch 60 Batch Time 62.15s
+Batch 61 Batch Time 62.30s
+Batch 62 Batch Time 62.65s
+Batch 63 Batch Time 62.38s
+Batch 64 Batch Time 62.50s
+Batch 65 Batch Time 62.19s
+Batch 66 Batch Time 61.92s
+Batch 67 Batch Time 62.30s
+Batch 68 Batch Time 62.69s
+Batch 69 Batch Time 61.02s
+Batch 70 Batch Time 62.43s
+Batch 71 Batch Time 62.57s
+Batch 72 Batch Time 62.54s
+Batch 73 Batch Time 24.58s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 2 Loss: 0.04033507603213394 Time: 113.64
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+*** Best loss is updated to 0.04602947539171657 at 2.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 62.83s
+Batch 1 Batch Time 62.45s
+Batch 2 Batch Time 62.48s
+Batch 3 Batch Time 61.82s
+Batch 4 Batch Time 61.76s
+Batch 5 Batch Time 62.46s
+Batch 6 Batch Time 61.83s
+Batch 7 Batch Time 62.43s
+Batch 8 Batch Time 68.11s
+Batch 9 Batch Time 66.29s
+Batch 10 Batch Time 67.47s
+Batch 11 Batch Time 66.66s
+Batch 12 Batch Time 65.69s
+Batch 13 Batch Time 65.69s
+Batch 14 Batch Time 65.24s
+Batch 15 Batch Time 67.04s
+Batch 16 Batch Time 66.44s
+Batch 17 Batch Time 66.64s
+Batch 18 Batch Time 66.11s
+Batch 19 Batch Time 64.75s
+Batch 20 Batch Time 61.97s
+Batch 21 Batch Time 62.05s
+Batch 22 Batch Time 62.18s
+Batch 23 Batch Time 62.15s
+Batch 24 Batch Time 62.20s
+Batch 25 Batch Time 62.42s
+Batch 26 Batch Time 62.06s
+Batch 27 Batch Time 62.48s
+Batch 28 Batch Time 62.10s
+Batch 29 Batch Time 62.16s
+Batch 30 Batch Time 62.11s
+Batch 31 Batch Time 62.37s
+Batch 32 Batch Time 62.37s
+Batch 33 Batch Time 61.74s
+Batch 34 Batch Time 62.09s
+Batch 35 Batch Time 62.31s
+Batch 36 Batch Time 62.21s
+Batch 37 Batch Time 62.24s
+Batch 38 Batch Time 62.48s
+Batch 39 Batch Time 62.55s
+Batch 40 Batch Time 62.64s
+Batch 41 Batch Time 62.51s
+Batch 42 Batch Time 62.56s
+Batch 43 Batch Time 62.44s
+Batch 44 Batch Time 61.33s
+Batch 45 Batch Time 61.99s
+Batch 46 Batch Time 61.63s
+Batch 47 Batch Time 66.49s
+Batch 48 Batch Time 66.91s
+Batch 49 Batch Time 66.75s
+Batch 50 Batch Time 66.77s
+Batch 51 Batch Time 66.88s
+Batch 52 Batch Time 66.88s
+Batch 53 Batch Time 65.43s
+Batch 54 Batch Time 65.86s
+Batch 55 Batch Time 65.67s
+Batch 56 Batch Time 66.09s
+Batch 57 Batch Time 66.18s
+Batch 58 Batch Time 67.51s
+Batch 59 Batch Time 66.19s
+Batch 60 Batch Time 67.70s
+Batch 61 Batch Time 66.56s
+Batch 62 Batch Time 66.47s
+Batch 63 Batch Time 65.86s
+Batch 64 Batch Time 64.01s
+Batch 65 Batch Time 61.36s
+Batch 66 Batch Time 60.57s
+Batch 67 Batch Time 61.12s
+Batch 68 Batch Time 60.85s
+Batch 69 Batch Time 60.94s
+Batch 70 Batch Time 61.15s
+Batch 71 Batch Time 60.47s
+Batch 72 Batch Time 61.17s
+Batch 73 Batch Time 23.32s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 3 Loss: 0.03139920569575801 Time: 107.31
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+*** Best loss is updated to 0.04442508825780572 at 3.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.25s
+Batch 1 Batch Time 44.29s
+Batch 2 Batch Time 44.41s
+Batch 3 Batch Time 44.13s
+Batch 4 Batch Time 44.09s
+Batch 5 Batch Time 44.39s
+Batch 6 Batch Time 44.17s
+Batch 7 Batch Time 44.30s
+Batch 8 Batch Time 44.50s
+Batch 9 Batch Time 44.39s
+Batch 10 Batch Time 44.29s
+Batch 11 Batch Time 44.34s
+Batch 12 Batch Time 44.36s
+Batch 13 Batch Time 44.39s
+Batch 14 Batch Time 44.36s
+Batch 15 Batch Time 44.14s
+Batch 16 Batch Time 44.46s
+Batch 17 Batch Time 44.44s
+Batch 18 Batch Time 44.15s
+Batch 19 Batch Time 44.26s
+Batch 20 Batch Time 44.39s
+Batch 21 Batch Time 44.26s
+Batch 22 Batch Time 44.15s
+Batch 23 Batch Time 44.38s
+Batch 24 Batch Time 44.38s
+Batch 25 Batch Time 44.14s
+Batch 26 Batch Time 44.18s
+Batch 27 Batch Time 44.26s
+Batch 28 Batch Time 44.25s
+Batch 29 Batch Time 44.31s
+Batch 30 Batch Time 44.29s
+Batch 31 Batch Time 44.15s
+Batch 32 Batch Time 44.25s
+Batch 33 Batch Time 44.25s
+Batch 34 Batch Time 44.30s
+Batch 35 Batch Time 44.26s
+Batch 36 Batch Time 44.23s
+Batch 37 Batch Time 44.23s
+Batch 38 Batch Time 44.29s
+Batch 39 Batch Time 44.25s
+Batch 40 Batch Time 44.17s
+Batch 41 Batch Time 44.25s
+Batch 42 Batch Time 44.29s
+Batch 43 Batch Time 44.25s
+Batch 44 Batch Time 44.28s
+Batch 45 Batch Time 44.25s
+Batch 46 Batch Time 44.28s
+Batch 47 Batch Time 44.16s
+Batch 48 Batch Time 44.28s
+Batch 49 Batch Time 44.28s
+Batch 50 Batch Time 44.16s
+Batch 51 Batch Time 44.16s
+Batch 52 Batch Time 44.41s
+Batch 53 Batch Time 44.22s
+Batch 54 Batch Time 44.41s
+Batch 55 Batch Time 44.37s
+Batch 56 Batch Time 44.23s
+Batch 57 Batch Time 44.28s
+Batch 58 Batch Time 44.45s
+Batch 59 Batch Time 44.29s
+Batch 60 Batch Time 44.24s
+Batch 61 Batch Time 44.24s
+Batch 62 Batch Time 44.23s
+Batch 63 Batch Time 44.31s
+Batch 64 Batch Time 44.93s
+Batch 65 Batch Time 44.51s
+Batch 66 Batch Time 44.23s
+Batch 67 Batch Time 44.24s
+Batch 68 Batch Time 44.21s
+Batch 69 Batch Time 44.17s
+Batch 70 Batch Time 44.15s
+Batch 71 Batch Time 44.43s
+Batch 72 Batch Time 44.94s
+Batch 73 Batch Time 16.15s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 4 Loss: 0.030703804274506374 Time: 73.73
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+*** Best loss is updated to 0.04276626224856119 at 4.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.41s
+Batch 1 Batch Time 44.60s
+Batch 2 Batch Time 44.61s
+Batch 3 Batch Time 44.50s
+Batch 4 Batch Time 44.59s
+Batch 5 Batch Time 44.73s
+Batch 6 Batch Time 44.49s
+Batch 7 Batch Time 44.63s
+Batch 8 Batch Time 44.60s
+Batch 9 Batch Time 44.49s
+Batch 10 Batch Time 44.60s
+Batch 11 Batch Time 44.74s
+Batch 12 Batch Time 44.77s
+Batch 13 Batch Time 44.63s
+Batch 14 Batch Time 44.58s
+Batch 15 Batch Time 44.45s
+Batch 16 Batch Time 44.58s
+Batch 17 Batch Time 44.38s
+Batch 18 Batch Time 44.48s
+Batch 19 Batch Time 44.45s
+Batch 20 Batch Time 44.61s
+Batch 21 Batch Time 44.44s
+Batch 22 Batch Time 44.50s
+Batch 23 Batch Time 44.47s
+Batch 24 Batch Time 44.47s
+Batch 25 Batch Time 44.41s
+Batch 26 Batch Time 44.48s
+Batch 27 Batch Time 44.60s
+Batch 28 Batch Time 44.48s
+Batch 29 Batch Time 44.66s
+Batch 30 Batch Time 44.56s
+Batch 31 Batch Time 44.60s
+Batch 32 Batch Time 44.78s
+Batch 33 Batch Time 44.84s
+Batch 34 Batch Time 44.75s
+Batch 35 Batch Time 44.54s
+Batch 36 Batch Time 44.59s
+Batch 37 Batch Time 44.53s
+Batch 38 Batch Time 44.63s
+Batch 39 Batch Time 44.48s
+Batch 40 Batch Time 44.75s
+Batch 41 Batch Time 44.49s
+Batch 42 Batch Time 44.61s
+Batch 43 Batch Time 44.69s
+Batch 44 Batch Time 44.47s
+Batch 45 Batch Time 44.43s
+Batch 46 Batch Time 44.68s
+Batch 47 Batch Time 44.46s
+Batch 48 Batch Time 44.45s
+Batch 49 Batch Time 44.41s
+Batch 50 Batch Time 44.46s
+Batch 51 Batch Time 44.38s
+Batch 52 Batch Time 44.47s
+Batch 53 Batch Time 44.47s
+Batch 54 Batch Time 44.63s
+Batch 55 Batch Time 44.60s
+Batch 56 Batch Time 44.44s
+Batch 57 Batch Time 44.39s
+Batch 58 Batch Time 44.64s
+Batch 59 Batch Time 44.66s
+Batch 60 Batch Time 44.58s
+Batch 61 Batch Time 44.53s
+Batch 62 Batch Time 44.54s
+Batch 63 Batch Time 44.51s
+Batch 64 Batch Time 44.72s
+Batch 65 Batch Time 44.42s
+Batch 66 Batch Time 44.55s
+Batch 67 Batch Time 44.62s
+Batch 68 Batch Time 44.75s
+Batch 69 Batch Time 44.56s
+Batch 70 Batch Time 44.47s
+Batch 71 Batch Time 44.83s
+Batch 72 Batch Time 44.75s
+Batch 73 Batch Time 16.29s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 5 Loss: nan Time: 77.80
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.80s
+Batch 1 Batch Time 44.75s
+Batch 2 Batch Time 44.59s
+Batch 3 Batch Time 44.49s
+Batch 4 Batch Time 44.59s
+Batch 5 Batch Time 44.65s
+Batch 6 Batch Time 44.49s
+Batch 7 Batch Time 44.65s
+Batch 8 Batch Time 44.77s
+Batch 9 Batch Time 44.71s
+Batch 10 Batch Time 44.49s
+Batch 11 Batch Time 44.58s
+Batch 12 Batch Time 44.76s
+Batch 13 Batch Time 44.59s
+Batch 14 Batch Time 44.58s
+Batch 15 Batch Time 44.60s
+Batch 16 Batch Time 44.65s
+Batch 17 Batch Time 44.77s
+Batch 18 Batch Time 44.51s
+Batch 19 Batch Time 44.64s
+Batch 20 Batch Time 44.77s
+Batch 21 Batch Time 44.62s
+Batch 22 Batch Time 44.36s
+Batch 23 Batch Time 44.71s
+Batch 24 Batch Time 44.61s
+Batch 25 Batch Time 44.48s
+Batch 26 Batch Time 44.61s
+Batch 27 Batch Time 44.59s
+Batch 28 Batch Time 44.57s
+Batch 29 Batch Time 44.64s
+Batch 30 Batch Time 44.63s
+Batch 31 Batch Time 44.61s
+Batch 32 Batch Time 44.62s
+Batch 33 Batch Time 44.84s
+Batch 34 Batch Time 44.77s
+Batch 35 Batch Time 44.63s
+Batch 36 Batch Time 44.62s
+Batch 37 Batch Time 44.53s
+Batch 38 Batch Time 44.64s
+Batch 39 Batch Time 44.61s
+Batch 40 Batch Time 44.78s
+Batch 41 Batch Time 44.53s
+Batch 42 Batch Time 44.60s
+Batch 43 Batch Time 44.53s
+Batch 44 Batch Time 44.63s
+Batch 45 Batch Time 44.55s
+Batch 46 Batch Time 44.51s
+Batch 47 Batch Time 44.50s
+Batch 48 Batch Time 44.54s
+Batch 49 Batch Time 44.59s
+Batch 50 Batch Time 44.50s
+Batch 51 Batch Time 44.59s
+Batch 52 Batch Time 44.74s
+Batch 53 Batch Time 44.50s
+Batch 54 Batch Time 44.75s
+Batch 55 Batch Time 44.62s
+Batch 56 Batch Time 44.50s
+Batch 57 Batch Time 44.55s
+Batch 58 Batch Time 44.76s
+Batch 59 Batch Time 44.75s
+Batch 60 Batch Time 44.69s
+Batch 61 Batch Time 44.64s
+Batch 62 Batch Time 44.71s
+Batch 63 Batch Time 44.71s
+Batch 64 Batch Time 44.60s
+Batch 65 Batch Time 44.57s
+Batch 66 Batch Time 44.84s
+Batch 67 Batch Time 44.75s
+Batch 68 Batch Time 44.80s
+Batch 69 Batch Time 44.75s
+Batch 70 Batch Time 44.66s
+Batch 71 Batch Time 44.67s
+Batch 72 Batch Time 44.85s
+Batch 73 Batch Time 16.26s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 6 Loss: nan Time: 77.24
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.82s
+Batch 1 Batch Time 44.67s
+Batch 2 Batch Time 44.86s
+Batch 3 Batch Time 44.37s
+Batch 4 Batch Time 44.35s
+Batch 5 Batch Time 44.58s
+Batch 6 Batch Time 44.37s
+Batch 7 Batch Time 44.47s
+Batch 8 Batch Time 44.44s
+Batch 9 Batch Time 44.46s
+Batch 10 Batch Time 44.39s
+Batch 11 Batch Time 44.52s
+Batch 12 Batch Time 44.50s
+Batch 13 Batch Time 44.54s
+Batch 14 Batch Time 44.43s
+Batch 15 Batch Time 44.33s
+Batch 16 Batch Time 44.33s
+Batch 17 Batch Time 44.45s
+Batch 18 Batch Time 44.65s
+Batch 19 Batch Time 44.76s
+Batch 20 Batch Time 44.77s
+Batch 21 Batch Time 44.45s
+Batch 22 Batch Time 44.53s
+Batch 23 Batch Time 44.69s
+Batch 24 Batch Time 44.58s
+Batch 25 Batch Time 44.49s
+Batch 26 Batch Time 44.57s
+Batch 27 Batch Time 44.76s
+Batch 28 Batch Time 44.57s
+Batch 29 Batch Time 44.51s
+Batch 30 Batch Time 44.36s
+Batch 31 Batch Time 44.39s
+Batch 32 Batch Time 44.62s
+Batch 33 Batch Time 44.68s
+Batch 34 Batch Time 44.62s
+Batch 35 Batch Time 44.43s
+Batch 36 Batch Time 44.47s
+Batch 37 Batch Time 44.42s
+Batch 38 Batch Time 44.36s
+Batch 39 Batch Time 44.58s
+Batch 40 Batch Time 44.51s
+Batch 41 Batch Time 44.46s
+Batch 42 Batch Time 44.53s
+Batch 43 Batch Time 44.34s
+Batch 44 Batch Time 44.47s
+Batch 45 Batch Time 44.53s
+Batch 46 Batch Time 44.35s
+Batch 47 Batch Time 44.33s
+Batch 48 Batch Time 44.51s
+Batch 49 Batch Time 44.36s
+Batch 50 Batch Time 44.31s
+Batch 51 Batch Time 44.40s
+Batch 52 Batch Time 44.59s
+Batch 53 Batch Time 44.32s
+Batch 54 Batch Time 44.44s
+Batch 55 Batch Time 44.39s
+Batch 56 Batch Time 44.37s
+Batch 57 Batch Time 44.42s
+Batch 58 Batch Time 44.70s
+Batch 59 Batch Time 44.60s
+Batch 60 Batch Time 44.37s
+Batch 61 Batch Time 44.52s
+Batch 62 Batch Time 44.58s
+Batch 63 Batch Time 44.53s
+Batch 64 Batch Time 44.62s
+Batch 65 Batch Time 44.60s
+Batch 66 Batch Time 44.64s
+Batch 67 Batch Time 44.61s
+Batch 68 Batch Time 44.48s
+Batch 69 Batch Time 44.47s
+Batch 70 Batch Time 44.55s
+Batch 71 Batch Time 44.53s
+Batch 72 Batch Time 44.56s
+Batch 73 Batch Time 16.39s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 7 Loss: nan Time: 75.65
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.30s
+Batch 1 Batch Time 44.41s
+Batch 2 Batch Time 44.55s
+Batch 3 Batch Time 44.55s
+Batch 4 Batch Time 44.31s
+Batch 5 Batch Time 44.62s
+Batch 6 Batch Time 44.36s
+Batch 7 Batch Time 44.49s
+Batch 8 Batch Time 44.68s
+Batch 9 Batch Time 44.55s
+Batch 10 Batch Time 44.42s
+Batch 11 Batch Time 44.60s
+Batch 12 Batch Time 44.61s
+Batch 13 Batch Time 44.47s
+Batch 14 Batch Time 44.45s
+Batch 15 Batch Time 44.35s
+Batch 16 Batch Time 44.57s
+Batch 17 Batch Time 44.42s
+Batch 18 Batch Time 44.42s
+Batch 19 Batch Time 44.47s
+Batch 20 Batch Time 44.60s
+Batch 21 Batch Time 44.59s
+Batch 22 Batch Time 44.39s
+Batch 23 Batch Time 44.44s
+Batch 24 Batch Time 44.56s
+Batch 25 Batch Time 44.35s
+Batch 26 Batch Time 44.45s
+Batch 27 Batch Time 44.41s
+Batch 28 Batch Time 44.39s
+Batch 29 Batch Time 44.51s
+Batch 30 Batch Time 44.48s
+Batch 31 Batch Time 44.35s
+Batch 32 Batch Time 44.62s
+Batch 33 Batch Time 44.69s
+Batch 34 Batch Time 44.32s
+Batch 35 Batch Time 44.48s
+Batch 36 Batch Time 44.44s
+Batch 37 Batch Time 44.56s
+Batch 38 Batch Time 44.54s
+Batch 39 Batch Time 44.44s
+Batch 40 Batch Time 44.61s
+Batch 41 Batch Time 44.58s
+Batch 42 Batch Time 44.47s
+Batch 43 Batch Time 44.64s
+Batch 44 Batch Time 44.36s
+Batch 45 Batch Time 44.47s
+Batch 46 Batch Time 44.35s
+Batch 47 Batch Time 44.35s
+Batch 48 Batch Time 44.38s
+Batch 49 Batch Time 44.47s
+Batch 50 Batch Time 44.37s
+Batch 51 Batch Time 44.34s
+Batch 52 Batch Time 44.44s
+Batch 53 Batch Time 44.35s
+Batch 54 Batch Time 44.42s
+Batch 55 Batch Time 44.58s
+Batch 56 Batch Time 44.59s
+Batch 57 Batch Time 44.37s
+Batch 58 Batch Time 44.62s
+Batch 59 Batch Time 44.46s
+Batch 60 Batch Time 44.49s
+Batch 61 Batch Time 44.35s
+Batch 62 Batch Time 44.31s
+Batch 63 Batch Time 44.38s
+Batch 64 Batch Time 44.61s
+Batch 65 Batch Time 44.63s
+Batch 66 Batch Time 44.37s
+Batch 67 Batch Time 44.47s
+Batch 68 Batch Time 44.59s
+Batch 69 Batch Time 44.43s
+Batch 70 Batch Time 44.44s
+Batch 71 Batch Time 44.67s
+Batch 72 Batch Time 44.48s
+Batch 73 Batch Time 15.73s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 8 Loss: nan Time: 76.69
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.64s
+Batch 1 Batch Time 44.47s
+Batch 2 Batch Time 44.59s
+Batch 3 Batch Time 44.31s
+Batch 4 Batch Time 44.47s
+Batch 5 Batch Time 44.45s
+Batch 6 Batch Time 44.46s
+Batch 7 Batch Time 44.46s
+Batch 8 Batch Time 44.44s
+Batch 9 Batch Time 44.56s
+Batch 10 Batch Time 44.45s
+Batch 11 Batch Time 44.54s
+Batch 12 Batch Time 44.60s
+Batch 13 Batch Time 44.47s
+Batch 14 Batch Time 44.45s
+Batch 15 Batch Time 44.42s
+Batch 16 Batch Time 44.42s
+Batch 17 Batch Time 44.50s
+Batch 18 Batch Time 44.34s
+Batch 19 Batch Time 44.32s
+Batch 20 Batch Time 44.59s
+Batch 21 Batch Time 44.60s
+Batch 22 Batch Time 44.36s
+Batch 23 Batch Time 44.46s
+Batch 24 Batch Time 44.57s
+Batch 25 Batch Time 44.50s
+Batch 26 Batch Time 44.37s
+Batch 27 Batch Time 44.45s
+Batch 28 Batch Time 44.45s
+Batch 29 Batch Time 44.34s
+Batch 30 Batch Time 44.48s
+Batch 31 Batch Time 44.42s
+Batch 32 Batch Time 44.62s
+Batch 33 Batch Time 44.44s
+Batch 34 Batch Time 44.36s
+Batch 35 Batch Time 44.48s
+Batch 36 Batch Time 44.47s
+Batch 37 Batch Time 44.56s
+Batch 38 Batch Time 44.60s
+Batch 39 Batch Time 44.27s
+Batch 40 Batch Time 44.61s
+Batch 41 Batch Time 44.46s
+Batch 42 Batch Time 44.46s
+Batch 43 Batch Time 44.38s
+Batch 44 Batch Time 44.50s
+Batch 45 Batch Time 44.48s
+Batch 46 Batch Time 44.48s
+Batch 47 Batch Time 44.46s
+Batch 48 Batch Time 44.42s
+Batch 49 Batch Time 44.49s
+Batch 50 Batch Time 44.46s
+Batch 51 Batch Time 44.34s
+Batch 52 Batch Time 44.46s
+Batch 53 Batch Time 44.38s
+Batch 54 Batch Time 44.60s
+Batch 55 Batch Time 44.49s
+Batch 56 Batch Time 44.33s
+Batch 57 Batch Time 44.28s
+Batch 58 Batch Time 44.39s
+Batch 59 Batch Time 44.49s
+Batch 60 Batch Time 44.45s
+Batch 61 Batch Time 44.45s
+Batch 62 Batch Time 44.45s
+Batch 63 Batch Time 44.35s
+Batch 64 Batch Time 44.62s
+Batch 65 Batch Time 44.61s
+Batch 66 Batch Time 44.60s
+Batch 67 Batch Time 44.50s
+Batch 68 Batch Time 44.60s
+Batch 69 Batch Time 44.46s
+Batch 70 Batch Time 44.62s
+Batch 71 Batch Time 44.69s
+Batch 72 Batch Time 44.45s
+Batch 73 Batch Time 15.76s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 9 Loss: nan Time: 76.50
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.39s
+Batch 1 Batch Time 44.48s
+Batch 2 Batch Time 44.60s
+Batch 3 Batch Time 44.38s
+Batch 4 Batch Time 44.48s
+Batch 5 Batch Time 44.45s
+Batch 6 Batch Time 44.43s
+Batch 7 Batch Time 44.38s
+Batch 8 Batch Time 44.45s
+Batch 9 Batch Time 44.24s
+Batch 10 Batch Time 44.46s
+Batch 11 Batch Time 44.61s
+Batch 12 Batch Time 44.61s
+Batch 13 Batch Time 44.49s
+Batch 14 Batch Time 44.49s
+Batch 15 Batch Time 44.43s
+Batch 16 Batch Time 44.36s
+Batch 17 Batch Time 44.49s
+Batch 18 Batch Time 44.37s
+Batch 19 Batch Time 44.51s
+Batch 20 Batch Time 44.47s
+Batch 21 Batch Time 44.35s
+Batch 22 Batch Time 44.45s
+Batch 23 Batch Time 44.58s
+Batch 24 Batch Time 44.44s
+Batch 25 Batch Time 44.37s
+Batch 26 Batch Time 44.45s
+Batch 27 Batch Time 44.36s
+Batch 28 Batch Time 44.43s
+Batch 29 Batch Time 44.51s
+Batch 30 Batch Time 44.35s
+Batch 31 Batch Time 44.37s
+Batch 32 Batch Time 44.29s
+Batch 33 Batch Time 44.49s
+Batch 34 Batch Time 44.33s
+Batch 35 Batch Time 44.45s
+Batch 36 Batch Time 44.46s
+Batch 37 Batch Time 44.56s
+Batch 38 Batch Time 44.61s
+Batch 39 Batch Time 44.36s
+Batch 40 Batch Time 44.62s
+Batch 41 Batch Time 44.59s
+Batch 42 Batch Time 44.50s
+Batch 43 Batch Time 44.44s
+Batch 44 Batch Time 44.50s
+Batch 45 Batch Time 44.47s
+Batch 46 Batch Time 44.47s
+Batch 47 Batch Time 44.46s
+Batch 48 Batch Time 44.44s
+Batch 49 Batch Time 44.48s
+Batch 50 Batch Time 44.36s
+Batch 51 Batch Time 44.49s
+Batch 52 Batch Time 44.47s
+Batch 53 Batch Time 44.37s
+Batch 54 Batch Time 44.62s
+Batch 55 Batch Time 44.57s
+Batch 56 Batch Time 44.35s
+Batch 57 Batch Time 44.39s
+Batch 58 Batch Time 44.46s
+Batch 59 Batch Time 44.57s
+Batch 60 Batch Time 44.38s
+Batch 61 Batch Time 44.51s
+Batch 62 Batch Time 44.36s
+Batch 63 Batch Time 44.38s
+Batch 64 Batch Time 44.50s
+Batch 65 Batch Time 44.36s
+Batch 66 Batch Time 44.45s
+Batch 67 Batch Time 44.50s
+Batch 68 Batch Time 44.44s
+Batch 69 Batch Time 44.46s
+Batch 70 Batch Time 44.33s
+Batch 71 Batch Time 44.70s
+Batch 72 Batch Time 44.46s
+Batch 73 Batch Time 15.77s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 10 Loss: nan Time: 75.75
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.44s
+Batch 1 Batch Time 44.51s
+Batch 2 Batch Time 44.47s
+Batch 3 Batch Time 44.38s
+Batch 4 Batch Time 44.27s
+Batch 5 Batch Time 44.66s
+Batch 6 Batch Time 44.38s
+Batch 7 Batch Time 44.47s
+Batch 8 Batch Time 44.64s
+Batch 9 Batch Time 44.60s
+Batch 10 Batch Time 44.37s
+Batch 11 Batch Time 44.64s
+Batch 12 Batch Time 44.67s
+Batch 13 Batch Time 44.45s
+Batch 14 Batch Time 44.40s
+Batch 15 Batch Time 44.47s
+Batch 16 Batch Time 44.60s
+Batch 17 Batch Time 44.51s
+Batch 18 Batch Time 44.39s
+Batch 19 Batch Time 44.33s
+Batch 20 Batch Time 44.60s
+Batch 21 Batch Time 44.49s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.59s
+Batch 24 Batch Time 44.60s
+Batch 25 Batch Time 44.51s
+Batch 26 Batch Time 44.36s
+Batch 27 Batch Time 44.47s
+Batch 28 Batch Time 44.46s
+Batch 29 Batch Time 44.52s
+Batch 30 Batch Time 44.51s
+Batch 31 Batch Time 44.38s
+Batch 32 Batch Time 44.33s
+Batch 33 Batch Time 44.49s
+Batch 34 Batch Time 44.61s
+Batch 35 Batch Time 44.39s
+Batch 36 Batch Time 44.42s
+Batch 37 Batch Time 44.56s
+Batch 38 Batch Time 44.36s
+Batch 39 Batch Time 44.35s
+Batch 40 Batch Time 44.64s
+Batch 41 Batch Time 44.61s
+Batch 42 Batch Time 44.52s
+Batch 43 Batch Time 44.34s
+Batch 44 Batch Time 44.51s
+Batch 45 Batch Time 44.49s
+Batch 46 Batch Time 44.50s
+Batch 47 Batch Time 44.38s
+Batch 48 Batch Time 44.48s
+Batch 49 Batch Time 44.38s
+Batch 50 Batch Time 44.47s
+Batch 51 Batch Time 44.38s
+Batch 52 Batch Time 44.39s
+Batch 53 Batch Time 44.38s
+Batch 54 Batch Time 44.46s
+Batch 55 Batch Time 44.59s
+Batch 56 Batch Time 44.36s
+Batch 57 Batch Time 44.45s
+Batch 58 Batch Time 44.64s
+Batch 59 Batch Time 44.60s
+Batch 60 Batch Time 44.38s
+Batch 61 Batch Time 44.48s
+Batch 62 Batch Time 44.38s
+Batch 63 Batch Time 44.40s
+Batch 64 Batch Time 44.39s
+Batch 65 Batch Time 44.65s
+Batch 66 Batch Time 44.40s
+Batch 67 Batch Time 44.46s
+Batch 68 Batch Time 44.46s
+Batch 69 Batch Time 44.46s
+Batch 70 Batch Time 44.36s
+Batch 71 Batch Time 44.72s
+Batch 72 Batch Time 44.51s
+Batch 73 Batch Time 15.79s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 11 Loss: nan Time: 78.19
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.48s
+Batch 1 Batch Time 44.63s
+Batch 2 Batch Time 44.49s
+Batch 3 Batch Time 44.59s
+Batch 4 Batch Time 44.37s
+Batch 5 Batch Time 44.65s
+Batch 6 Batch Time 44.38s
+Batch 7 Batch Time 44.40s
+Batch 8 Batch Time 44.73s
+Batch 9 Batch Time 44.38s
+Batch 10 Batch Time 44.48s
+Batch 11 Batch Time 44.63s
+Batch 12 Batch Time 44.37s
+Batch 13 Batch Time 44.51s
+Batch 14 Batch Time 44.51s
+Batch 15 Batch Time 44.46s
+Batch 16 Batch Time 44.61s
+Batch 17 Batch Time 44.53s
+Batch 18 Batch Time 44.51s
+Batch 19 Batch Time 44.47s
+Batch 20 Batch Time 44.61s
+Batch 21 Batch Time 44.45s
+Batch 22 Batch Time 44.47s
+Batch 23 Batch Time 44.33s
+Batch 24 Batch Time 44.43s
+Batch 25 Batch Time 44.36s
+Batch 26 Batch Time 44.37s
+Batch 27 Batch Time 44.62s
+Batch 28 Batch Time 44.35s
+Batch 29 Batch Time 44.52s
+Batch 30 Batch Time 44.42s
+Batch 31 Batch Time 44.32s
+Batch 32 Batch Time 44.64s
+Batch 33 Batch Time 44.45s
+Batch 34 Batch Time 44.36s
+Batch 35 Batch Time 44.47s
+Batch 36 Batch Time 44.47s
+Batch 37 Batch Time 44.56s
+Batch 38 Batch Time 44.46s
+Batch 39 Batch Time 44.57s
+Batch 40 Batch Time 44.36s
+Batch 41 Batch Time 44.45s
+Batch 42 Batch Time 44.43s
+Batch 43 Batch Time 44.63s
+Batch 44 Batch Time 44.47s
+Batch 45 Batch Time 44.42s
+Batch 46 Batch Time 44.36s
+Batch 47 Batch Time 44.38s
+Batch 48 Batch Time 44.66s
+Batch 49 Batch Time 44.39s
+Batch 50 Batch Time 44.46s
+Batch 51 Batch Time 44.36s
+Batch 52 Batch Time 44.60s
+Batch 53 Batch Time 44.34s
+Batch 54 Batch Time 44.44s
+Batch 55 Batch Time 44.56s
+Batch 56 Batch Time 44.58s
+Batch 57 Batch Time 44.46s
+Batch 58 Batch Time 44.62s
+Batch 59 Batch Time 44.48s
+Batch 60 Batch Time 44.47s
+Batch 61 Batch Time 44.45s
+Batch 62 Batch Time 44.45s
+Batch 63 Batch Time 44.33s
+Batch 64 Batch Time 44.45s
+Batch 65 Batch Time 44.60s
+Batch 66 Batch Time 44.50s
+Batch 67 Batch Time 44.49s
+Batch 68 Batch Time 44.61s
+Batch 69 Batch Time 44.53s
+Batch 70 Batch Time 44.43s
+Batch 71 Batch Time 44.67s
+Batch 72 Batch Time 44.48s
+Batch 73 Batch Time 15.63s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 12 Loss: nan Time: 77.06
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.44s
+Batch 1 Batch Time 44.60s
+Batch 2 Batch Time 44.34s
+Batch 3 Batch Time 44.36s
+Batch 4 Batch Time 44.43s
+Batch 5 Batch Time 44.45s
+Batch 6 Batch Time 44.37s
+Batch 7 Batch Time 44.46s
+Batch 8 Batch Time 44.49s
+Batch 9 Batch Time 44.40s
+Batch 10 Batch Time 44.45s
+Batch 11 Batch Time 44.62s
+Batch 12 Batch Time 44.61s
+Batch 13 Batch Time 44.50s
+Batch 14 Batch Time 44.45s
+Batch 15 Batch Time 44.44s
+Batch 16 Batch Time 44.37s
+Batch 17 Batch Time 44.42s
+Batch 18 Batch Time 44.39s
+Batch 19 Batch Time 44.38s
+Batch 20 Batch Time 44.45s
+Batch 21 Batch Time 44.45s
+Batch 22 Batch Time 44.33s
+Batch 23 Batch Time 44.44s
+Batch 24 Batch Time 44.56s
+Batch 25 Batch Time 44.22s
+Batch 26 Batch Time 44.44s
+Batch 27 Batch Time 44.47s
+Batch 28 Batch Time 44.42s
+Batch 29 Batch Time 44.51s
+Batch 30 Batch Time 44.48s
+Batch 31 Batch Time 44.43s
+Batch 32 Batch Time 44.61s
+Batch 33 Batch Time 44.48s
+Batch 34 Batch Time 44.51s
+Batch 35 Batch Time 44.49s
+Batch 36 Batch Time 44.40s
+Batch 37 Batch Time 44.37s
+Batch 38 Batch Time 44.61s
+Batch 39 Batch Time 44.57s
+Batch 40 Batch Time 44.45s
+Batch 41 Batch Time 44.37s
+Batch 42 Batch Time 44.48s
+Batch 43 Batch Time 44.62s
+Batch 44 Batch Time 44.50s
+Batch 45 Batch Time 44.47s
+Batch 46 Batch Time 44.37s
+Batch 47 Batch Time 44.37s
+Batch 48 Batch Time 44.45s
+Batch 49 Batch Time 44.38s
+Batch 50 Batch Time 44.37s
+Batch 51 Batch Time 44.38s
+Batch 52 Batch Time 44.59s
+Batch 53 Batch Time 44.41s
+Batch 54 Batch Time 44.46s
+Batch 55 Batch Time 44.46s
+Batch 56 Batch Time 44.58s
+Batch 57 Batch Time 44.34s
+Batch 58 Batch Time 44.43s
+Batch 59 Batch Time 44.62s
+Batch 60 Batch Time 44.47s
+Batch 61 Batch Time 44.46s
+Batch 62 Batch Time 44.44s
+Batch 63 Batch Time 44.47s
+Batch 64 Batch Time 44.37s
+Batch 65 Batch Time 44.16s
+Batch 66 Batch Time 44.36s
+Batch 67 Batch Time 44.50s
+Batch 68 Batch Time 44.45s
+Batch 69 Batch Time 44.47s
+Batch 70 Batch Time 44.43s
+Batch 71 Batch Time 44.67s
+Batch 72 Batch Time 44.63s
+Batch 73 Batch Time 15.54s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 13 Loss: nan Time: 77.05
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.64s
+Batch 1 Batch Time 44.49s
+Batch 2 Batch Time 44.61s
+Batch 3 Batch Time 44.36s
+Batch 4 Batch Time 44.36s
+Batch 5 Batch Time 44.60s
+Batch 6 Batch Time 44.36s
+Batch 7 Batch Time 44.37s
+Batch 8 Batch Time 44.68s
+Batch 9 Batch Time 44.55s
+Batch 10 Batch Time 44.45s
+Batch 11 Batch Time 44.42s
+Batch 12 Batch Time 44.44s
+Batch 13 Batch Time 44.43s
+Batch 14 Batch Time 44.46s
+Batch 15 Batch Time 44.44s
+Batch 16 Batch Time 44.57s
+Batch 17 Batch Time 44.49s
+Batch 18 Batch Time 44.43s
+Batch 19 Batch Time 44.37s
+Batch 20 Batch Time 44.55s
+Batch 21 Batch Time 44.37s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.50s
+Batch 24 Batch Time 44.48s
+Batch 25 Batch Time 44.33s
+Batch 26 Batch Time 44.37s
+Batch 27 Batch Time 44.43s
+Batch 28 Batch Time 44.35s
+Batch 29 Batch Time 44.45s
+Batch 30 Batch Time 44.36s
+Batch 31 Batch Time 44.36s
+Batch 32 Batch Time 44.63s
+Batch 33 Batch Time 44.44s
+Batch 34 Batch Time 44.57s
+Batch 35 Batch Time 44.44s
+Batch 36 Batch Time 44.35s
+Batch 37 Batch Time 44.23s
+Batch 38 Batch Time 44.62s
+Batch 39 Batch Time 44.33s
+Batch 40 Batch Time 44.33s
+Batch 41 Batch Time 44.56s
+Batch 42 Batch Time 44.37s
+Batch 43 Batch Time 44.62s
+Batch 44 Batch Time 44.49s
+Batch 45 Batch Time 44.47s
+Batch 46 Batch Time 44.38s
+Batch 47 Batch Time 44.46s
+Batch 48 Batch Time 44.46s
+Batch 49 Batch Time 44.36s
+Batch 50 Batch Time 44.28s
+Batch 51 Batch Time 44.36s
+Batch 52 Batch Time 44.34s
+Batch 53 Batch Time 44.37s
+Batch 54 Batch Time 44.61s
+Batch 55 Batch Time 44.48s
+Batch 56 Batch Time 44.59s
+Batch 57 Batch Time 44.44s
+Batch 58 Batch Time 44.43s
+Batch 59 Batch Time 44.55s
+Batch 60 Batch Time 44.36s
+Batch 61 Batch Time 44.50s
+Batch 62 Batch Time 44.40s
+Batch 63 Batch Time 44.37s
+Batch 64 Batch Time 44.46s
+Batch 65 Batch Time 44.36s
+Batch 66 Batch Time 44.57s
+Batch 67 Batch Time 44.37s
+Batch 68 Batch Time 44.36s
+Batch 69 Batch Time 44.38s
+Batch 70 Batch Time 44.35s
+Batch 71 Batch Time 44.50s
+Batch 72 Batch Time 44.37s
+Batch 73 Batch Time 15.51s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 14 Loss: nan Time: 76.15
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.63s
+Batch 1 Batch Time 44.62s
+Batch 2 Batch Time 44.61s
+Batch 3 Batch Time 44.56s
+Batch 4 Batch Time 44.48s
+Batch 5 Batch Time 44.64s
+Batch 6 Batch Time 44.45s
+Batch 7 Batch Time 44.34s
+Batch 8 Batch Time 44.47s
+Batch 9 Batch Time 44.51s
+Batch 10 Batch Time 44.45s
+Batch 11 Batch Time 44.62s
+Batch 12 Batch Time 44.62s
+Batch 13 Batch Time 44.44s
+Batch 14 Batch Time 44.47s
+Batch 15 Batch Time 44.29s
+Batch 16 Batch Time 44.59s
+Batch 17 Batch Time 44.49s
+Batch 18 Batch Time 44.45s
+Batch 19 Batch Time 44.46s
+Batch 20 Batch Time 44.61s
+Batch 21 Batch Time 44.61s
+Batch 22 Batch Time 44.49s
+Batch 23 Batch Time 44.44s
+Batch 24 Batch Time 44.43s
+Batch 25 Batch Time 44.48s
+Batch 26 Batch Time 44.45s
+Batch 27 Batch Time 44.62s
+Batch 28 Batch Time 44.44s
+Batch 29 Batch Time 44.48s
+Batch 30 Batch Time 44.79s
+Batch 31 Batch Time 44.74s
+Batch 32 Batch Time 44.92s
+Batch 33 Batch Time 44.74s
+Batch 34 Batch Time 44.59s
+Batch 35 Batch Time 44.47s
+Batch 36 Batch Time 44.60s
+Batch 37 Batch Time 44.52s
+Batch 38 Batch Time 44.66s
+Batch 39 Batch Time 44.74s
+Batch 40 Batch Time 44.62s
+Batch 41 Batch Time 44.62s
+Batch 42 Batch Time 44.64s
+Batch 43 Batch Time 44.72s
+Batch 44 Batch Time 44.66s
+Batch 45 Batch Time 44.67s
+Batch 46 Batch Time 44.78s
+Batch 47 Batch Time 44.51s
+Batch 48 Batch Time 44.61s
+Batch 49 Batch Time 44.58s
+Batch 50 Batch Time 44.51s
+Batch 51 Batch Time 44.53s
+Batch 52 Batch Time 44.72s
+Batch 53 Batch Time 44.55s
+Batch 54 Batch Time 44.60s
+Batch 55 Batch Time 44.65s
+Batch 56 Batch Time 44.54s
+Batch 57 Batch Time 44.66s
+Batch 58 Batch Time 44.79s
+Batch 59 Batch Time 44.62s
+Batch 60 Batch Time 44.62s
+Batch 61 Batch Time 44.62s
+Batch 62 Batch Time 44.62s
+Batch 63 Batch Time 44.48s
+Batch 64 Batch Time 44.64s
+Batch 65 Batch Time 44.56s
+Batch 66 Batch Time 44.75s
+Batch 67 Batch Time 44.69s
+Batch 68 Batch Time 44.81s
+Batch 69 Batch Time 44.66s
+Batch 70 Batch Time 44.62s
+Batch 71 Batch Time 44.64s
+Batch 72 Batch Time 44.78s
+Batch 73 Batch Time 15.95s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 15 Loss: nan Time: 76.40
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.62s
+Batch 1 Batch Time 44.67s
+Batch 2 Batch Time 44.62s
+Batch 3 Batch Time 44.55s
+Batch 4 Batch Time 44.54s
+Batch 5 Batch Time 44.81s
+Batch 6 Batch Time 44.66s
+Batch 7 Batch Time 44.66s
+Batch 8 Batch Time 44.87s
+Batch 9 Batch Time 44.64s
+Batch 10 Batch Time 44.61s
+Batch 11 Batch Time 44.79s
+Batch 12 Batch Time 44.80s
+Batch 13 Batch Time 44.67s
+Batch 14 Batch Time 44.62s
+Batch 15 Batch Time 44.62s
+Batch 16 Batch Time 44.55s
+Batch 17 Batch Time 44.62s
+Batch 18 Batch Time 44.56s
+Batch 19 Batch Time 44.62s
+Batch 20 Batch Time 44.66s
+Batch 21 Batch Time 44.61s
+Batch 22 Batch Time 44.58s
+Batch 23 Batch Time 44.60s
+Batch 24 Batch Time 44.64s
+Batch 25 Batch Time 44.66s
+Batch 26 Batch Time 44.53s
+Batch 27 Batch Time 44.65s
+Batch 28 Batch Time 44.53s
+Batch 29 Batch Time 44.59s
+Batch 30 Batch Time 44.62s
+Batch 31 Batch Time 44.60s
+Batch 32 Batch Time 44.81s
+Batch 33 Batch Time 44.86s
+Batch 34 Batch Time 44.68s
+Batch 35 Batch Time 44.62s
+Batch 36 Batch Time 44.50s
+Batch 37 Batch Time 44.46s
+Batch 38 Batch Time 44.62s
+Batch 39 Batch Time 44.74s
+Batch 40 Batch Time 44.78s
+Batch 41 Batch Time 44.76s
+Batch 42 Batch Time 44.54s
+Batch 43 Batch Time 44.78s
+Batch 44 Batch Time 44.55s
+Batch 45 Batch Time 44.68s
+Batch 46 Batch Time 44.51s
+Batch 47 Batch Time 44.62s
+Batch 48 Batch Time 44.56s
+Batch 49 Batch Time 44.63s
+Batch 50 Batch Time 44.50s
+Batch 51 Batch Time 44.62s
+Batch 52 Batch Time 44.79s
+Batch 53 Batch Time 44.51s
+Batch 54 Batch Time 44.49s
+Batch 55 Batch Time 44.59s
+Batch 56 Batch Time 44.73s
+Batch 57 Batch Time 44.60s
+Batch 58 Batch Time 44.79s
+Batch 59 Batch Time 44.66s
+Batch 60 Batch Time 44.62s
+Batch 61 Batch Time 44.58s
+Batch 62 Batch Time 44.60s
+Batch 63 Batch Time 44.49s
+Batch 64 Batch Time 44.64s
+Batch 65 Batch Time 44.51s
+Batch 66 Batch Time 44.40s
+Batch 67 Batch Time 44.54s
+Batch 68 Batch Time 44.63s
+Batch 69 Batch Time 44.58s
+Batch 70 Batch Time 44.54s
+Batch 71 Batch Time 44.86s
+Batch 72 Batch Time 44.66s
+Batch 73 Batch Time 15.98s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 16 Loss: nan Time: 78.06
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.53s
+Batch 1 Batch Time 44.77s
+Batch 2 Batch Time 44.58s
+Batch 3 Batch Time 44.52s
+Batch 4 Batch Time 44.59s
+Batch 5 Batch Time 44.63s
+Batch 6 Batch Time 44.50s
+Batch 7 Batch Time 44.69s
+Batch 8 Batch Time 44.62s
+Batch 9 Batch Time 44.66s
+Batch 10 Batch Time 44.43s
+Batch 11 Batch Time 44.57s
+Batch 12 Batch Time 44.54s
+Batch 13 Batch Time 44.45s
+Batch 14 Batch Time 44.62s
+Batch 15 Batch Time 44.59s
+Batch 16 Batch Time 44.60s
+Batch 17 Batch Time 44.63s
+Batch 18 Batch Time 44.52s
+Batch 19 Batch Time 44.64s
+Batch 20 Batch Time 44.77s
+Batch 21 Batch Time 44.60s
+Batch 22 Batch Time 44.41s
+Batch 23 Batch Time 44.73s
+Batch 24 Batch Time 44.57s
+Batch 25 Batch Time 44.51s
+Batch 26 Batch Time 44.52s
+Batch 27 Batch Time 44.52s
+Batch 28 Batch Time 44.53s
+Batch 29 Batch Time 44.67s
+Batch 30 Batch Time 44.65s
+Batch 31 Batch Time 44.52s
+Batch 32 Batch Time 44.80s
+Batch 33 Batch Time 44.61s
+Batch 34 Batch Time 44.79s
+Batch 35 Batch Time 44.62s
+Batch 36 Batch Time 44.62s
+Batch 37 Batch Time 44.59s
+Batch 38 Batch Time 44.64s
+Batch 39 Batch Time 44.73s
+Batch 40 Batch Time 44.60s
+Batch 41 Batch Time 44.74s
+Batch 42 Batch Time 44.54s
+Batch 43 Batch Time 44.56s
+Batch 44 Batch Time 44.64s
+Batch 45 Batch Time 44.62s
+Batch 46 Batch Time 44.77s
+Batch 47 Batch Time 44.53s
+Batch 48 Batch Time 44.62s
+Batch 49 Batch Time 44.62s
+Batch 50 Batch Time 44.53s
+Batch 51 Batch Time 44.64s
+Batch 52 Batch Time 44.62s
+Batch 53 Batch Time 44.43s
+Batch 54 Batch Time 44.63s
+Batch 55 Batch Time 44.73s
+Batch 56 Batch Time 44.53s
+Batch 57 Batch Time 44.62s
+Batch 58 Batch Time 44.59s
+Batch 59 Batch Time 44.63s
+Batch 60 Batch Time 44.61s
+Batch 61 Batch Time 44.63s
+Batch 62 Batch Time 44.48s
+Batch 63 Batch Time 44.46s
+Batch 64 Batch Time 44.62s
+Batch 65 Batch Time 44.52s
+Batch 66 Batch Time 44.71s
+Batch 67 Batch Time 44.61s
+Batch 68 Batch Time 44.54s
+Batch 69 Batch Time 44.60s
+Batch 70 Batch Time 44.68s
+Batch 71 Batch Time 44.85s
+Batch 72 Batch Time 44.53s
+Batch 73 Batch Time 16.05s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 17 Loss: nan Time: 78.22
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.48s
+Batch 1 Batch Time 44.64s
+Batch 2 Batch Time 44.79s
+Batch 3 Batch Time 44.67s
+Batch 4 Batch Time 44.57s
+Batch 5 Batch Time 44.81s
+Batch 6 Batch Time 44.69s
+Batch 7 Batch Time 44.54s
+Batch 8 Batch Time 44.71s
+Batch 9 Batch Time 44.57s
+Batch 10 Batch Time 44.71s
+Batch 11 Batch Time 44.77s
+Batch 12 Batch Time 44.80s
+Batch 13 Batch Time 44.65s
+Batch 14 Batch Time 44.56s
+Batch 15 Batch Time 44.64s
+Batch 16 Batch Time 44.77s
+Batch 17 Batch Time 44.83s
+Batch 18 Batch Time 44.60s
+Batch 19 Batch Time 44.65s
+Batch 20 Batch Time 44.72s
+Batch 21 Batch Time 44.70s
+Batch 22 Batch Time 44.68s
+Batch 23 Batch Time 44.67s
+Batch 24 Batch Time 44.79s
+Batch 25 Batch Time 44.68s
+Batch 26 Batch Time 44.75s
+Batch 27 Batch Time 44.59s
+Batch 28 Batch Time 44.68s
+Batch 29 Batch Time 44.73s
+Batch 30 Batch Time 44.69s
+Batch 31 Batch Time 44.59s
+Batch 32 Batch Time 44.80s
+Batch 33 Batch Time 44.66s
+Batch 34 Batch Time 44.83s
+Batch 35 Batch Time 44.68s
+Batch 36 Batch Time 44.64s
+Batch 37 Batch Time 44.58s
+Batch 38 Batch Time 44.70s
+Batch 39 Batch Time 44.80s
+Batch 40 Batch Time 44.74s
+Batch 41 Batch Time 44.72s
+Batch 42 Batch Time 44.73s
+Batch 43 Batch Time 44.86s
+Batch 44 Batch Time 44.57s
+Batch 45 Batch Time 44.65s
+Batch 46 Batch Time 44.54s
+Batch 47 Batch Time 44.68s
+Batch 48 Batch Time 44.62s
+Batch 49 Batch Time 44.59s
+Batch 50 Batch Time 44.49s
+Batch 51 Batch Time 44.51s
+Batch 52 Batch Time 44.51s
+Batch 53 Batch Time 44.54s
+Batch 54 Batch Time 44.74s
+Batch 55 Batch Time 44.78s
+Batch 56 Batch Time 44.57s
+Batch 57 Batch Time 44.54s
+Batch 58 Batch Time 44.81s
+Batch 59 Batch Time 44.79s
+Batch 60 Batch Time 44.62s
+Batch 61 Batch Time 44.67s
+Batch 62 Batch Time 44.61s
+Batch 63 Batch Time 44.63s
+Batch 64 Batch Time 44.72s
+Batch 65 Batch Time 44.56s
+Batch 66 Batch Time 44.61s
+Batch 67 Batch Time 44.73s
+Batch 68 Batch Time 44.63s
+Batch 69 Batch Time 44.62s
+Batch 70 Batch Time 44.58s
+Batch 71 Batch Time 44.58s
+Batch 72 Batch Time 44.53s
+Batch 73 Batch Time 15.76s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 18 Loss: nan Time: 78.30
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.65s
+Batch 1 Batch Time 44.84s
+Batch 2 Batch Time 44.63s
+Batch 3 Batch Time 44.55s
+Batch 4 Batch Time 44.71s
+Batch 5 Batch Time 44.74s
+Batch 6 Batch Time 44.62s
+Batch 7 Batch Time 44.56s
+Batch 8 Batch Time 44.65s
+Batch 9 Batch Time 44.58s
+Batch 10 Batch Time 44.57s
+Batch 11 Batch Time 44.77s
+Batch 12 Batch Time 44.75s
+Batch 13 Batch Time 44.82s
+Batch 14 Batch Time 44.64s
+Batch 15 Batch Time 44.59s
+Batch 16 Batch Time 44.65s
+Batch 17 Batch Time 44.68s
+Batch 18 Batch Time 44.66s
+Batch 19 Batch Time 44.66s
+Batch 20 Batch Time 44.74s
+Batch 21 Batch Time 44.54s
+Batch 22 Batch Time 44.66s
+Batch 23 Batch Time 44.62s
+Batch 24 Batch Time 44.86s
+Batch 25 Batch Time 44.59s
+Batch 26 Batch Time 44.56s
+Batch 27 Batch Time 44.62s
+Batch 28 Batch Time 44.53s
+Batch 29 Batch Time 44.66s
+Batch 30 Batch Time 44.70s
+Batch 31 Batch Time 44.59s
+Batch 32 Batch Time 44.82s
+Batch 33 Batch Time 44.66s
+Batch 34 Batch Time 44.78s
+Batch 35 Batch Time 44.75s
+Batch 36 Batch Time 44.70s
+Batch 37 Batch Time 44.66s
+Batch 38 Batch Time 44.75s
+Batch 39 Batch Time 44.82s
+Batch 40 Batch Time 44.54s
+Batch 41 Batch Time 44.76s
+Batch 42 Batch Time 44.67s
+Batch 43 Batch Time 44.53s
+Batch 44 Batch Time 44.65s
+Batch 45 Batch Time 44.70s
+Batch 46 Batch Time 44.70s
+Batch 47 Batch Time 44.56s
+Batch 48 Batch Time 44.68s
+Batch 49 Batch Time 44.65s
+Batch 50 Batch Time 44.62s
+Batch 51 Batch Time 44.62s
+Batch 52 Batch Time 44.84s
+Batch 53 Batch Time 44.63s
+Batch 54 Batch Time 44.64s
+Batch 55 Batch Time 44.87s
+Batch 56 Batch Time 44.86s
+Batch 57 Batch Time 44.58s
+Batch 58 Batch Time 44.80s
+Batch 59 Batch Time 44.73s
+Batch 60 Batch Time 44.66s
+Batch 61 Batch Time 44.66s
+Batch 62 Batch Time 44.67s
+Batch 63 Batch Time 44.61s
+Batch 64 Batch Time 44.69s
+Batch 65 Batch Time 44.66s
+Batch 66 Batch Time 44.70s
+Batch 67 Batch Time 44.73s
+Batch 68 Batch Time 44.66s
+Batch 69 Batch Time 44.69s
+Batch 70 Batch Time 44.81s
+Batch 71 Batch Time 44.96s
+Batch 72 Batch Time 44.60s
+Batch 73 Batch Time 15.75s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 19 Loss: nan Time: 78.13
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.83s
+Batch 1 Batch Time 44.87s
+Batch 2 Batch Time 44.86s
+Batch 3 Batch Time 44.76s
+Batch 4 Batch Time 44.68s
+Batch 5 Batch Time 44.69s
+Batch 6 Batch Time 44.68s
+Batch 7 Batch Time 44.76s
+Batch 8 Batch Time 44.87s
+Batch 9 Batch Time 44.58s
+Batch 10 Batch Time 44.59s
+Batch 11 Batch Time 44.64s
+Batch 12 Batch Time 44.87s
+Batch 13 Batch Time 44.68s
+Batch 14 Batch Time 44.66s
+Batch 15 Batch Time 44.63s
+Batch 16 Batch Time 44.67s
+Batch 17 Batch Time 44.69s
+Batch 18 Batch Time 44.59s
+Batch 19 Batch Time 44.65s
+Batch 20 Batch Time 44.83s
+Batch 21 Batch Time 44.80s
+Batch 22 Batch Time 44.71s
+Batch 23 Batch Time 44.62s
+Batch 24 Batch Time 44.60s
+Batch 25 Batch Time 44.53s
+Batch 26 Batch Time 44.64s
+Batch 27 Batch Time 44.60s
+Batch 28 Batch Time 44.66s
+Batch 29 Batch Time 44.62s
+Batch 30 Batch Time 44.71s
+Batch 31 Batch Time 44.61s
+Batch 32 Batch Time 44.56s
+Batch 33 Batch Time 44.72s
+Batch 34 Batch Time 44.66s
+Batch 35 Batch Time 44.53s
+Batch 36 Batch Time 44.63s
+Batch 37 Batch Time 44.53s
+Batch 38 Batch Time 44.66s
+Batch 39 Batch Time 44.51s
+Batch 40 Batch Time 44.73s
+Batch 41 Batch Time 44.78s
+Batch 42 Batch Time 44.68s
+Batch 43 Batch Time 44.48s
+Batch 44 Batch Time 44.68s
+Batch 45 Batch Time 44.73s
+Batch 46 Batch Time 44.67s
+Batch 47 Batch Time 44.69s
+Batch 48 Batch Time 44.81s
+Batch 49 Batch Time 44.75s
+Batch 50 Batch Time 44.61s
+Batch 51 Batch Time 44.66s
+Batch 52 Batch Time 44.78s
+Batch 53 Batch Time 44.61s
+Batch 54 Batch Time 44.73s
+Batch 55 Batch Time 44.71s
+Batch 56 Batch Time 44.54s
+Batch 57 Batch Time 44.68s
+Batch 58 Batch Time 44.72s
+Batch 59 Batch Time 44.85s
+Batch 60 Batch Time 44.72s
+Batch 61 Batch Time 44.61s
+Batch 62 Batch Time 44.70s
+Batch 63 Batch Time 44.64s
+Batch 64 Batch Time 44.69s
+Batch 65 Batch Time 44.67s
+Batch 66 Batch Time 44.68s
+Batch 67 Batch Time 44.70s
+Batch 68 Batch Time 44.72s
+Batch 69 Batch Time 44.67s
+Batch 70 Batch Time 44.61s
+Batch 71 Batch Time 44.65s
+Batch 72 Batch Time 44.67s
+Batch 73 Batch Time 16.26s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 20 Loss: nan Time: 76.67
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.71s
+Batch 1 Batch Time 44.56s
+Batch 2 Batch Time 44.72s
+Batch 3 Batch Time 44.71s
+Batch 4 Batch Time 44.70s
+Batch 5 Batch Time 44.74s
+Batch 6 Batch Time 44.73s
+Batch 7 Batch Time 44.74s
+Batch 8 Batch Time 44.66s
+Batch 9 Batch Time 44.80s
+Batch 10 Batch Time 44.69s
+Batch 11 Batch Time 44.62s
+Batch 12 Batch Time 44.72s
+Batch 13 Batch Time 44.76s
+Batch 14 Batch Time 44.75s
+Batch 15 Batch Time 44.68s
+Batch 16 Batch Time 44.72s
+Batch 17 Batch Time 44.69s
+Batch 18 Batch Time 44.72s
+Batch 19 Batch Time 44.70s
+Batch 20 Batch Time 44.85s
+Batch 21 Batch Time 44.87s
+Batch 22 Batch Time 44.57s
+Batch 23 Batch Time 44.75s
+Batch 24 Batch Time 44.80s
+Batch 25 Batch Time 44.61s
+Batch 26 Batch Time 44.61s
+Batch 27 Batch Time 44.88s
+Batch 28 Batch Time 44.66s
+Batch 29 Batch Time 44.78s
+Batch 30 Batch Time 44.71s
+Batch 31 Batch Time 44.58s
+Batch 32 Batch Time 44.87s
+Batch 33 Batch Time 44.88s
+Batch 34 Batch Time 44.67s
+Batch 35 Batch Time 44.60s
+Batch 36 Batch Time 44.72s
+Batch 37 Batch Time 44.62s
+Batch 38 Batch Time 44.73s
+Batch 39 Batch Time 44.75s
+Batch 40 Batch Time 44.76s
+Batch 41 Batch Time 44.59s
+Batch 42 Batch Time 44.62s
+Batch 43 Batch Time 44.79s
+Batch 44 Batch Time 44.67s
+Batch 45 Batch Time 44.67s
+Batch 46 Batch Time 44.66s
+Batch 47 Batch Time 44.68s
+Batch 48 Batch Time 44.81s
+Batch 49 Batch Time 44.58s
+Batch 50 Batch Time 44.58s
+Batch 51 Batch Time 44.64s
+Batch 52 Batch Time 44.59s
+Batch 53 Batch Time 44.70s
+Batch 54 Batch Time 44.85s
+Batch 55 Batch Time 44.66s
+Batch 56 Batch Time 44.63s
+Batch 57 Batch Time 44.69s
+Batch 58 Batch Time 44.72s
+Batch 59 Batch Time 44.77s
+Batch 60 Batch Time 44.71s
+Batch 61 Batch Time 44.61s
+Batch 62 Batch Time 44.63s
+Batch 63 Batch Time 44.56s
+Batch 64 Batch Time 44.67s
+Batch 65 Batch Time 44.56s
+Batch 66 Batch Time 44.77s
+Batch 67 Batch Time 44.56s
+Batch 68 Batch Time 44.84s
+Batch 69 Batch Time 44.63s
+Batch 70 Batch Time 44.85s
+Batch 71 Batch Time 44.93s
+Batch 72 Batch Time 44.83s
+Batch 73 Batch Time 15.99s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 21 Loss: nan Time: 78.23
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.71s
+Batch 1 Batch Time 44.72s
+Batch 2 Batch Time 44.84s
+Batch 3 Batch Time 44.57s
+Batch 4 Batch Time 44.67s
+Batch 5 Batch Time 44.84s
+Batch 6 Batch Time 44.55s
+Batch 7 Batch Time 44.63s
+Batch 8 Batch Time 44.56s
+Batch 9 Batch Time 44.65s
+Batch 10 Batch Time 44.56s
+Batch 11 Batch Time 44.83s
+Batch 12 Batch Time 44.83s
+Batch 13 Batch Time 44.84s
+Batch 14 Batch Time 44.67s
+Batch 15 Batch Time 44.59s
+Batch 16 Batch Time 44.62s
+Batch 17 Batch Time 44.70s
+Batch 18 Batch Time 44.68s
+Batch 19 Batch Time 44.65s
+Batch 20 Batch Time 44.71s
+Batch 21 Batch Time 44.72s
+Batch 22 Batch Time 44.74s
+Batch 23 Batch Time 44.53s
+Batch 24 Batch Time 44.76s
+Batch 25 Batch Time 44.60s
+Batch 26 Batch Time 44.57s
+Batch 27 Batch Time 44.64s
+Batch 28 Batch Time 44.59s
+Batch 29 Batch Time 44.71s
+Batch 30 Batch Time 44.72s
+Batch 31 Batch Time 44.67s
+Batch 32 Batch Time 44.70s
+Batch 33 Batch Time 44.63s
+Batch 34 Batch Time 44.83s
+Batch 35 Batch Time 44.71s
+Batch 36 Batch Time 44.61s
+Batch 37 Batch Time 44.76s
+Batch 38 Batch Time 44.87s
+Batch 39 Batch Time 44.62s
+Batch 40 Batch Time 44.59s
+Batch 41 Batch Time 44.57s
+Batch 42 Batch Time 44.73s
+Batch 43 Batch Time 44.69s
+Batch 44 Batch Time 44.71s
+Batch 45 Batch Time 44.67s
+Batch 46 Batch Time 44.58s
+Batch 47 Batch Time 44.62s
+Batch 48 Batch Time 44.67s
+Batch 49 Batch Time 44.58s
+Batch 50 Batch Time 44.65s
+Batch 51 Batch Time 44.49s
+Batch 52 Batch Time 44.57s
+Batch 53 Batch Time 44.63s
+Batch 54 Batch Time 44.68s
+Batch 55 Batch Time 44.77s
+Batch 56 Batch Time 44.53s
+Batch 57 Batch Time 44.67s
+Batch 58 Batch Time 44.64s
+Batch 59 Batch Time 44.77s
+Batch 60 Batch Time 44.68s
+Batch 61 Batch Time 44.68s
+Batch 62 Batch Time 44.68s
+Batch 63 Batch Time 44.60s
+Batch 64 Batch Time 44.82s
+Batch 65 Batch Time 44.69s
+Batch 66 Batch Time 44.81s
+Batch 67 Batch Time 44.54s
+Batch 68 Batch Time 44.68s
+Batch 69 Batch Time 44.73s
+Batch 70 Batch Time 44.69s
+Batch 71 Batch Time 44.66s
+Batch 72 Batch Time 44.64s
+Batch 73 Batch Time 16.05s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 22 Loss: nan Time: 77.56
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.68s
+Batch 1 Batch Time 44.70s
+Batch 2 Batch Time 44.71s
+Batch 3 Batch Time 44.57s
+Batch 4 Batch Time 44.60s
+Batch 5 Batch Time 44.92s
+Batch 6 Batch Time 44.53s
+Batch 7 Batch Time 44.65s
+Batch 8 Batch Time 44.67s
+Batch 9 Batch Time 44.76s
+Batch 10 Batch Time 44.66s
+Batch 11 Batch Time 44.67s
+Batch 12 Batch Time 44.88s
+Batch 13 Batch Time 44.87s
+Batch 14 Batch Time 44.66s
+Batch 15 Batch Time 44.63s
+Batch 16 Batch Time 44.74s
+Batch 17 Batch Time 44.73s
+Batch 18 Batch Time 44.59s
+Batch 19 Batch Time 44.51s
+Batch 20 Batch Time 44.83s
+Batch 21 Batch Time 44.84s
+Batch 22 Batch Time 44.59s
+Batch 23 Batch Time 44.62s
+Batch 24 Batch Time 44.77s
+Batch 25 Batch Time 44.77s
+Batch 26 Batch Time 44.58s
+Batch 27 Batch Time 44.57s
+Batch 28 Batch Time 44.69s
+Batch 29 Batch Time 44.74s
+Batch 30 Batch Time 44.67s
+Batch 31 Batch Time 44.55s
+Batch 32 Batch Time 44.71s
+Batch 33 Batch Time 44.65s
+Batch 34 Batch Time 44.74s
+Batch 35 Batch Time 44.69s
+Batch 36 Batch Time 44.53s
+Batch 37 Batch Time 44.79s
+Batch 38 Batch Time 44.71s
+Batch 39 Batch Time 44.58s
+Batch 40 Batch Time 44.78s
+Batch 41 Batch Time 44.64s
+Batch 42 Batch Time 44.69s
+Batch 43 Batch Time 44.56s
+Batch 44 Batch Time 44.67s
+Batch 45 Batch Time 44.55s
+Batch 46 Batch Time 44.67s
+Batch 47 Batch Time 44.55s
+Batch 48 Batch Time 44.67s
+Batch 49 Batch Time 44.77s
+Batch 50 Batch Time 44.54s
+Batch 51 Batch Time 44.52s
+Batch 52 Batch Time 44.49s
+Batch 53 Batch Time 44.57s
+Batch 54 Batch Time 44.82s
+Batch 55 Batch Time 44.66s
+Batch 56 Batch Time 44.60s
+Batch 57 Batch Time 44.60s
+Batch 58 Batch Time 44.60s
+Batch 59 Batch Time 44.78s
+Batch 60 Batch Time 44.61s
+Batch 61 Batch Time 44.62s
+Batch 62 Batch Time 44.61s
+Batch 63 Batch Time 44.60s
+Batch 64 Batch Time 44.77s
+Batch 65 Batch Time 44.78s
+Batch 66 Batch Time 44.62s
+Batch 67 Batch Time 44.65s
+Batch 68 Batch Time 44.77s
+Batch 69 Batch Time 44.56s
+Batch 70 Batch Time 44.64s
+Batch 71 Batch Time 44.79s
+Batch 72 Batch Time 44.83s
+Batch 73 Batch Time 15.79s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 23 Loss: nan Time: 77.46
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.80s
+Batch 1 Batch Time 44.69s
+Batch 2 Batch Time 44.81s
+Batch 3 Batch Time 44.79s
+Batch 4 Batch Time 44.56s
+Batch 5 Batch Time 44.84s
+Batch 6 Batch Time 44.54s
+Batch 7 Batch Time 44.54s
+Batch 8 Batch Time 44.68s
+Batch 9 Batch Time 44.79s
+Batch 10 Batch Time 44.71s
+Batch 11 Batch Time 44.74s
+Batch 12 Batch Time 44.80s
+Batch 13 Batch Time 44.57s
+Batch 14 Batch Time 44.66s
+Batch 15 Batch Time 44.64s
+Batch 16 Batch Time 44.80s
+Batch 17 Batch Time 44.72s
+Batch 18 Batch Time 44.68s
+Batch 19 Batch Time 44.66s
+Batch 20 Batch Time 44.50s
+Batch 21 Batch Time 44.81s
+Batch 22 Batch Time 44.61s
+Batch 23 Batch Time 44.58s
+Batch 24 Batch Time 44.60s
+Batch 25 Batch Time 44.68s
+Batch 26 Batch Time 44.58s
+Batch 27 Batch Time 44.64s
+Batch 28 Batch Time 44.53s
+Batch 29 Batch Time 44.70s
+Batch 30 Batch Time 44.61s
+Batch 31 Batch Time 44.54s
+Batch 32 Batch Time 44.53s
+Batch 33 Batch Time 44.98s
+Batch 34 Batch Time 44.76s
+Batch 35 Batch Time 44.58s
+Batch 36 Batch Time 44.62s
+Batch 37 Batch Time 44.52s
+Batch 38 Batch Time 44.78s
+Batch 39 Batch Time 44.73s
+Batch 40 Batch Time 44.54s
+Batch 41 Batch Time 44.88s
+Batch 42 Batch Time 44.66s
+Batch 43 Batch Time 44.76s
+Batch 44 Batch Time 44.65s
+Batch 45 Batch Time 44.55s
+Batch 46 Batch Time 44.64s
+Batch 47 Batch Time 44.66s
+Batch 48 Batch Time 44.71s
+Batch 49 Batch Time 44.66s
+Batch 50 Batch Time 44.58s
+Batch 51 Batch Time 44.53s
+Batch 52 Batch Time 44.58s
+Batch 53 Batch Time 44.61s
+Batch 54 Batch Time 44.60s
+Batch 55 Batch Time 44.73s
+Batch 56 Batch Time 44.49s
+Batch 57 Batch Time 44.62s
+Batch 58 Batch Time 44.66s
+Batch 59 Batch Time 44.80s
+Batch 60 Batch Time 44.62s
+Batch 61 Batch Time 44.66s
+Batch 62 Batch Time 44.52s
+Batch 63 Batch Time 44.56s
+Batch 64 Batch Time 44.68s
+Batch 65 Batch Time 44.63s
+Batch 66 Batch Time 44.66s
+Batch 67 Batch Time 44.68s
+Batch 68 Batch Time 44.79s
+Batch 69 Batch Time 44.66s
+Batch 70 Batch Time 44.80s
+Batch 71 Batch Time 44.90s
+Batch 72 Batch Time 44.68s
+Batch 73 Batch Time 16.15s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 24 Loss: nan Time: 74.74
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.54s
+Batch 1 Batch Time 44.69s
+Batch 2 Batch Time 44.63s
+Batch 3 Batch Time 44.78s
+Batch 4 Batch Time 44.66s
+Batch 5 Batch Time 44.85s
+Batch 6 Batch Time 44.56s
+Batch 7 Batch Time 44.68s
+Batch 8 Batch Time 44.94s
+Batch 9 Batch Time 44.76s
+Batch 10 Batch Time 44.64s
+Batch 11 Batch Time 44.80s
+Batch 12 Batch Time 44.78s
+Batch 13 Batch Time 44.81s
+Batch 14 Batch Time 44.69s
+Batch 15 Batch Time 44.62s
+Batch 16 Batch Time 44.68s
+Batch 17 Batch Time 44.67s
+Batch 18 Batch Time 44.68s
+Batch 19 Batch Time 44.69s
+Batch 20 Batch Time 44.78s
+Batch 21 Batch Time 44.63s
+Batch 22 Batch Time 44.63s
+Batch 23 Batch Time 44.61s
+Batch 24 Batch Time 44.77s
+Batch 25 Batch Time 44.60s
+Batch 26 Batch Time 44.61s
+Batch 27 Batch Time 44.81s
+Batch 28 Batch Time 44.59s
+Batch 29 Batch Time 44.65s
+Batch 30 Batch Time 44.72s
+Batch 31 Batch Time 44.60s
+Batch 32 Batch Time 44.77s
+Batch 33 Batch Time 44.67s
+Batch 34 Batch Time 44.81s
+Batch 35 Batch Time 44.64s
+Batch 36 Batch Time 44.61s
+Batch 37 Batch Time 44.78s
+Batch 38 Batch Time 44.67s
+Batch 39 Batch Time 44.54s
+Batch 40 Batch Time 44.79s
+Batch 41 Batch Time 44.76s
+Batch 42 Batch Time 44.53s
+Batch 43 Batch Time 44.61s
+Batch 44 Batch Time 44.65s
+Batch 45 Batch Time 44.62s
+Batch 46 Batch Time 44.60s
+Batch 47 Batch Time 44.54s
+Batch 48 Batch Time 44.66s
+Batch 49 Batch Time 44.67s
+Batch 50 Batch Time 44.69s
+Batch 51 Batch Time 44.60s
+Batch 52 Batch Time 44.61s
+Batch 53 Batch Time 44.69s
+Batch 54 Batch Time 44.68s
+Batch 55 Batch Time 44.72s
+Batch 56 Batch Time 44.50s
+Batch 57 Batch Time 44.64s
+Batch 58 Batch Time 44.78s
+Batch 59 Batch Time 44.78s
+Batch 60 Batch Time 44.54s
+Batch 61 Batch Time 44.52s
+Batch 62 Batch Time 44.64s
+Batch 63 Batch Time 44.52s
+Batch 64 Batch Time 44.76s
+Batch 65 Batch Time 44.61s
+Batch 66 Batch Time 44.73s
+Batch 67 Batch Time 44.67s
+Batch 68 Batch Time 44.65s
+Batch 69 Batch Time 44.69s
+Batch 70 Batch Time 44.84s
+Batch 71 Batch Time 44.92s
+Batch 72 Batch Time 44.57s
+Batch 73 Batch Time 16.23s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 25 Loss: nan Time: 75.53
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.57s
+Batch 1 Batch Time 44.70s
+Batch 2 Batch Time 44.61s
+Batch 3 Batch Time 44.71s
+Batch 4 Batch Time 44.67s
+Batch 5 Batch Time 44.83s
+Batch 6 Batch Time 44.69s
+Batch 7 Batch Time 44.62s
+Batch 8 Batch Time 44.80s
+Batch 9 Batch Time 44.70s
+Batch 10 Batch Time 44.67s
+Batch 11 Batch Time 44.59s
+Batch 12 Batch Time 44.80s
+Batch 13 Batch Time 44.64s
+Batch 14 Batch Time 44.68s
+Batch 15 Batch Time 44.63s
+Batch 16 Batch Time 44.79s
+Batch 17 Batch Time 44.69s
+Batch 18 Batch Time 44.70s
+Batch 19 Batch Time 44.65s
+Batch 20 Batch Time 44.68s
+Batch 21 Batch Time 44.67s
+Batch 22 Batch Time 44.36s
+Batch 23 Batch Time 44.61s
+Batch 24 Batch Time 44.56s
+Batch 25 Batch Time 44.49s
+Batch 26 Batch Time 44.62s
+Batch 27 Batch Time 44.78s
+Batch 28 Batch Time 44.52s
+Batch 29 Batch Time 44.57s
+Batch 30 Batch Time 44.59s
+Batch 31 Batch Time 44.66s
+Batch 32 Batch Time 44.61s
+Batch 33 Batch Time 44.74s
+Batch 34 Batch Time 44.66s
+Batch 35 Batch Time 44.65s
+Batch 36 Batch Time 44.67s
+Batch 37 Batch Time 44.55s
+Batch 38 Batch Time 44.88s
+Batch 39 Batch Time 44.64s
+Batch 40 Batch Time 44.82s
+Batch 41 Batch Time 44.67s
+Batch 42 Batch Time 44.64s
+Batch 43 Batch Time 44.79s
+Batch 44 Batch Time 44.67s
+Batch 45 Batch Time 44.63s
+Batch 46 Batch Time 44.86s
+Batch 47 Batch Time 44.68s
+Batch 48 Batch Time 44.67s
+Batch 49 Batch Time 44.66s
+Batch 50 Batch Time 44.54s
+Batch 51 Batch Time 44.62s
+Batch 52 Batch Time 44.62s
+Batch 53 Batch Time 44.59s
+Batch 54 Batch Time 44.66s
+Batch 55 Batch Time 44.61s
+Batch 56 Batch Time 44.51s
+Batch 57 Batch Time 44.63s
+Batch 58 Batch Time 44.68s
+Batch 59 Batch Time 44.68s
+Batch 60 Batch Time 44.66s
+Batch 61 Batch Time 44.60s
+Batch 62 Batch Time 44.58s
+Batch 63 Batch Time 44.54s
+Batch 64 Batch Time 44.58s
+Batch 65 Batch Time 44.82s
+Batch 66 Batch Time 44.59s
+Batch 67 Batch Time 44.60s
+Batch 68 Batch Time 44.67s
+Batch 69 Batch Time 44.68s
+Batch 70 Batch Time 44.84s
+Batch 71 Batch Time 44.69s
+Batch 72 Batch Time 44.78s
+Batch 73 Batch Time 15.77s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 26 Loss: nan Time: 75.90
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.22s
+Batch 1 Batch Time 44.65s
+Batch 2 Batch Time 44.83s
+Batch 3 Batch Time 44.77s
+Batch 4 Batch Time 44.69s
+Batch 5 Batch Time 44.84s
+Batch 6 Batch Time 44.77s
+Batch 7 Batch Time 44.74s
+Batch 8 Batch Time 44.75s
+Batch 9 Batch Time 44.73s
+Batch 10 Batch Time 44.60s
+Batch 11 Batch Time 44.76s
+Batch 12 Batch Time 44.76s
+Batch 13 Batch Time 44.63s
+Batch 14 Batch Time 44.64s
+Batch 15 Batch Time 44.61s
+Batch 16 Batch Time 44.62s
+Batch 17 Batch Time 44.73s
+Batch 18 Batch Time 44.67s
+Batch 19 Batch Time 44.65s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.63s
+Batch 22 Batch Time 44.69s
+Batch 23 Batch Time 44.75s
+Batch 24 Batch Time 44.73s
+Batch 25 Batch Time 44.73s
+Batch 26 Batch Time 44.64s
+Batch 27 Batch Time 44.59s
+Batch 28 Batch Time 44.69s
+Batch 29 Batch Time 44.75s
+Batch 30 Batch Time 44.67s
+Batch 31 Batch Time 44.69s
+Batch 32 Batch Time 44.89s
+Batch 33 Batch Time 44.96s
+Batch 34 Batch Time 44.75s
+Batch 35 Batch Time 44.61s
+Batch 36 Batch Time 44.71s
+Batch 37 Batch Time 44.59s
+Batch 38 Batch Time 44.75s
+Batch 39 Batch Time 44.59s
+Batch 40 Batch Time 44.58s
+Batch 41 Batch Time 44.85s
+Batch 42 Batch Time 44.59s
+Batch 43 Batch Time 44.88s
+Batch 44 Batch Time 44.74s
+Batch 45 Batch Time 44.69s
+Batch 46 Batch Time 44.79s
+Batch 47 Batch Time 44.68s
+Batch 48 Batch Time 44.78s
+Batch 49 Batch Time 44.69s
+Batch 50 Batch Time 44.64s
+Batch 51 Batch Time 44.66s
+Batch 52 Batch Time 44.66s
+Batch 53 Batch Time 44.61s
+Batch 54 Batch Time 44.61s
+Batch 55 Batch Time 44.74s
+Batch 56 Batch Time 44.78s
+Batch 57 Batch Time 44.77s
+Batch 58 Batch Time 44.64s
+Batch 59 Batch Time 44.87s
+Batch 60 Batch Time 44.58s
+Batch 61 Batch Time 44.68s
+Batch 62 Batch Time 44.61s
+Batch 63 Batch Time 44.69s
+Batch 64 Batch Time 44.71s
+Batch 65 Batch Time 44.61s
+Batch 66 Batch Time 44.86s
+Batch 67 Batch Time 44.70s
+Batch 68 Batch Time 44.61s
+Batch 69 Batch Time 44.67s
+Batch 70 Batch Time 44.71s
+Batch 71 Batch Time 44.88s
+Batch 72 Batch Time 44.66s
+Batch 73 Batch Time 15.75s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 27 Loss: nan Time: 77.62
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.73s
+Batch 1 Batch Time 44.90s
+Batch 2 Batch Time 44.87s
+Batch 3 Batch Time 44.84s
+Batch 4 Batch Time 44.74s
+Batch 5 Batch Time 44.84s
+Batch 6 Batch Time 44.70s
+Batch 7 Batch Time 44.64s
+Batch 8 Batch Time 44.80s
+Batch 9 Batch Time 44.47s
+Batch 10 Batch Time 44.64s
+Batch 11 Batch Time 44.88s
+Batch 12 Batch Time 44.86s
+Batch 13 Batch Time 44.81s
+Batch 14 Batch Time 44.77s
+Batch 15 Batch Time 44.61s
+Batch 16 Batch Time 44.62s
+Batch 17 Batch Time 44.72s
+Batch 18 Batch Time 44.51s
+Batch 19 Batch Time 44.69s
+Batch 20 Batch Time 44.76s
+Batch 21 Batch Time 44.60s
+Batch 22 Batch Time 44.69s
+Batch 23 Batch Time 44.68s
+Batch 24 Batch Time 44.74s
+Batch 25 Batch Time 44.70s
+Batch 26 Batch Time 44.61s
+Batch 27 Batch Time 44.63s
+Batch 28 Batch Time 44.60s
+Batch 29 Batch Time 44.61s
+Batch 30 Batch Time 44.60s
+Batch 31 Batch Time 44.63s
+Batch 32 Batch Time 44.83s
+Batch 33 Batch Time 44.96s
+Batch 34 Batch Time 44.77s
+Batch 35 Batch Time 44.75s
+Batch 36 Batch Time 44.72s
+Batch 37 Batch Time 44.79s
+Batch 38 Batch Time 44.61s
+Batch 39 Batch Time 44.65s
+Batch 40 Batch Time 44.83s
+Batch 41 Batch Time 44.62s
+Batch 42 Batch Time 44.76s
+Batch 43 Batch Time 44.68s
+Batch 44 Batch Time 44.58s
+Batch 45 Batch Time 44.71s
+Batch 46 Batch Time 44.89s
+Batch 47 Batch Time 44.56s
+Batch 48 Batch Time 44.53s
+Batch 49 Batch Time 44.68s
+Batch 50 Batch Time 44.61s
+Batch 51 Batch Time 44.62s
+Batch 52 Batch Time 44.72s
+Batch 53 Batch Time 44.67s
+Batch 54 Batch Time 44.68s
+Batch 55 Batch Time 44.74s
+Batch 56 Batch Time 44.61s
+Batch 57 Batch Time 44.60s
+Batch 58 Batch Time 44.65s
+Batch 59 Batch Time 44.83s
+Batch 60 Batch Time 44.58s
+Batch 61 Batch Time 44.70s
+Batch 62 Batch Time 44.71s
+Batch 63 Batch Time 44.66s
+Batch 64 Batch Time 44.79s
+Batch 65 Batch Time 44.63s
+Batch 66 Batch Time 44.60s
+Batch 67 Batch Time 44.70s
+Batch 68 Batch Time 44.55s
+Batch 69 Batch Time 44.66s
+Batch 70 Batch Time 44.84s
+Batch 71 Batch Time 44.90s
+Batch 72 Batch Time 44.74s
+Batch 73 Batch Time 15.87s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 28 Loss: nan Time: 77.82
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.92s
+Batch 1 Batch Time 44.73s
+Batch 2 Batch Time 44.63s
+Batch 3 Batch Time 44.59s
+Batch 4 Batch Time 44.61s
+Batch 5 Batch Time 44.74s
+Batch 6 Batch Time 44.78s
+Batch 7 Batch Time 44.62s
+Batch 8 Batch Time 44.96s
+Batch 9 Batch Time 44.79s
+Batch 10 Batch Time 44.74s
+Batch 11 Batch Time 44.84s
+Batch 12 Batch Time 44.75s
+Batch 13 Batch Time 44.65s
+Batch 14 Batch Time 44.76s
+Batch 15 Batch Time 44.62s
+Batch 16 Batch Time 44.70s
+Batch 17 Batch Time 44.75s
+Batch 18 Batch Time 44.68s
+Batch 19 Batch Time 44.73s
+Batch 20 Batch Time 44.64s
+Batch 21 Batch Time 44.68s
+Batch 22 Batch Time 44.61s
+Batch 23 Batch Time 44.62s
+Batch 24 Batch Time 44.62s
+Batch 25 Batch Time 44.65s
+Batch 26 Batch Time 44.56s
+Batch 27 Batch Time 44.64s
+Batch 28 Batch Time 44.54s
+Batch 29 Batch Time 44.65s
+Batch 30 Batch Time 44.55s
+Batch 31 Batch Time 44.56s
+Batch 32 Batch Time 44.64s
+Batch 33 Batch Time 44.93s
+Batch 34 Batch Time 44.79s
+Batch 35 Batch Time 44.62s
+Batch 36 Batch Time 44.68s
+Batch 37 Batch Time 44.84s
+Batch 38 Batch Time 44.78s
+Batch 39 Batch Time 44.75s
+Batch 40 Batch Time 44.70s
+Batch 41 Batch Time 44.82s
+Batch 42 Batch Time 44.59s
+Batch 43 Batch Time 44.60s
+Batch 44 Batch Time 44.70s
+Batch 45 Batch Time 44.73s
+Batch 46 Batch Time 44.64s
+Batch 47 Batch Time 44.75s
+Batch 48 Batch Time 44.68s
+Batch 49 Batch Time 44.68s
+Batch 50 Batch Time 44.71s
+Batch 51 Batch Time 44.55s
+Batch 52 Batch Time 44.53s
+Batch 53 Batch Time 44.49s
+Batch 54 Batch Time 44.87s
+Batch 55 Batch Time 44.63s
+Batch 56 Batch Time 44.50s
+Batch 57 Batch Time 44.69s
+Batch 58 Batch Time 44.82s
+Batch 59 Batch Time 44.79s
+Batch 60 Batch Time 44.60s
+Batch 61 Batch Time 44.66s
+Batch 62 Batch Time 44.60s
+Batch 63 Batch Time 44.59s
+Batch 64 Batch Time 44.66s
+Batch 65 Batch Time 44.76s
+Batch 66 Batch Time 44.61s
+Batch 67 Batch Time 44.54s
+Batch 68 Batch Time 44.61s
+Batch 69 Batch Time 44.65s
+Batch 70 Batch Time 44.77s
+Batch 71 Batch Time 44.63s
+Batch 72 Batch Time 44.79s
+Batch 73 Batch Time 15.94s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 29 Loss: nan Time: 78.68
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.67s
+Batch 1 Batch Time 44.83s
+Batch 2 Batch Time 44.86s
+Batch 3 Batch Time 44.61s
+Batch 4 Batch Time 44.66s
+Batch 5 Batch Time 44.75s
+Batch 6 Batch Time 44.75s
+Batch 7 Batch Time 44.66s
+Batch 8 Batch Time 44.72s
+Batch 9 Batch Time 44.80s
+Batch 10 Batch Time 44.65s
+Batch 11 Batch Time 44.82s
+Batch 12 Batch Time 44.83s
+Batch 13 Batch Time 44.81s
+Batch 14 Batch Time 44.58s
+Batch 15 Batch Time 44.62s
+Batch 16 Batch Time 44.70s
+Batch 17 Batch Time 44.78s
+Batch 18 Batch Time 44.77s
+Batch 19 Batch Time 44.71s
+Batch 20 Batch Time 44.95s
+Batch 21 Batch Time 44.75s
+Batch 22 Batch Time 44.64s
+Batch 23 Batch Time 44.62s
+Batch 24 Batch Time 44.76s
+Batch 25 Batch Time 44.54s
+Batch 26 Batch Time 44.66s
+Batch 27 Batch Time 44.49s
+Batch 28 Batch Time 44.57s
+Batch 29 Batch Time 44.75s
+Batch 30 Batch Time 44.61s
+Batch 31 Batch Time 44.64s
+Batch 32 Batch Time 44.79s
+Batch 33 Batch Time 44.93s
+Batch 34 Batch Time 44.77s
+Batch 35 Batch Time 44.62s
+Batch 36 Batch Time 44.66s
+Batch 37 Batch Time 44.71s
+Batch 38 Batch Time 44.62s
+Batch 39 Batch Time 44.54s
+Batch 40 Batch Time 44.62s
+Batch 41 Batch Time 44.63s
+Batch 42 Batch Time 44.77s
+Batch 43 Batch Time 44.89s
+Batch 44 Batch Time 44.64s
+Batch 45 Batch Time 44.70s
+Batch 46 Batch Time 44.85s
+Batch 47 Batch Time 44.68s
+Batch 48 Batch Time 44.67s
+Batch 49 Batch Time 44.78s
+Batch 50 Batch Time 44.76s
+Batch 51 Batch Time 44.61s
+Batch 52 Batch Time 44.64s
+Batch 53 Batch Time 44.40s
+Batch 54 Batch Time 44.64s
+Batch 55 Batch Time 44.64s
+Batch 56 Batch Time 44.49s
+Batch 57 Batch Time 44.56s
+Batch 58 Batch Time 44.80s
+Batch 59 Batch Time 44.73s
+Batch 60 Batch Time 44.76s
+Batch 61 Batch Time 44.68s
+Batch 62 Batch Time 44.63s
+Batch 63 Batch Time 44.62s
+Batch 64 Batch Time 44.77s
+Batch 65 Batch Time 44.65s
+Batch 66 Batch Time 44.54s
+Batch 67 Batch Time 44.68s
+Batch 68 Batch Time 44.62s
+Batch 69 Batch Time 44.65s
+Batch 70 Batch Time 44.61s
+Batch 71 Batch Time 44.61s
+Batch 72 Batch Time 44.63s
+Batch 73 Batch Time 15.70s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 30 Loss: nan Time: 77.01
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.72s
+Batch 1 Batch Time 44.83s
+Batch 2 Batch Time 44.78s
+Batch 3 Batch Time 44.74s
+Batch 4 Batch Time 44.52s
+Batch 5 Batch Time 44.61s
+Batch 6 Batch Time 44.62s
+Batch 7 Batch Time 44.63s
+Batch 8 Batch Time 44.52s
+Batch 9 Batch Time 44.75s
+Batch 10 Batch Time 44.62s
+Batch 11 Batch Time 44.74s
+Batch 12 Batch Time 44.63s
+Batch 13 Batch Time 44.59s
+Batch 14 Batch Time 44.54s
+Batch 15 Batch Time 44.61s
+Batch 16 Batch Time 44.63s
+Batch 17 Batch Time 44.89s
+Batch 18 Batch Time 44.40s
+Batch 19 Batch Time 44.71s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.61s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.68s
+Batch 24 Batch Time 44.61s
+Batch 25 Batch Time 44.52s
+Batch 26 Batch Time 44.62s
+Batch 27 Batch Time 44.77s
+Batch 28 Batch Time 44.51s
+Batch 29 Batch Time 44.67s
+Batch 30 Batch Time 44.67s
+Batch 31 Batch Time 44.56s
+Batch 32 Batch Time 44.82s
+Batch 33 Batch Time 44.66s
+Batch 34 Batch Time 44.76s
+Batch 35 Batch Time 44.61s
+Batch 36 Batch Time 44.65s
+Batch 37 Batch Time 44.52s
+Batch 38 Batch Time 44.76s
+Batch 39 Batch Time 44.74s
+Batch 40 Batch Time 44.67s
+Batch 41 Batch Time 44.62s
+Batch 42 Batch Time 44.65s
+Batch 43 Batch Time 44.78s
+Batch 44 Batch Time 44.65s
+Batch 45 Batch Time 44.59s
+Batch 46 Batch Time 44.62s
+Batch 47 Batch Time 44.63s
+Batch 48 Batch Time 44.60s
+Batch 49 Batch Time 44.54s
+Batch 50 Batch Time 44.62s
+Batch 51 Batch Time 44.65s
+Batch 52 Batch Time 44.75s
+Batch 53 Batch Time 44.56s
+Batch 54 Batch Time 44.67s
+Batch 55 Batch Time 44.53s
+Batch 56 Batch Time 44.75s
+Batch 57 Batch Time 44.52s
+Batch 58 Batch Time 44.81s
+Batch 59 Batch Time 44.73s
+Batch 60 Batch Time 44.75s
+Batch 61 Batch Time 44.67s
+Batch 62 Batch Time 44.62s
+Batch 63 Batch Time 44.50s
+Batch 64 Batch Time 44.78s
+Batch 65 Batch Time 44.64s
+Batch 66 Batch Time 44.61s
+Batch 67 Batch Time 44.66s
+Batch 68 Batch Time 44.81s
+Batch 69 Batch Time 44.62s
+Batch 70 Batch Time 44.81s
+Batch 71 Batch Time 44.86s
+Batch 72 Batch Time 44.65s
+Batch 73 Batch Time 15.79s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 31 Loss: nan Time: 78.03
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.65s
+Batch 1 Batch Time 44.88s
+Batch 2 Batch Time 44.79s
+Batch 3 Batch Time 44.65s
+Batch 4 Batch Time 44.61s
+Batch 5 Batch Time 44.93s
+Batch 6 Batch Time 44.54s
+Batch 7 Batch Time 44.51s
+Batch 8 Batch Time 44.81s
+Batch 9 Batch Time 44.74s
+Batch 10 Batch Time 44.66s
+Batch 11 Batch Time 44.79s
+Batch 12 Batch Time 44.76s
+Batch 13 Batch Time 44.81s
+Batch 14 Batch Time 44.65s
+Batch 15 Batch Time 44.59s
+Batch 16 Batch Time 44.81s
+Batch 17 Batch Time 44.70s
+Batch 18 Batch Time 44.75s
+Batch 19 Batch Time 44.67s
+Batch 20 Batch Time 44.76s
+Batch 21 Batch Time 44.54s
+Batch 22 Batch Time 44.66s
+Batch 23 Batch Time 44.65s
+Batch 24 Batch Time 44.85s
+Batch 25 Batch Time 44.67s
+Batch 26 Batch Time 44.61s
+Batch 27 Batch Time 44.73s
+Batch 28 Batch Time 44.66s
+Batch 29 Batch Time 44.69s
+Batch 30 Batch Time 44.65s
+Batch 31 Batch Time 44.52s
+Batch 32 Batch Time 44.81s
+Batch 33 Batch Time 44.54s
+Batch 34 Batch Time 44.78s
+Batch 35 Batch Time 44.59s
+Batch 36 Batch Time 44.60s
+Batch 37 Batch Time 44.72s
+Batch 38 Batch Time 44.79s
+Batch 39 Batch Time 44.79s
+Batch 40 Batch Time 44.78s
+Batch 41 Batch Time 44.62s
+Batch 42 Batch Time 44.74s
+Batch 43 Batch Time 44.53s
+Batch 44 Batch Time 44.50s
+Batch 45 Batch Time 44.52s
+Batch 46 Batch Time 44.64s
+Batch 47 Batch Time 44.54s
+Batch 48 Batch Time 44.65s
+Batch 49 Batch Time 44.59s
+Batch 50 Batch Time 44.54s
+Batch 51 Batch Time 44.63s
+Batch 52 Batch Time 44.56s
+Batch 53 Batch Time 44.50s
+Batch 54 Batch Time 44.59s
+Batch 55 Batch Time 44.71s
+Batch 56 Batch Time 44.60s
+Batch 57 Batch Time 44.53s
+Batch 58 Batch Time 44.57s
+Batch 59 Batch Time 44.73s
+Batch 60 Batch Time 44.63s
+Batch 61 Batch Time 44.61s
+Batch 62 Batch Time 44.53s
+Batch 63 Batch Time 44.50s
+Batch 64 Batch Time 44.61s
+Batch 65 Batch Time 44.77s
+Batch 66 Batch Time 44.54s
+Batch 67 Batch Time 44.60s
+Batch 68 Batch Time 44.57s
+Batch 69 Batch Time 44.61s
+Batch 70 Batch Time 44.52s
+Batch 71 Batch Time 44.78s
+Batch 72 Batch Time 44.64s
+Batch 73 Batch Time 15.80s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 32 Loss: nan Time: 75.24
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.46s
+Batch 1 Batch Time 44.63s
+Batch 2 Batch Time 44.66s
+Batch 3 Batch Time 44.65s
+Batch 4 Batch Time 44.54s
+Batch 5 Batch Time 44.78s
+Batch 6 Batch Time 44.60s
+Batch 7 Batch Time 44.63s
+Batch 8 Batch Time 44.66s
+Batch 9 Batch Time 44.55s
+Batch 10 Batch Time 44.62s
+Batch 11 Batch Time 44.77s
+Batch 12 Batch Time 44.77s
+Batch 13 Batch Time 44.69s
+Batch 14 Batch Time 44.59s
+Batch 15 Batch Time 44.60s
+Batch 16 Batch Time 44.62s
+Batch 17 Batch Time 44.70s
+Batch 18 Batch Time 44.52s
+Batch 19 Batch Time 44.66s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.60s
+Batch 22 Batch Time 44.55s
+Batch 23 Batch Time 44.76s
+Batch 24 Batch Time 44.72s
+Batch 25 Batch Time 44.58s
+Batch 26 Batch Time 44.60s
+Batch 27 Batch Time 44.47s
+Batch 28 Batch Time 44.65s
+Batch 29 Batch Time 44.54s
+Batch 30 Batch Time 44.66s
+Batch 31 Batch Time 44.54s
+Batch 32 Batch Time 44.86s
+Batch 33 Batch Time 44.90s
+Batch 34 Batch Time 44.76s
+Batch 35 Batch Time 44.78s
+Batch 36 Batch Time 44.72s
+Batch 37 Batch Time 44.69s
+Batch 38 Batch Time 44.83s
+Batch 39 Batch Time 44.82s
+Batch 40 Batch Time 44.63s
+Batch 41 Batch Time 44.73s
+Batch 42 Batch Time 44.74s
+Batch 43 Batch Time 44.67s
+Batch 44 Batch Time 44.68s
+Batch 45 Batch Time 44.69s
+Batch 46 Batch Time 44.82s
+Batch 47 Batch Time 44.68s
+Batch 48 Batch Time 44.65s
+Batch 49 Batch Time 44.66s
+Batch 50 Batch Time 44.53s
+Batch 51 Batch Time 44.62s
+Batch 52 Batch Time 44.77s
+Batch 53 Batch Time 44.54s
+Batch 54 Batch Time 44.70s
+Batch 55 Batch Time 44.64s
+Batch 56 Batch Time 44.55s
+Batch 57 Batch Time 44.68s
+Batch 58 Batch Time 44.88s
+Batch 59 Batch Time 44.69s
+Batch 60 Batch Time 44.60s
+Batch 61 Batch Time 44.72s
+Batch 62 Batch Time 44.74s
+Batch 63 Batch Time 44.70s
+Batch 64 Batch Time 44.81s
+Batch 65 Batch Time 44.64s
+Batch 66 Batch Time 44.72s
+Batch 67 Batch Time 44.68s
+Batch 68 Batch Time 44.90s
+Batch 69 Batch Time 44.67s
+Batch 70 Batch Time 44.83s
+Batch 71 Batch Time 44.95s
+Batch 72 Batch Time 44.71s
+Batch 73 Batch Time 16.09s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 33 Loss: nan Time: 78.25
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.90s
+Batch 1 Batch Time 44.87s
+Batch 2 Batch Time 44.67s
+Batch 3 Batch Time 44.79s
+Batch 4 Batch Time 44.67s
+Batch 5 Batch Time 44.88s
+Batch 6 Batch Time 44.59s
+Batch 7 Batch Time 44.56s
+Batch 8 Batch Time 44.70s
+Batch 9 Batch Time 44.83s
+Batch 10 Batch Time 44.63s
+Batch 11 Batch Time 44.83s
+Batch 12 Batch Time 44.91s
+Batch 13 Batch Time 44.87s
+Batch 14 Batch Time 44.69s
+Batch 15 Batch Time 44.69s
+Batch 16 Batch Time 44.69s
+Batch 17 Batch Time 44.65s
+Batch 18 Batch Time 44.61s
+Batch 19 Batch Time 44.59s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.79s
+Batch 22 Batch Time 44.68s
+Batch 23 Batch Time 44.71s
+Batch 24 Batch Time 44.66s
+Batch 25 Batch Time 44.71s
+Batch 26 Batch Time 44.58s
+Batch 27 Batch Time 44.67s
+Batch 28 Batch Time 44.68s
+Batch 29 Batch Time 44.66s
+Batch 30 Batch Time 44.71s
+Batch 31 Batch Time 44.70s
+Batch 32 Batch Time 44.92s
+Batch 33 Batch Time 44.95s
+Batch 34 Batch Time 44.76s
+Batch 35 Batch Time 44.61s
+Batch 36 Batch Time 44.69s
+Batch 37 Batch Time 44.75s
+Batch 38 Batch Time 44.68s
+Batch 39 Batch Time 44.70s
+Batch 40 Batch Time 44.70s
+Batch 41 Batch Time 44.79s
+Batch 42 Batch Time 44.61s
+Batch 43 Batch Time 44.63s
+Batch 44 Batch Time 44.61s
+Batch 45 Batch Time 44.66s
+Batch 46 Batch Time 44.81s
+Batch 47 Batch Time 44.54s
+Batch 48 Batch Time 44.66s
+Batch 49 Batch Time 44.53s
+Batch 50 Batch Time 44.56s
+Batch 51 Batch Time 44.65s
+Batch 52 Batch Time 44.53s
+Batch 53 Batch Time 44.54s
+Batch 54 Batch Time 44.63s
+Batch 55 Batch Time 44.59s
+Batch 56 Batch Time 44.77s
+Batch 57 Batch Time 44.65s
+Batch 58 Batch Time 44.70s
+Batch 59 Batch Time 44.74s
+Batch 60 Batch Time 44.66s
+Batch 61 Batch Time 44.61s
+Batch 62 Batch Time 44.71s
+Batch 63 Batch Time 44.49s
+Batch 64 Batch Time 44.74s
+Batch 65 Batch Time 44.83s
+Batch 66 Batch Time 44.82s
+Batch 67 Batch Time 44.71s
+Batch 68 Batch Time 44.66s
+Batch 69 Batch Time 44.69s
+Batch 70 Batch Time 44.62s
+Batch 71 Batch Time 44.65s
+Batch 72 Batch Time 44.69s
+Batch 73 Batch Time 16.11s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 34 Loss: nan Time: 76.29
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.46s
+Batch 1 Batch Time 44.71s
+Batch 2 Batch Time 44.60s
+Batch 3 Batch Time 44.59s
+Batch 4 Batch Time 44.59s
+Batch 5 Batch Time 44.77s
+Batch 6 Batch Time 44.65s
+Batch 7 Batch Time 44.62s
+Batch 8 Batch Time 44.64s
+Batch 9 Batch Time 44.77s
+Batch 10 Batch Time 44.65s
+Batch 11 Batch Time 44.84s
+Batch 12 Batch Time 44.85s
+Batch 13 Batch Time 44.67s
+Batch 14 Batch Time 44.55s
+Batch 15 Batch Time 44.69s
+Batch 16 Batch Time 44.54s
+Batch 17 Batch Time 44.88s
+Batch 18 Batch Time 44.68s
+Batch 19 Batch Time 44.75s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.65s
+Batch 22 Batch Time 44.78s
+Batch 23 Batch Time 44.86s
+Batch 24 Batch Time 44.59s
+Batch 25 Batch Time 44.55s
+Batch 26 Batch Time 44.66s
+Batch 27 Batch Time 44.91s
+Batch 28 Batch Time 44.66s
+Batch 29 Batch Time 44.73s
+Batch 30 Batch Time 44.65s
+Batch 31 Batch Time 44.54s
+Batch 32 Batch Time 44.51s
+Batch 33 Batch Time 44.66s
+Batch 34 Batch Time 44.76s
+Batch 35 Batch Time 44.71s
+Batch 36 Batch Time 44.63s
+Batch 37 Batch Time 44.74s
+Batch 38 Batch Time 44.68s
+Batch 39 Batch Time 44.62s
+Batch 40 Batch Time 44.64s
+Batch 41 Batch Time 44.71s
+Batch 42 Batch Time 44.74s
+Batch 43 Batch Time 44.66s
+Batch 44 Batch Time 44.75s
+Batch 45 Batch Time 44.65s
+Batch 46 Batch Time 44.94s
+Batch 47 Batch Time 44.77s
+Batch 48 Batch Time 44.75s
+Batch 49 Batch Time 44.61s
+Batch 50 Batch Time 44.57s
+Batch 51 Batch Time 44.67s
+Batch 52 Batch Time 44.50s
+Batch 53 Batch Time 44.67s
+Batch 54 Batch Time 44.85s
+Batch 55 Batch Time 44.62s
+Batch 56 Batch Time 44.69s
+Batch 57 Batch Time 44.71s
+Batch 58 Batch Time 44.86s
+Batch 59 Batch Time 44.83s
+Batch 60 Batch Time 44.67s
+Batch 61 Batch Time 44.54s
+Batch 62 Batch Time 44.73s
+Batch 63 Batch Time 44.71s
+Batch 64 Batch Time 44.88s
+Batch 65 Batch Time 44.75s
+Batch 66 Batch Time 44.71s
+Batch 67 Batch Time 44.54s
+Batch 68 Batch Time 44.89s
+Batch 69 Batch Time 44.70s
+Batch 70 Batch Time 44.60s
+Batch 71 Batch Time 44.95s
+Batch 72 Batch Time 44.75s
+Batch 73 Batch Time 15.70s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 35 Loss: nan Time: 78.13
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.58s
+Batch 1 Batch Time 44.78s
+Batch 2 Batch Time 44.68s
+Batch 3 Batch Time 44.75s
+Batch 4 Batch Time 44.77s
+Batch 5 Batch Time 44.77s
+Batch 6 Batch Time 44.64s
+Batch 7 Batch Time 44.62s
+Batch 8 Batch Time 44.91s
+Batch 9 Batch Time 44.74s
+Batch 10 Batch Time 44.64s
+Batch 11 Batch Time 44.60s
+Batch 12 Batch Time 44.62s
+Batch 13 Batch Time 44.76s
+Batch 14 Batch Time 44.63s
+Batch 15 Batch Time 44.63s
+Batch 16 Batch Time 44.62s
+Batch 17 Batch Time 44.80s
+Batch 18 Batch Time 44.53s
+Batch 19 Batch Time 44.74s
+Batch 20 Batch Time 44.71s
+Batch 21 Batch Time 44.66s
+Batch 22 Batch Time 44.75s
+Batch 23 Batch Time 44.70s
+Batch 24 Batch Time 44.74s
+Batch 25 Batch Time 44.59s
+Batch 26 Batch Time 44.64s
+Batch 27 Batch Time 44.70s
+Batch 28 Batch Time 44.69s
+Batch 29 Batch Time 44.67s
+Batch 30 Batch Time 44.74s
+Batch 31 Batch Time 44.70s
+Batch 32 Batch Time 44.43s
+Batch 33 Batch Time 44.60s
+Batch 34 Batch Time 44.93s
+Batch 35 Batch Time 44.70s
+Batch 36 Batch Time 44.66s
+Batch 37 Batch Time 44.70s
+Batch 38 Batch Time 44.63s
+Batch 39 Batch Time 44.79s
+Batch 40 Batch Time 44.64s
+Batch 41 Batch Time 44.65s
+Batch 42 Batch Time 44.66s
+Batch 43 Batch Time 44.59s
+Batch 44 Batch Time 44.70s
+Batch 45 Batch Time 44.71s
+Batch 46 Batch Time 44.61s
+Batch 47 Batch Time 44.69s
+Batch 48 Batch Time 44.67s
+Batch 49 Batch Time 44.67s
+Batch 50 Batch Time 44.55s
+Batch 51 Batch Time 44.71s
+Batch 52 Batch Time 44.69s
+Batch 53 Batch Time 44.56s
+Batch 54 Batch Time 44.70s
+Batch 55 Batch Time 44.76s
+Batch 56 Batch Time 44.84s
+Batch 57 Batch Time 44.66s
+Batch 58 Batch Time 44.95s
+Batch 59 Batch Time 44.86s
+Batch 60 Batch Time 44.76s
+Batch 61 Batch Time 44.57s
+Batch 62 Batch Time 44.51s
+Batch 63 Batch Time 44.59s
+Batch 64 Batch Time 44.75s
+Batch 65 Batch Time 44.71s
+Batch 66 Batch Time 44.68s
+Batch 67 Batch Time 44.69s
+Batch 68 Batch Time 44.59s
+Batch 69 Batch Time 44.66s
+Batch 70 Batch Time 44.60s
+Batch 71 Batch Time 44.87s
+Batch 72 Batch Time 44.78s
+Batch 73 Batch Time 15.74s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 36 Loss: nan Time: 77.69
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.90s
+Batch 1 Batch Time 44.62s
+Batch 2 Batch Time 44.84s
+Batch 3 Batch Time 44.74s
+Batch 4 Batch Time 44.59s
+Batch 5 Batch Time 44.80s
+Batch 6 Batch Time 44.66s
+Batch 7 Batch Time 44.67s
+Batch 8 Batch Time 44.79s
+Batch 9 Batch Time 44.76s
+Batch 10 Batch Time 44.72s
+Batch 11 Batch Time 44.81s
+Batch 12 Batch Time 44.81s
+Batch 13 Batch Time 44.75s
+Batch 14 Batch Time 44.75s
+Batch 15 Batch Time 44.69s
+Batch 16 Batch Time 44.64s
+Batch 17 Batch Time 44.79s
+Batch 18 Batch Time 44.55s
+Batch 19 Batch Time 44.67s
+Batch 20 Batch Time 44.76s
+Batch 21 Batch Time 44.72s
+Batch 22 Batch Time 44.64s
+Batch 23 Batch Time 44.80s
+Batch 24 Batch Time 44.71s
+Batch 25 Batch Time 44.75s
+Batch 26 Batch Time 44.57s
+Batch 27 Batch Time 44.86s
+Batch 28 Batch Time 44.62s
+Batch 29 Batch Time 44.56s
+Batch 30 Batch Time 44.51s
+Batch 31 Batch Time 44.60s
+Batch 32 Batch Time 44.80s
+Batch 33 Batch Time 44.72s
+Batch 34 Batch Time 44.80s
+Batch 35 Batch Time 44.74s
+Batch 36 Batch Time 44.75s
+Batch 37 Batch Time 44.56s
+Batch 38 Batch Time 44.59s
+Batch 39 Batch Time 44.63s
+Batch 40 Batch Time 44.53s
+Batch 41 Batch Time 44.51s
+Batch 42 Batch Time 44.68s
+Batch 43 Batch Time 44.73s
+Batch 44 Batch Time 44.74s
+Batch 45 Batch Time 44.72s
+Batch 46 Batch Time 44.88s
+Batch 47 Batch Time 44.66s
+Batch 48 Batch Time 44.69s
+Batch 49 Batch Time 44.55s
+Batch 50 Batch Time 44.63s
+Batch 51 Batch Time 44.58s
+Batch 52 Batch Time 44.80s
+Batch 53 Batch Time 44.65s
+Batch 54 Batch Time 44.65s
+Batch 55 Batch Time 44.55s
+Batch 56 Batch Time 44.65s
+Batch 57 Batch Time 44.59s
+Batch 58 Batch Time 44.61s
+Batch 59 Batch Time 44.52s
+Batch 60 Batch Time 44.70s
+Batch 61 Batch Time 44.67s
+Batch 62 Batch Time 44.70s
+Batch 63 Batch Time 44.77s
+Batch 64 Batch Time 44.68s
+Batch 65 Batch Time 44.73s
+Batch 66 Batch Time 44.69s
+Batch 67 Batch Time 44.70s
+Batch 68 Batch Time 44.79s
+Batch 69 Batch Time 44.67s
+Batch 70 Batch Time 44.79s
+Batch 71 Batch Time 44.64s
+Batch 72 Batch Time 44.84s
+Batch 73 Batch Time 16.14s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 37 Loss: nan Time: 76.37
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.86s
+Batch 1 Batch Time 44.69s
+Batch 2 Batch Time 44.75s
+Batch 3 Batch Time 44.64s
+Batch 4 Batch Time 44.68s
+Batch 5 Batch Time 44.90s
+Batch 6 Batch Time 44.63s
+Batch 7 Batch Time 44.64s
+Batch 8 Batch Time 44.86s
+Batch 9 Batch Time 44.65s
+Batch 10 Batch Time 44.62s
+Batch 11 Batch Time 44.79s
+Batch 12 Batch Time 44.62s
+Batch 13 Batch Time 44.62s
+Batch 14 Batch Time 44.63s
+Batch 15 Batch Time 44.60s
+Batch 16 Batch Time 44.65s
+Batch 17 Batch Time 44.66s
+Batch 18 Batch Time 44.51s
+Batch 19 Batch Time 44.61s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.54s
+Batch 22 Batch Time 44.61s
+Batch 23 Batch Time 44.77s
+Batch 24 Batch Time 44.73s
+Batch 25 Batch Time 44.54s
+Batch 26 Batch Time 44.56s
+Batch 27 Batch Time 44.64s
+Batch 28 Batch Time 44.61s
+Batch 29 Batch Time 44.68s
+Batch 30 Batch Time 44.51s
+Batch 31 Batch Time 44.58s
+Batch 32 Batch Time 44.64s
+Batch 33 Batch Time 44.64s
+Batch 34 Batch Time 44.52s
+Batch 35 Batch Time 44.63s
+Batch 36 Batch Time 44.63s
+Batch 37 Batch Time 44.49s
+Batch 38 Batch Time 44.70s
+Batch 39 Batch Time 44.61s
+Batch 40 Batch Time 44.56s
+Batch 41 Batch Time 44.72s
+Batch 42 Batch Time 44.56s
+Batch 43 Batch Time 44.68s
+Batch 44 Batch Time 44.49s
+Batch 45 Batch Time 44.77s
+Batch 46 Batch Time 44.54s
+Batch 47 Batch Time 44.45s
+Batch 48 Batch Time 44.62s
+Batch 49 Batch Time 44.74s
+Batch 50 Batch Time 44.54s
+Batch 51 Batch Time 44.65s
+Batch 52 Batch Time 44.90s
+Batch 53 Batch Time 44.62s
+Batch 54 Batch Time 44.68s
+Batch 55 Batch Time 44.74s
+Batch 56 Batch Time 44.77s
+Batch 57 Batch Time 44.64s
+Batch 58 Batch Time 44.80s
+Batch 59 Batch Time 44.79s
+Batch 60 Batch Time 44.53s
+Batch 61 Batch Time 44.62s
+Batch 62 Batch Time 44.60s
+Batch 63 Batch Time 44.57s
+Batch 64 Batch Time 44.62s
+Batch 65 Batch Time 44.65s
+Batch 66 Batch Time 44.61s
+Batch 67 Batch Time 44.70s
+Batch 68 Batch Time 44.72s
+Batch 69 Batch Time 44.62s
+Batch 70 Batch Time 44.55s
+Batch 71 Batch Time 44.83s
+Batch 72 Batch Time 44.64s
+Batch 73 Batch Time 15.91s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 38 Loss: nan Time: 77.90
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.56s
+Batch 1 Batch Time 44.83s
+Batch 2 Batch Time 44.63s
+Batch 3 Batch Time 44.71s
+Batch 4 Batch Time 44.68s
+Batch 5 Batch Time 44.91s
+Batch 6 Batch Time 44.62s
+Batch 7 Batch Time 44.75s
+Batch 8 Batch Time 44.84s
+Batch 9 Batch Time 44.72s
+Batch 10 Batch Time 44.66s
+Batch 11 Batch Time 44.84s
+Batch 12 Batch Time 44.83s
+Batch 13 Batch Time 44.66s
+Batch 14 Batch Time 44.63s
+Batch 15 Batch Time 44.56s
+Batch 16 Batch Time 44.58s
+Batch 17 Batch Time 44.77s
+Batch 18 Batch Time 44.55s
+Batch 19 Batch Time 44.70s
+Batch 20 Batch Time 44.73s
+Batch 21 Batch Time 44.72s
+Batch 22 Batch Time 44.63s
+Batch 23 Batch Time 44.73s
+Batch 24 Batch Time 44.47s
+Batch 25 Batch Time 44.62s
+Batch 26 Batch Time 44.46s
+Batch 27 Batch Time 44.63s
+Batch 28 Batch Time 44.63s
+Batch 29 Batch Time 44.62s
+Batch 30 Batch Time 44.72s
+Batch 31 Batch Time 44.59s
+Batch 32 Batch Time 44.53s
+Batch 33 Batch Time 44.72s
+Batch 34 Batch Time 44.91s
+Batch 35 Batch Time 44.64s
+Batch 36 Batch Time 44.76s
+Batch 37 Batch Time 44.51s
+Batch 38 Batch Time 44.71s
+Batch 39 Batch Time 44.60s
+Batch 40 Batch Time 44.91s
+Batch 41 Batch Time 44.74s
+Batch 42 Batch Time 44.70s
+Batch 43 Batch Time 44.72s
+Batch 44 Batch Time 44.72s
+Batch 45 Batch Time 44.61s
+Batch 46 Batch Time 44.71s
+Batch 47 Batch Time 44.59s
+Batch 48 Batch Time 44.71s
+Batch 49 Batch Time 44.69s
+Batch 50 Batch Time 44.61s
+Batch 51 Batch Time 44.72s
+Batch 52 Batch Time 44.78s
+Batch 53 Batch Time 44.60s
+Batch 54 Batch Time 44.66s
+Batch 55 Batch Time 44.75s
+Batch 56 Batch Time 44.57s
+Batch 57 Batch Time 44.61s
+Batch 58 Batch Time 44.81s
+Batch 59 Batch Time 44.84s
+Batch 60 Batch Time 44.65s
+Batch 61 Batch Time 44.61s
+Batch 62 Batch Time 44.52s
+Batch 63 Batch Time 44.54s
+Batch 64 Batch Time 44.71s
+Batch 65 Batch Time 44.67s
+Batch 66 Batch Time 44.69s
+Batch 67 Batch Time 44.60s
+Batch 68 Batch Time 44.68s
+Batch 69 Batch Time 44.71s
+Batch 70 Batch Time 44.64s
+Batch 71 Batch Time 44.63s
+Batch 72 Batch Time 44.67s
+Batch 73 Batch Time 16.13s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 39 Loss: nan Time: 77.48
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.86s
+Batch 1 Batch Time 44.89s
+Batch 2 Batch Time 44.69s
+Batch 3 Batch Time 44.56s
+Batch 4 Batch Time 44.70s
+Batch 5 Batch Time 44.87s
+Batch 6 Batch Time 44.63s
+Batch 7 Batch Time 44.66s
+Batch 8 Batch Time 44.86s
+Batch 9 Batch Time 44.54s
+Batch 10 Batch Time 44.72s
+Batch 11 Batch Time 44.69s
+Batch 12 Batch Time 44.84s
+Batch 13 Batch Time 44.69s
+Batch 14 Batch Time 44.70s
+Batch 15 Batch Time 44.71s
+Batch 16 Batch Time 44.74s
+Batch 17 Batch Time 44.90s
+Batch 18 Batch Time 44.73s
+Batch 19 Batch Time 44.71s
+Batch 20 Batch Time 44.58s
+Batch 21 Batch Time 44.66s
+Batch 22 Batch Time 44.59s
+Batch 23 Batch Time 44.76s
+Batch 24 Batch Time 44.79s
+Batch 25 Batch Time 44.69s
+Batch 26 Batch Time 44.61s
+Batch 27 Batch Time 44.74s
+Batch 28 Batch Time 44.69s
+Batch 29 Batch Time 44.61s
+Batch 30 Batch Time 44.69s
+Batch 31 Batch Time 44.62s
+Batch 32 Batch Time 44.62s
+Batch 33 Batch Time 44.73s
+Batch 34 Batch Time 44.89s
+Batch 35 Batch Time 44.62s
+Batch 36 Batch Time 44.66s
+Batch 37 Batch Time 44.66s
+Batch 38 Batch Time 44.69s
+Batch 39 Batch Time 44.66s
+Batch 40 Batch Time 44.62s
+Batch 41 Batch Time 44.67s
+Batch 42 Batch Time 44.67s
+Batch 43 Batch Time 44.70s
+Batch 44 Batch Time 44.56s
+Batch 45 Batch Time 44.68s
+Batch 46 Batch Time 44.80s
+Batch 47 Batch Time 44.53s
+Batch 48 Batch Time 44.74s
+Batch 49 Batch Time 44.67s
+Batch 50 Batch Time 44.52s
+Batch 51 Batch Time 44.55s
+Batch 52 Batch Time 44.62s
+Batch 53 Batch Time 44.54s
+Batch 54 Batch Time 44.61s
+Batch 55 Batch Time 44.76s
+Batch 56 Batch Time 44.77s
+Batch 57 Batch Time 44.61s
+Batch 58 Batch Time 44.85s
+Batch 59 Batch Time 44.83s
+Batch 60 Batch Time 44.54s
+Batch 61 Batch Time 44.70s
+Batch 62 Batch Time 44.59s
+Batch 63 Batch Time 44.52s
+Batch 64 Batch Time 44.66s
+Batch 65 Batch Time 44.65s
+Batch 66 Batch Time 44.63s
+Batch 67 Batch Time 44.70s
+Batch 68 Batch Time 44.54s
+Batch 69 Batch Time 44.61s
+Batch 70 Batch Time 44.63s
+Batch 71 Batch Time 44.95s
+Batch 72 Batch Time 44.87s
+Batch 73 Batch Time 16.02s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 40 Loss: nan Time: 77.32
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.61s
+Batch 1 Batch Time 44.65s
+Batch 2 Batch Time 44.62s
+Batch 3 Batch Time 44.72s
+Batch 4 Batch Time 44.56s
+Batch 5 Batch Time 44.92s
+Batch 6 Batch Time 44.55s
+Batch 7 Batch Time 44.77s
+Batch 8 Batch Time 44.62s
+Batch 9 Batch Time 44.69s
+Batch 10 Batch Time 44.62s
+Batch 11 Batch Time 44.56s
+Batch 12 Batch Time 44.65s
+Batch 13 Batch Time 44.69s
+Batch 14 Batch Time 44.73s
+Batch 15 Batch Time 44.68s
+Batch 16 Batch Time 44.60s
+Batch 17 Batch Time 44.59s
+Batch 18 Batch Time 44.66s
+Batch 19 Batch Time 44.71s
+Batch 20 Batch Time 44.80s
+Batch 21 Batch Time 44.64s
+Batch 22 Batch Time 44.65s
+Batch 23 Batch Time 44.71s
+Batch 24 Batch Time 44.82s
+Batch 25 Batch Time 44.63s
+Batch 26 Batch Time 44.66s
+Batch 27 Batch Time 44.64s
+Batch 28 Batch Time 44.64s
+Batch 29 Batch Time 44.75s
+Batch 30 Batch Time 44.58s
+Batch 31 Batch Time 44.59s
+Batch 32 Batch Time 44.67s
+Batch 33 Batch Time 44.71s
+Batch 34 Batch Time 44.60s
+Batch 35 Batch Time 44.70s
+Batch 36 Batch Time 44.72s
+Batch 37 Batch Time 44.60s
+Batch 38 Batch Time 44.71s
+Batch 39 Batch Time 44.60s
+Batch 40 Batch Time 44.84s
+Batch 41 Batch Time 44.79s
+Batch 42 Batch Time 44.67s
+Batch 43 Batch Time 44.65s
+Batch 44 Batch Time 44.62s
+Batch 45 Batch Time 44.66s
+Batch 46 Batch Time 44.48s
+Batch 47 Batch Time 44.62s
+Batch 48 Batch Time 44.69s
+Batch 49 Batch Time 44.76s
+Batch 50 Batch Time 44.64s
+Batch 51 Batch Time 44.56s
+Batch 52 Batch Time 44.80s
+Batch 53 Batch Time 44.65s
+Batch 54 Batch Time 44.72s
+Batch 55 Batch Time 44.75s
+Batch 56 Batch Time 44.88s
+Batch 57 Batch Time 44.57s
+Batch 58 Batch Time 44.64s
+Batch 59 Batch Time 44.92s
+Batch 60 Batch Time 44.67s
+Batch 61 Batch Time 44.57s
+Batch 62 Batch Time 44.72s
+Batch 63 Batch Time 44.72s
+Batch 64 Batch Time 44.65s
+Batch 65 Batch Time 44.79s
+Batch 66 Batch Time 44.84s
+Batch 67 Batch Time 44.97s
+Batch 68 Batch Time 44.85s
+Batch 69 Batch Time 44.92s
+Batch 70 Batch Time 44.46s
+Batch 71 Batch Time 44.46s
+Batch 72 Batch Time 44.51s
+Batch 73 Batch Time 15.78s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 41 Loss: nan Time: 78.89
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.41s
+Batch 1 Batch Time 44.69s
+Batch 2 Batch Time 44.50s
+Batch 3 Batch Time 44.62s
+Batch 4 Batch Time 44.40s
+Batch 5 Batch Time 44.43s
+Batch 6 Batch Time 44.51s
+Batch 7 Batch Time 44.51s
+Batch 8 Batch Time 44.62s
+Batch 9 Batch Time 44.49s
+Batch 10 Batch Time 44.38s
+Batch 11 Batch Time 44.66s
+Batch 12 Batch Time 44.68s
+Batch 13 Batch Time 44.43s
+Batch 14 Batch Time 44.48s
+Batch 15 Batch Time 44.47s
+Batch 16 Batch Time 44.42s
+Batch 17 Batch Time 44.54s
+Batch 18 Batch Time 44.26s
+Batch 19 Batch Time 44.49s
+Batch 20 Batch Time 44.60s
+Batch 21 Batch Time 44.67s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.49s
+Batch 24 Batch Time 44.40s
+Batch 25 Batch Time 44.54s
+Batch 26 Batch Time 44.35s
+Batch 27 Batch Time 44.49s
+Batch 28 Batch Time 44.50s
+Batch 29 Batch Time 44.48s
+Batch 30 Batch Time 44.49s
+Batch 31 Batch Time 44.48s
+Batch 32 Batch Time 44.69s
+Batch 33 Batch Time 44.47s
+Batch 34 Batch Time 44.64s
+Batch 35 Batch Time 44.51s
+Batch 36 Batch Time 44.47s
+Batch 37 Batch Time 44.48s
+Batch 38 Batch Time 44.70s
+Batch 39 Batch Time 44.47s
+Batch 40 Batch Time 44.57s
+Batch 41 Batch Time 44.64s
+Batch 42 Batch Time 44.52s
+Batch 43 Batch Time 44.67s
+Batch 44 Batch Time 44.52s
+Batch 45 Batch Time 44.50s
+Batch 46 Batch Time 44.40s
+Batch 47 Batch Time 44.50s
+Batch 48 Batch Time 44.41s
+Batch 49 Batch Time 44.50s
+Batch 50 Batch Time 44.41s
+Batch 51 Batch Time 44.39s
+Batch 52 Batch Time 44.64s
+Batch 53 Batch Time 44.42s
+Batch 54 Batch Time 44.47s
+Batch 55 Batch Time 44.41s
+Batch 56 Batch Time 44.41s
+Batch 57 Batch Time 44.47s
+Batch 58 Batch Time 44.43s
+Batch 59 Batch Time 44.65s
+Batch 60 Batch Time 44.50s
+Batch 61 Batch Time 44.47s
+Batch 62 Batch Time 44.40s
+Batch 63 Batch Time 44.51s
+Batch 64 Batch Time 44.50s
+Batch 65 Batch Time 44.65s
+Batch 66 Batch Time 44.46s
+Batch 67 Batch Time 44.37s
+Batch 68 Batch Time 44.65s
+Batch 69 Batch Time 44.47s
+Batch 70 Batch Time 44.49s
+Batch 71 Batch Time 44.73s
+Batch 72 Batch Time 44.66s
+Batch 73 Batch Time 15.71s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 42 Loss: nan Time: 78.10
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.54s
+Batch 1 Batch Time 44.94s
+Batch 2 Batch Time 44.51s
+Batch 3 Batch Time 44.52s
+Batch 4 Batch Time 44.40s
+Batch 5 Batch Time 44.65s
+Batch 6 Batch Time 44.53s
+Batch 7 Batch Time 44.63s
+Batch 8 Batch Time 44.67s
+Batch 9 Batch Time 44.65s
+Batch 10 Batch Time 44.58s
+Batch 11 Batch Time 44.64s
+Batch 12 Batch Time 44.79s
+Batch 13 Batch Time 44.73s
+Batch 14 Batch Time 44.63s
+Batch 15 Batch Time 44.59s
+Batch 16 Batch Time 44.70s
+Batch 17 Batch Time 44.56s
+Batch 18 Batch Time 44.41s
+Batch 19 Batch Time 44.55s
+Batch 20 Batch Time 44.68s
+Batch 21 Batch Time 44.53s
+Batch 22 Batch Time 44.64s
+Batch 23 Batch Time 44.59s
+Batch 24 Batch Time 44.63s
+Batch 25 Batch Time 44.28s
+Batch 26 Batch Time 44.55s
+Batch 27 Batch Time 44.54s
+Batch 28 Batch Time 44.50s
+Batch 29 Batch Time 44.58s
+Batch 30 Batch Time 44.47s
+Batch 31 Batch Time 44.34s
+Batch 32 Batch Time 44.64s
+Batch 33 Batch Time 44.50s
+Batch 34 Batch Time 44.55s
+Batch 35 Batch Time 44.53s
+Batch 36 Batch Time 44.48s
+Batch 37 Batch Time 44.43s
+Batch 38 Batch Time 44.64s
+Batch 39 Batch Time 44.42s
+Batch 40 Batch Time 44.48s
+Batch 41 Batch Time 44.49s
+Batch 42 Batch Time 44.51s
+Batch 43 Batch Time 44.40s
+Batch 44 Batch Time 44.52s
+Batch 45 Batch Time 44.47s
+Batch 46 Batch Time 44.67s
+Batch 47 Batch Time 44.41s
+Batch 48 Batch Time 44.46s
+Batch 49 Batch Time 44.37s
+Batch 50 Batch Time 44.40s
+Batch 51 Batch Time 44.51s
+Batch 52 Batch Time 44.39s
+Batch 53 Batch Time 44.20s
+Batch 54 Batch Time 44.48s
+Batch 55 Batch Time 44.59s
+Batch 56 Batch Time 44.38s
+Batch 57 Batch Time 44.41s
+Batch 58 Batch Time 44.66s
+Batch 59 Batch Time 44.59s
+Batch 60 Batch Time 44.51s
+Batch 61 Batch Time 44.51s
+Batch 62 Batch Time 44.46s
+Batch 63 Batch Time 44.39s
+Batch 64 Batch Time 44.49s
+Batch 65 Batch Time 44.64s
+Batch 66 Batch Time 44.49s
+Batch 67 Batch Time 44.48s
+Batch 68 Batch Time 44.40s
+Batch 69 Batch Time 44.45s
+Batch 70 Batch Time 44.40s
+Batch 71 Batch Time 44.73s
+Batch 72 Batch Time 44.65s
+Batch 73 Batch Time 15.80s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 43 Loss: nan Time: 76.42
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.65s
+Batch 1 Batch Time 44.52s
+Batch 2 Batch Time 44.50s
+Batch 3 Batch Time 44.39s
+Batch 4 Batch Time 44.40s
+Batch 5 Batch Time 44.49s
+Batch 6 Batch Time 44.38s
+Batch 7 Batch Time 44.49s
+Batch 8 Batch Time 44.61s
+Batch 9 Batch Time 44.54s
+Batch 10 Batch Time 44.47s
+Batch 11 Batch Time 44.64s
+Batch 12 Batch Time 44.65s
+Batch 13 Batch Time 44.41s
+Batch 14 Batch Time 44.38s
+Batch 15 Batch Time 44.48s
+Batch 16 Batch Time 44.40s
+Batch 17 Batch Time 44.54s
+Batch 18 Batch Time 44.46s
+Batch 19 Batch Time 44.51s
+Batch 20 Batch Time 44.68s
+Batch 21 Batch Time 44.48s
+Batch 22 Batch Time 44.46s
+Batch 23 Batch Time 44.61s
+Batch 24 Batch Time 44.46s
+Batch 25 Batch Time 44.53s
+Batch 26 Batch Time 44.41s
+Batch 27 Batch Time 44.49s
+Batch 28 Batch Time 44.47s
+Batch 29 Batch Time 44.38s
+Batch 30 Batch Time 44.46s
+Batch 31 Batch Time 44.48s
+Batch 32 Batch Time 44.38s
+Batch 33 Batch Time 44.38s
+Batch 34 Batch Time 44.65s
+Batch 35 Batch Time 44.45s
+Batch 36 Batch Time 44.49s
+Batch 37 Batch Time 44.60s
+Batch 38 Batch Time 44.66s
+Batch 39 Batch Time 44.41s
+Batch 40 Batch Time 44.40s
+Batch 41 Batch Time 44.49s
+Batch 42 Batch Time 44.44s
+Batch 43 Batch Time 44.51s
+Batch 44 Batch Time 44.50s
+Batch 45 Batch Time 44.55s
+Batch 46 Batch Time 44.47s
+Batch 47 Batch Time 44.40s
+Batch 48 Batch Time 44.41s
+Batch 49 Batch Time 44.54s
+Batch 50 Batch Time 44.50s
+Batch 51 Batch Time 44.35s
+Batch 52 Batch Time 44.42s
+Batch 53 Batch Time 44.40s
+Batch 54 Batch Time 44.36s
+Batch 55 Batch Time 44.67s
+Batch 56 Batch Time 44.73s
+Batch 57 Batch Time 44.59s
+Batch 58 Batch Time 44.52s
+Batch 59 Batch Time 44.51s
+Batch 60 Batch Time 44.51s
+Batch 61 Batch Time 44.50s
+Batch 62 Batch Time 44.48s
+Batch 63 Batch Time 44.53s
+Batch 64 Batch Time 44.41s
+Batch 65 Batch Time 44.37s
+Batch 66 Batch Time 44.60s
+Batch 67 Batch Time 44.41s
+Batch 68 Batch Time 44.38s
+Batch 69 Batch Time 44.50s
+Batch 70 Batch Time 44.45s
+Batch 71 Batch Time 44.73s
+Batch 72 Batch Time 44.49s
+Batch 73 Batch Time 15.83s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 44 Loss: nan Time: 74.61
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.43s
+Batch 1 Batch Time 44.65s
+Batch 2 Batch Time 44.63s
+Batch 3 Batch Time 44.56s
+Batch 4 Batch Time 44.39s
+Batch 5 Batch Time 44.50s
+Batch 6 Batch Time 44.37s
+Batch 7 Batch Time 44.39s
+Batch 8 Batch Time 44.72s
+Batch 9 Batch Time 44.45s
+Batch 10 Batch Time 44.48s
+Batch 11 Batch Time 44.43s
+Batch 12 Batch Time 44.63s
+Batch 13 Batch Time 44.43s
+Batch 14 Batch Time 44.51s
+Batch 15 Batch Time 44.39s
+Batch 16 Batch Time 44.45s
+Batch 17 Batch Time 44.53s
+Batch 18 Batch Time 44.40s
+Batch 19 Batch Time 44.41s
+Batch 20 Batch Time 44.49s
+Batch 21 Batch Time 44.67s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.52s
+Batch 24 Batch Time 44.45s
+Batch 25 Batch Time 44.50s
+Batch 26 Batch Time 44.44s
+Batch 27 Batch Time 44.68s
+Batch 28 Batch Time 44.40s
+Batch 29 Batch Time 44.53s
+Batch 30 Batch Time 44.47s
+Batch 31 Batch Time 44.48s
+Batch 32 Batch Time 44.40s
+Batch 33 Batch Time 44.49s
+Batch 34 Batch Time 44.62s
+Batch 35 Batch Time 44.50s
+Batch 36 Batch Time 44.45s
+Batch 37 Batch Time 44.40s
+Batch 38 Batch Time 44.62s
+Batch 39 Batch Time 44.47s
+Batch 40 Batch Time 44.73s
+Batch 41 Batch Time 44.66s
+Batch 42 Batch Time 44.52s
+Batch 43 Batch Time 44.62s
+Batch 44 Batch Time 44.50s
+Batch 45 Batch Time 44.48s
+Batch 46 Batch Time 44.44s
+Batch 47 Batch Time 44.36s
+Batch 48 Batch Time 44.46s
+Batch 49 Batch Time 44.45s
+Batch 50 Batch Time 44.39s
+Batch 51 Batch Time 44.50s
+Batch 52 Batch Time 44.49s
+Batch 53 Batch Time 44.45s
+Batch 54 Batch Time 44.51s
+Batch 55 Batch Time 44.49s
+Batch 56 Batch Time 44.38s
+Batch 57 Batch Time 44.47s
+Batch 58 Batch Time 44.66s
+Batch 59 Batch Time 44.58s
+Batch 60 Batch Time 44.52s
+Batch 61 Batch Time 44.47s
+Batch 62 Batch Time 44.42s
+Batch 63 Batch Time 44.56s
+Batch 64 Batch Time 44.51s
+Batch 65 Batch Time 44.69s
+Batch 66 Batch Time 44.49s
+Batch 67 Batch Time 44.53s
+Batch 68 Batch Time 44.38s
+Batch 69 Batch Time 44.46s
+Batch 70 Batch Time 44.64s
+Batch 71 Batch Time 44.72s
+Batch 72 Batch Time 44.52s
+Batch 73 Batch Time 15.71s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 45 Loss: nan Time: 75.44
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.68s
+Batch 1 Batch Time 44.57s
+Batch 2 Batch Time 44.34s
+Batch 3 Batch Time 44.48s
+Batch 4 Batch Time 44.50s
+Batch 5 Batch Time 44.61s
+Batch 6 Batch Time 44.41s
+Batch 7 Batch Time 44.40s
+Batch 8 Batch Time 44.65s
+Batch 9 Batch Time 44.60s
+Batch 10 Batch Time 44.48s
+Batch 11 Batch Time 44.46s
+Batch 12 Batch Time 44.70s
+Batch 13 Batch Time 44.52s
+Batch 14 Batch Time 44.52s
+Batch 15 Batch Time 44.43s
+Batch 16 Batch Time 44.52s
+Batch 17 Batch Time 44.65s
+Batch 18 Batch Time 44.49s
+Batch 19 Batch Time 44.46s
+Batch 20 Batch Time 44.60s
+Batch 21 Batch Time 44.63s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.48s
+Batch 24 Batch Time 44.65s
+Batch 25 Batch Time 44.43s
+Batch 26 Batch Time 44.45s
+Batch 27 Batch Time 44.50s
+Batch 28 Batch Time 44.45s
+Batch 29 Batch Time 44.52s
+Batch 30 Batch Time 44.49s
+Batch 31 Batch Time 44.49s
+Batch 32 Batch Time 44.64s
+Batch 33 Batch Time 44.72s
+Batch 34 Batch Time 44.70s
+Batch 35 Batch Time 44.48s
+Batch 36 Batch Time 44.49s
+Batch 37 Batch Time 44.43s
+Batch 38 Batch Time 44.63s
+Batch 39 Batch Time 44.47s
+Batch 40 Batch Time 44.37s
+Batch 41 Batch Time 44.50s
+Batch 42 Batch Time 44.35s
+Batch 43 Batch Time 44.55s
+Batch 44 Batch Time 44.49s
+Batch 45 Batch Time 44.53s
+Batch 46 Batch Time 44.37s
+Batch 47 Batch Time 44.35s
+Batch 48 Batch Time 44.53s
+Batch 49 Batch Time 44.56s
+Batch 50 Batch Time 44.47s
+Batch 51 Batch Time 44.38s
+Batch 52 Batch Time 44.41s
+Batch 53 Batch Time 44.44s
+Batch 54 Batch Time 44.46s
+Batch 55 Batch Time 44.59s
+Batch 56 Batch Time 44.35s
+Batch 57 Batch Time 44.45s
+Batch 58 Batch Time 44.49s
+Batch 59 Batch Time 44.59s
+Batch 60 Batch Time 44.40s
+Batch 61 Batch Time 44.45s
+Batch 62 Batch Time 44.45s
+Batch 63 Batch Time 44.39s
+Batch 64 Batch Time 44.47s
+Batch 65 Batch Time 44.45s
+Batch 66 Batch Time 44.51s
+Batch 67 Batch Time 44.39s
+Batch 68 Batch Time 44.73s
+Batch 69 Batch Time 44.47s
+Batch 70 Batch Time 44.49s
+Batch 71 Batch Time 44.71s
+Batch 72 Batch Time 44.69s
+Batch 73 Batch Time 15.66s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 46 Loss: nan Time: 77.18
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.61s
+Batch 1 Batch Time 44.50s
+Batch 2 Batch Time 44.43s
+Batch 3 Batch Time 44.32s
+Batch 4 Batch Time 44.46s
+Batch 5 Batch Time 44.61s
+Batch 6 Batch Time 44.37s
+Batch 7 Batch Time 44.51s
+Batch 8 Batch Time 44.72s
+Batch 9 Batch Time 44.38s
+Batch 10 Batch Time 44.51s
+Batch 11 Batch Time 44.63s
+Batch 12 Batch Time 44.63s
+Batch 13 Batch Time 44.43s
+Batch 14 Batch Time 44.52s
+Batch 15 Batch Time 44.34s
+Batch 16 Batch Time 44.56s
+Batch 17 Batch Time 44.56s
+Batch 18 Batch Time 44.40s
+Batch 19 Batch Time 44.47s
+Batch 20 Batch Time 44.61s
+Batch 21 Batch Time 44.58s
+Batch 22 Batch Time 44.52s
+Batch 23 Batch Time 44.59s
+Batch 24 Batch Time 44.63s
+Batch 25 Batch Time 44.33s
+Batch 26 Batch Time 44.38s
+Batch 27 Batch Time 44.47s
+Batch 28 Batch Time 44.47s
+Batch 29 Batch Time 44.54s
+Batch 30 Batch Time 44.51s
+Batch 31 Batch Time 44.42s
+Batch 32 Batch Time 44.61s
+Batch 33 Batch Time 44.71s
+Batch 34 Batch Time 44.54s
+Batch 35 Batch Time 44.43s
+Batch 36 Batch Time 44.45s
+Batch 37 Batch Time 44.44s
+Batch 38 Batch Time 44.66s
+Batch 39 Batch Time 44.30s
+Batch 40 Batch Time 44.42s
+Batch 41 Batch Time 44.47s
+Batch 42 Batch Time 44.51s
+Batch 43 Batch Time 44.52s
+Batch 44 Batch Time 44.52s
+Batch 45 Batch Time 44.48s
+Batch 46 Batch Time 44.64s
+Batch 47 Batch Time 44.47s
+Batch 48 Batch Time 44.53s
+Batch 49 Batch Time 44.48s
+Batch 50 Batch Time 44.52s
+Batch 51 Batch Time 44.39s
+Batch 52 Batch Time 44.62s
+Batch 53 Batch Time 44.38s
+Batch 54 Batch Time 44.51s
+Batch 55 Batch Time 44.60s
+Batch 56 Batch Time 44.48s
+Batch 57 Batch Time 44.51s
+Batch 58 Batch Time 44.46s
+Batch 59 Batch Time 44.47s
+Batch 60 Batch Time 44.45s
+Batch 61 Batch Time 44.39s
+Batch 62 Batch Time 44.46s
+Batch 63 Batch Time 44.49s
+Batch 64 Batch Time 44.56s
+Batch 65 Batch Time 44.70s
+Batch 66 Batch Time 44.58s
+Batch 67 Batch Time 44.58s
+Batch 68 Batch Time 44.47s
+Batch 69 Batch Time 44.44s
+Batch 70 Batch Time 44.38s
+Batch 71 Batch Time 44.70s
+Batch 72 Batch Time 44.49s
+Batch 73 Batch Time 15.62s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 47 Loss: nan Time: 75.83
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.44s
+Batch 1 Batch Time 44.45s
+Batch 2 Batch Time 44.88s
+Batch 3 Batch Time 44.73s
+Batch 4 Batch Time 44.52s
+Batch 5 Batch Time 44.61s
+Batch 6 Batch Time 44.30s
+Batch 7 Batch Time 44.51s
+Batch 8 Batch Time 44.78s
+Batch 9 Batch Time 44.59s
+Batch 10 Batch Time 44.72s
+Batch 11 Batch Time 44.70s
+Batch 12 Batch Time 44.69s
+Batch 13 Batch Time 44.76s
+Batch 14 Batch Time 44.60s
+Batch 15 Batch Time 44.57s
+Batch 16 Batch Time 44.50s
+Batch 17 Batch Time 44.65s
+Batch 18 Batch Time 44.58s
+Batch 19 Batch Time 44.54s
+Batch 20 Batch Time 44.59s
+Batch 21 Batch Time 44.62s
+Batch 22 Batch Time 44.50s
+Batch 23 Batch Time 44.75s
+Batch 24 Batch Time 44.72s
+Batch 25 Batch Time 44.51s
+Batch 26 Batch Time 44.57s
+Batch 27 Batch Time 44.53s
+Batch 28 Batch Time 44.59s
+Batch 29 Batch Time 44.67s
+Batch 30 Batch Time 44.65s
+Batch 31 Batch Time 44.56s
+Batch 32 Batch Time 44.75s
+Batch 33 Batch Time 44.61s
+Batch 34 Batch Time 44.54s
+Batch 35 Batch Time 44.65s
+Batch 36 Batch Time 44.60s
+Batch 37 Batch Time 44.51s
+Batch 38 Batch Time 44.77s
+Batch 39 Batch Time 44.74s
+Batch 40 Batch Time 44.62s
+Batch 41 Batch Time 44.55s
+Batch 42 Batch Time 44.66s
+Batch 43 Batch Time 44.79s
+Batch 44 Batch Time 44.66s
+Batch 45 Batch Time 44.65s
+Batch 46 Batch Time 44.85s
+Batch 47 Batch Time 44.64s
+Batch 48 Batch Time 44.63s
+Batch 49 Batch Time 44.61s
+Batch 50 Batch Time 44.52s
+Batch 51 Batch Time 44.56s
+Batch 52 Batch Time 44.53s
+Batch 53 Batch Time 44.54s
+Batch 54 Batch Time 44.70s
+Batch 55 Batch Time 44.65s
+Batch 56 Batch Time 44.59s
+Batch 57 Batch Time 44.48s
+Batch 58 Batch Time 44.47s
+Batch 59 Batch Time 44.77s
+Batch 60 Batch Time 44.63s
+Batch 61 Batch Time 44.63s
+Batch 62 Batch Time 44.63s
+Batch 63 Batch Time 44.56s
+Batch 64 Batch Time 44.66s
+Batch 65 Batch Time 44.78s
+Batch 66 Batch Time 44.64s
+Batch 67 Batch Time 44.57s
+Batch 68 Batch Time 44.63s
+Batch 69 Batch Time 44.62s
+Batch 70 Batch Time 44.76s
+Batch 71 Batch Time 44.61s
+Batch 72 Batch Time 44.78s
+Batch 73 Batch Time 15.87s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 48 Loss: nan Time: 76.06
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.57s
+Batch 1 Batch Time 44.81s
+Batch 2 Batch Time 44.79s
+Batch 3 Batch Time 44.76s
+Batch 4 Batch Time 44.66s
+Batch 5 Batch Time 44.63s
+Batch 6 Batch Time 44.62s
+Batch 7 Batch Time 44.63s
+Batch 8 Batch Time 44.58s
+Batch 9 Batch Time 44.59s
+Batch 10 Batch Time 44.62s
+Batch 11 Batch Time 44.77s
+Batch 12 Batch Time 44.82s
+Batch 13 Batch Time 44.76s
+Batch 14 Batch Time 44.56s
+Batch 15 Batch Time 44.52s
+Batch 16 Batch Time 44.67s
+Batch 17 Batch Time 44.65s
+Batch 18 Batch Time 44.58s
+Batch 19 Batch Time 44.61s
+Batch 20 Batch Time 44.78s
+Batch 21 Batch Time 44.52s
+Batch 22 Batch Time 44.55s
+Batch 23 Batch Time 44.62s
+Batch 24 Batch Time 44.72s
+Batch 25 Batch Time 44.57s
+Batch 26 Batch Time 44.53s
+Batch 27 Batch Time 44.66s
+Batch 28 Batch Time 44.63s
+Batch 29 Batch Time 44.70s
+Batch 30 Batch Time 44.60s
+Batch 31 Batch Time 44.54s
+Batch 32 Batch Time 44.80s
+Batch 33 Batch Time 44.59s
+Batch 34 Batch Time 44.82s
+Batch 35 Batch Time 44.56s
+Batch 36 Batch Time 44.54s
+Batch 37 Batch Time 44.73s
+Batch 38 Batch Time 44.66s
+Batch 39 Batch Time 44.61s
+Batch 40 Batch Time 44.55s
+Batch 41 Batch Time 44.78s
+Batch 42 Batch Time 44.68s
+Batch 43 Batch Time 44.56s
+Batch 44 Batch Time 44.64s
+Batch 45 Batch Time 44.69s
+Batch 46 Batch Time 44.80s
+Batch 47 Batch Time 44.62s
+Batch 48 Batch Time 44.63s
+Batch 49 Batch Time 44.63s
+Batch 50 Batch Time 44.56s
+Batch 51 Batch Time 44.64s
+Batch 52 Batch Time 44.52s
+Batch 53 Batch Time 44.51s
+Batch 54 Batch Time 44.78s
+Batch 55 Batch Time 44.73s
+Batch 56 Batch Time 44.52s
+Batch 57 Batch Time 44.55s
+Batch 58 Batch Time 44.80s
+Batch 59 Batch Time 44.64s
+Batch 60 Batch Time 44.53s
+Batch 61 Batch Time 44.66s
+Batch 62 Batch Time 44.57s
+Batch 63 Batch Time 44.65s
+Batch 64 Batch Time 44.63s
+Batch 65 Batch Time 44.66s
+Batch 66 Batch Time 44.66s
+Batch 67 Batch Time 44.69s
+Batch 68 Batch Time 44.61s
+Batch 69 Batch Time 44.64s
+Batch 70 Batch Time 44.85s
+Batch 71 Batch Time 44.76s
+Batch 72 Batch Time 44.89s
+Batch 73 Batch Time 15.81s
+Done!
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Epoch: 49 Loss: nan Time: 77.42
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Batch 0 Batch Time 44.67s
+Batch 1 Batch Time 44.85s
+Batch 2 Batch Time 44.72s
+Batch 3 Batch Time 44.65s
+Batch 4 Batch Time 44.62s
+Batch 5 Batch Time 44.70s
+Batch 6 Batch Time 44.80s
+Batch 7 Batch Time 44.68s
+Batch 8 Batch Time 44.78s
+Batch 9 Batch Time 44.83s
+Batch 10 Batch Time 44.76s
+Batch 11 Batch Time 44.71s
+Batch 12 Batch Time 44.63s
+Batch 13 Batch Time 44.58s
+Batch 14 Batch Time 44.66s
+Batch 15 Batch Time 44.63s
+Batch 16 Batch Time 44.78s
+Batch 17 Batch Time 44.71s
+Batch 18 Batch Time 44.50s
+Batch 19 Batch Time 44.78s
+Batch 20 Batch Time 44.71s
+Batch 21 Batch Time 44.84s
+Batch 22 Batch Time 44.77s
+Batch 23 Batch Time 44.81s
+Batch 24 Batch Time 44.70s
+Batch 25 Batch Time 44.56s
+Batch 26 Batch Time 44.58s
+Batch 27 Batch Time 44.78s
+Batch 28 Batch Time 44.61s
+Batch 29 Batch Time 44.74s
+Batch 30 Batch Time 44.75s
+Batch 31 Batch Time 44.55s
+Batch 32 Batch Time 44.91s
+Batch 33 Batch Time 44.88s
+Batch 34 Batch Time 44.87s
+Batch 35 Batch Time 44.67s
+Batch 36 Batch Time 44.55s
+Batch 37 Batch Time 44.67s
+Batch 38 Batch Time 44.75s
+Batch 39 Batch Time 44.73s
+Batch 40 Batch Time 44.75s
+Batch 41 Batch Time 44.87s
+Batch 42 Batch Time 44.70s
+Batch 43 Batch Time 44.63s
+Batch 44 Batch Time 44.59s
+Batch 45 Batch Time 44.75s
+Batch 46 Batch Time 44.60s
+Batch 47 Batch Time 44.57s
+Batch 48 Batch Time 44.60s
+Batch 49 Batch Time 44.56s
+Batch 50 Batch Time 44.66s
+Batch 51 Batch Time 44.60s
+Batch 52 Batch Time 44.72s
+Batch 53 Batch Time 44.54s
+Batch 54 Batch Time 44.86s
+Batch 55 Batch Time 44.91s
+Batch 56 Batch Time 44.84s
+Batch 57 Batch Time 44.76s
+Batch 58 Batch Time 44.72s
+Batch 59 Batch Time 44.79s
+Batch 60 Batch Time 44.70s
+Batch 61 Batch Time 44.70s
+Batch 62 Batch Time 44.52s
+Batch 63 Batch Time 44.63s
+Batch 64 Batch Time 44.73s
+Batch 65 Batch Time 44.71s
+Batch 66 Batch Time 44.64s
+Batch 67 Batch Time 44.59s
+Batch 68 Batch Time 44.66s
+Batch 69 Batch Time 44.71s
+Batch 70 Batch Time 44.66s
+Batch 71 Batch Time 44.93s
+Batch 72 Batch Time 44.68s
+Batch 73 Batch Time 15.88s
+Done!
+Learn from scratch
+
+***** Evaluate Configs *****
+{
+    "data": {
+        "name": "custom",
+        "folder": "/data/kangjiale/verbalts-graph/data/smd_nl"
+    },
+    "eval": {
+        "n_samples": 10,
+        "model_path": "./save/smd_nl_baseline_full/0/ckpts/model_best_loss.pth",
+        "batch_size": 16,
+        "num_workers": 4,
+        "display_interval": 1,
+        "device": "cuda:0",
+        "cache_folder": "./cache/smd_nl_full"
+    }
+}
+Loading pretrained model from ./save/smd_nl_baseline_full/0/ckpts/model_best_loss.pth
+Split: test, total samples 1173.
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+Token indices sequence length is longer than the specified maximum sequence length for this model (311 > 248). Running this sequence through the model will result in indexing errors
+Batch 0 Batch Time 44.68s
+Batch 1 Batch Time 44.54s
+Batch 2 Batch Time 44.58s
+Batch 3 Batch Time 44.39s
+Batch 4 Batch Time 44.53s
+Batch 5 Batch Time 44.63s
+Batch 6 Batch Time 44.42s
+Batch 7 Batch Time 44.48s
+Batch 8 Batch Time 44.67s
+Batch 9 Batch Time 44.55s
+Batch 10 Batch Time 44.47s
+Batch 11 Batch Time 44.67s
+Batch 12 Batch Time 44.40s
+Batch 13 Batch Time 44.46s
+Batch 14 Batch Time 44.50s
+Batch 15 Batch Time 44.47s
+Batch 16 Batch Time 44.42s
+Batch 17 Batch Time 44.52s
+Batch 18 Batch Time 44.40s
+Batch 19 Batch Time 44.52s
+Batch 20 Batch Time 44.58s
+Batch 21 Batch Time 44.37s
+Batch 22 Batch Time 44.47s
+Batch 23 Batch Time 44.49s
+Batch 24 Batch Time 44.45s
+Batch 25 Batch Time 44.40s
+Batch 26 Batch Time 44.46s
+Batch 27 Batch Time 44.66s
+Batch 28 Batch Time 44.45s
+Batch 29 Batch Time 44.44s
+Batch 30 Batch Time 44.38s
+Batch 31 Batch Time 44.48s
+Batch 32 Batch Time 44.48s
+Batch 33 Batch Time 44.49s
+Batch 34 Batch Time 44.67s
+Batch 35 Batch Time 44.48s
+Batch 36 Batch Time 44.48s
+Batch 37 Batch Time 44.38s
+Batch 38 Batch Time 44.65s
+Batch 39 Batch Time 44.49s
+Batch 40 Batch Time 44.66s
+Batch 41 Batch Time 44.49s
+Batch 42 Batch Time 44.47s
+Batch 43 Batch Time 44.49s
+Batch 44 Batch Time 44.49s
+Batch 45 Batch Time 44.51s
+Batch 46 Batch Time 44.40s
+Batch 47 Batch Time 44.47s
+Batch 48 Batch Time 44.53s
+Batch 49 Batch Time 44.40s
+Batch 50 Batch Time 44.48s
+Batch 51 Batch Time 44.41s
+Batch 52 Batch Time 44.64s
+Batch 53 Batch Time 44.39s
+Batch 54 Batch Time 44.61s
+Batch 55 Batch Time 44.57s
+Batch 56 Batch Time 44.45s
+Batch 57 Batch Time 44.51s
+Batch 58 Batch Time 44.64s
+Batch 59 Batch Time 44.47s
+Batch 60 Batch Time 44.47s
+Batch 61 Batch Time 44.52s
+Batch 62 Batch Time 44.48s
+Batch 63 Batch Time 44.46s
+Batch 64 Batch Time 44.64s
+Batch 65 Batch Time 44.51s
+Batch 66 Batch Time 44.61s
+Batch 67 Batch Time 44.42s
+Batch 68 Batch Time 44.47s
+Batch 69 Batch Time 44.48s
+Batch 70 Batch Time 44.41s
+Batch 71 Batch Time 44.74s
+Batch 72 Batch Time 44.52s
+Batch 73 Batch Time 15.78s
+Done!

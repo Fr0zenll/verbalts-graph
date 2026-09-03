@@ -1,4 +1,4 @@
-device: cpu
+device: cuda:0
 
 diffusion:
   type: Text2Ts
@@ -29,7 +29,7 @@ diffusion:
 
   # Baseline VerbalTS: GNN disabled.
   use_gnn: false
-  graph_adj_path: ""
+  graph_adj_path: "/data/kangjiale/verbalts-graph/data/smd_nl/graph_adj.npy"
   gnn_hidden_dim: 32
   gnn_num_layers: 2
   gnn_dropout: 0.1

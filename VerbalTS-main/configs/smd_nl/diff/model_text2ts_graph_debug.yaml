@@ -1,4 +1,4 @@
-device: cpu
+device: cuda:0
 
 diffusion:
   type: Text2Ts
@@ -29,7 +29,7 @@ diffusion:
 
   # Graph-VerbalTS: fixed graph loaded from Pearson-correlation adjacency.
   use_gnn: true
-  graph_adj_path: ../data/smd_nl/graph_adj.npy
+  graph_adj_path: /data/kangjiale/verbalts-graph/data/smd_nl/graph_adj.npy
   gnn_hidden_dim: 32
   gnn_num_layers: 2
   gnn_dropout: 0.1

@@ -1,0 +1,37 @@
+device: cuda:0
+diffusion:
+  L_patch_len: 3
+  attention_mask_type: parallel
+  base_patch: 1
+  beta_end: 0.5
+  beta_start: 0.0001
+  channels: 32
+  condition_type: adaLN
+  debug_shape: true
+  device: cuda:0
+  diffusion_embedding_dim: 64
+  gnn_dropout: 0.1
+  gnn_hidden_dim: 32
+  gnn_num_layers: 2
+  gnn_residual: true
+  graph_adj_path: /data/kangjiale/verbalts-graph/data/smd_nl/graph_adj.npy
+  is_linear: false
+  layers: 1
+  multipatch_num: 3
+  n_var: 10
+  nheads: 4
+  num_steps: 4
+  num_variables: 10
+  schedule: quad
+  seq_len: 240
+  side:
+    device: cuda:0
+    num_var: 10
+    time_emb: 56
+    var_emb: 8
+  text_projector: var_scale_diffstep_multi
+  type: Text2Ts
+  use_gnn: true
+  var_dep_type: DEP
+  window_size: 240
+generator_pretrain_path: ''

@@ -1,0 +1,3 @@
+,mode,sampler,steps,n_samples,run,run,cttp,cttp,fid,fid,jftsd,jftsd
+,,,,,mean,std,mean,std,mean,std,mean,std
+0,cond_gen,ddim,-1,10,1.0,1.0,10.838530796026092,0.06575950713437939,6.108581769609407,0.40393588796978086,6.710947239847578,0.3850786788452946

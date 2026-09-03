@@ -1,0 +1,13 @@
+data:
+  folder: /data/kangjiale/verbalts-graph/data/smd_nl
+  name: custom
+eval:
+  batch_size: 16
+  cache_folder: ./cache/smd_nl_cttp_graph_pearson_epoch30_lr5e5_3seeds_2
+  clip_config_path: ./save/SMD_NL_cttp/model_configs.yaml
+  clip_model_path: ./save/SMD_NL_cttp/clip_model_best.pth
+  device: cuda:0
+  display_interval: 1
+  model_path: ./save/smd_nl_graph_pearson_epoch30_lr5e5_bs16_eval10_3seeds_1/2/ckpts/model_best_loss.pth
+  n_samples: 10
+  num_workers: 4

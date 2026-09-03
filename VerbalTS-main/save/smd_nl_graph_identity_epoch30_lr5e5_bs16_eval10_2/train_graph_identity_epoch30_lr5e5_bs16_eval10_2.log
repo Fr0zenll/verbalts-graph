@@ -1,0 +1,485 @@
+nohup: ignoring input
+All files will be saved to './save/smd_nl_graph_identity_epoch30_lr5e5_bs16_eval10_2'
+
+Run: 0
+Learn from scratch
+
+***** Train Configs *****
+{
+    "data": {
+        "name": "custom",
+        "folder": "/data/kangjiale/verbalts-graph/data/smd_nl"
+    },
+    "train": {
+        "epochs": 30,
+        "batch_size": 16,
+        "num_workers": 4,
+        "lr": 5e-05,
+        "itr_per_epoch": 999999,
+        "model_path": "",
+        "output_folder": "./save/smd_nl_graph_identity_epoch30_lr5e5_bs16_eval10_2/0",
+        "val_epoch_interval": 10,
+        "display_interval": 1,
+        "gradient_clip": 1.0,
+        "max_skip_ratio": 0.2
+    }
+}
+
+***** Model Configs *****
+{
+    "device": "cuda:0",
+    "diffusion": {
+        "type": "Text2Ts",
+        "condition_type": "adaLN",
+        "layers": 3,
+        "channels": 64,
+        "nheads": 4,
+        "diffusion_embedding_dim": 128,
+        "is_linear": false,
+        "seq_len": 240,
+        "window_size": 240,
+        "num_variables": 10,
+        "base_patch": 1,
+        "L_patch_len": 3,
+        "multipatch_num": 3,
+        "attention_mask_type": "parallel",
+        "beta_start": 0.0001,
+        "beta_end": 0.5,
+        "schedule": "quad",
+        "num_steps": 50,
+        "n_var": 10,
+        "var_dep_type": "DEP",
+        "use_gnn": true,
+        "graph_adj_path": "/data/kangjiale/verbalts-graph/data/smd_nl/graph_adj_identity.npy",
+        "gnn_hidden_dim": 64,
+        "gnn_num_layers": 2,
+        "gnn_dropout": 0.1,
+        "gnn_residual": true,
+        "debug_shape": false,
+        "side": {
+            "num_var": 10,
+            "var_emb": 8,
+            "time_emb": 56,
+            "device": "cuda:0"
+        },
+        "text_projector": "var_scale_diffstep_multi",
+        "device": "cuda:0"
+    },
+    "generator_pretrain_path": ""
+}
+{
+    "device": "cuda:0",
+    "cond_modal": "simple_text",
+    "generator_pretrain_path": "",
+    "text": {
+        "text_projector": "var_scale_diffstep_multi",
+        "num_stages": 3,
+        "pretrain_model_path": "./save/Longclip",
+        "pretrain_model_dim": 768,
+        "textemb_hidden_dim": 512,
+        "text_emb": 64,
+        "output_type": "all",
+        "tokenizer_path": "./save/Longclip",
+        "word_size": 49408,
+        "pos_emb": "none",
+        "device": "cuda:0"
+    }
+}
+Split: train, total samples 4104.
+Split: valid, total samples 587.
+Split: test, total samples 1173.
+cache_folder:  ./cache/smd_nl_cttp_graph_identity_epoch30_lr5e5_2
+Split: train, total samples 4104.
+calc the ts mean and cov
+  0%|          | 0/257 [00:00<?, ?it/s]  0%|          | 1/257 [00:00<02:26,  1.74it/s]  1%|          | 3/257 [00:00<00:52,  4.84it/s]Token indices sequence length is longer than the specified maximum sequence length for this model (269 > 248). Running this sequence through the model will result in indexing errors
+  2%|▏         | 4/257 [00:00<00:48,  5.26it/s]  2%|▏         | 5/257 [00:01<00:45,  5.50it/s]  2%|▏         | 6/257 [00:01<01:00,  4.16it/s]  3%|▎         | 7/257 [00:01<00:51,  4.87it/s]  3%|▎         | 8/257 [00:01<00:44,  5.64it/s]  4%|▎         | 9/257 [00:01<00:39,  6.31it/s]  4%|▍         | 10/257 [00:01<00:39,  6.28it/s]  4%|▍         | 11/257 [00:02<00:36,  6.77it/s]  5%|▍         | 12/257 [00:02<00:32,  7.43it/s]  5%|▌         | 13/257 [00:02<00:33,  7.32it/s]  5%|▌         | 14/257 [00:02<00:32,  7.46it/s]  6%|▌         | 15/257 [00:02<00:35,  6.90it/s]  6%|▌         | 16/257 [00:02<00:32,  7.36it/s]  7%|▋         | 17/257 [00:02<00:30,  7.77it/s]  7%|▋         | 18/257 [00:02<00:31,  7.64it/s]  7%|▋         | 19/257 [00:03<00:30,  7.85it/s]  8%|▊         | 20/257 [00:03<00:30,  7.70it/s]  8%|▊         | 21/257 [00:03<00:31,  7.58it/s]  9%|▊         | 22/257 [00:03<00:31,  7.48it/s]  9%|▉         | 23/257 [00:03<00:30,  7.79it/s]  9%|▉         | 24/257 [00:03<00:28,  8.20it/s] 10%|▉         | 25/257 [00:03<00:31,  7.42it/s] 10%|█         | 26/257 [00:04<00:31,  7.39it/s] 11%|█         | 27/257 [00:04<00:30,  7.64it/s] 11%|█         | 28/257 [00:04<00:29,  7.77it/s] 11%|█▏        | 29/257 [00:04<00:31,  7.30it/s] 12%|█▏        | 30/257 [00:04<00:30,  7.41it/s] 12%|█▏        | 31/257 [00:04<00:29,  7.77it/s] 12%|█▏        | 32/257 [00:04<00:27,  8.07it/s] 13%|█▎        | 33/257 [00:04<00:27,  8.24it/s] 13%|█▎        | 34/257 [00:05<00:26,  8.40it/s] 14%|█▎        | 35/257 [00:05<00:25,  8.66it/s] 14%|█▍        | 37/257 [00:05<00:24,  9.13it/s] 15%|█▍        | 38/257 [00:05<00:26,  8.35it/s] 15%|█▌        | 39/257 [00:05<00:28,  7.63it/s] 16%|█▌        | 40/257 [00:05<00:30,  7.07it/s] 16%|█▌        | 41/257 [00:05<00:29,  7.33it/s] 16%|█▋        | 42/257 [00:06<00:28,  7.64it/s] 17%|█▋        | 43/257 [00:06<00:28,  7.61it/s] 17%|█▋        | 44/257 [00:06<00:26,  7.90it/s] 18%|█▊        | 45/257 [00:06<00:25,  8.23it/s] 18%|█▊        | 46/257 [00:06<00:25,  8.31it/s] 18%|█▊        | 47/257 [00:06<00:25,  8.39it/s] 19%|█▊        | 48/257 [00:06<00:25,  8.16it/s] 19%|█▉        | 49/257 [00:06<00:26,  7.72it/s] 19%|█▉        | 50/257 [00:07<00:27,  7.49it/s] 20%|█▉        | 51/257 [00:07<00:29,  7.01it/s] 20%|██        | 52/257 [00:07<00:27,  7.40it/s] 21%|██        | 53/257 [00:07<00:25,  7.98it/s] 21%|██        | 54/257 [00:07<00:25,  7.84it/s] 21%|██▏       | 55/257 [00:07<00:25,  7.87it/s] 22%|██▏       | 56/257 [00:07<00:26,  7.67it/s] 22%|██▏       | 57/257 [00:08<00:28,  6.99it/s] 23%|██▎       | 58/257 [00:08<00:29,  6.78it/s] 23%|██▎       | 59/257 [00:08<00:28,  7.03it/s] 23%|██▎       | 60/257 [00:08<00:26,  7.54it/s] 24%|██▎       | 61/257 [00:08<00:25,  7.74it/s] 24%|██▍       | 62/257 [00:08<00:25,  7.61it/s] 25%|██▍       | 63/257 [00:08<00:25,  7.49it/s] 25%|██▍       | 64/257 [00:08<00:25,  7.60it/s] 26%|██▌       | 66/257 [00:09<00:23,  8.00it/s] 26%|██▌       | 67/257 [00:09<00:23,  8.03it/s] 26%|██▋       | 68/257 [00:09<00:22,  8.32it/s] 27%|██▋       | 69/257 [00:09<00:22,  8.51it/s] 27%|██▋       | 70/257 [00:09<00:22,  8.40it/s] 28%|██▊       | 71/257 [00:09<00:24,  7.46it/s] 28%|██▊       | 72/257 [00:09<00:24,  7.67it/s] 28%|██▊       | 73/257 [00:10<00:22,  8.06it/s] 29%|██▉       | 74/257 [00:10<00:22,  8.11it/s] 29%|██▉       | 75/257 [00:10<00:23,  7.82it/s] 30%|██▉       | 76/257 [00:10<00:23,  7.87it/s] 30%|██▉       | 77/257 [00:10<00:21,  8.21it/s] 30%|███       | 78/257 [00:10<00:21,  8.22it/s] 31%|███       | 79/257 [00:10<00:21,  8.17it/s] 31%|███       | 80/257 [00:10<00:20,  8.58it/s] 32%|███▏      | 81/257 [00:11<00:21,  8.09it/s] 32%|███▏      | 82/257 [00:11<00:23,  7.32it/s] 32%|███▏      | 83/257 [00:11<00:25,  6.84it/s] 33%|███▎      | 84/257 [00:11<00:24,  6.95it/s] 33%|███▎      | 85/257 [00:11<00:24,  6.98it/s] 33%|███▎      | 86/257 [00:11<00:23,  7.40it/s] 34%|███▍      | 87/257 [00:11<00:22,  7.71it/s] 34%|███▍      | 88/257 [00:12<00:22,  7.53it/s] 35%|███▍      | 89/257 [00:12<00:23,  7.27it/s] 35%|███▌      | 90/257 [00:12<00:21,  7.68it/s] 35%|███▌      | 91/257 [00:12<00:21,  7.69it/s] 36%|███▌      | 92/257 [00:12<00:20,  7.95it/s] 36%|███▌      | 93/257 [00:12<00:19,  8.35it/s] 37%|███▋      | 94/257 [00:12<00:20,  7.95it/s] 37%|███▋      | 95/257 [00:12<00:21,  7.67it/s] 37%|███▋      | 96/257 [00:13<00:23,  6.94it/s] 38%|███▊      | 97/257 [00:13<00:23,  6.95it/s] 38%|███▊      | 98/257 [00:13<00:21,  7.25it/s] 39%|███▊      | 99/257 [00:13<00:25,  6.28it/s] 39%|███▉      | 100/257 [00:13<00:23,  6.71it/s] 39%|███▉      | 101/257 [00:13<00:23,  6.76it/s] 40%|███▉      | 102/257 [00:13<00:22,  6.76it/s] 40%|████      | 103/257 [00:14<00:23,  6.61it/s] 40%|████      | 104/257 [00:14<00:23,  6.49it/s] 41%|████      | 105/257 [00:14<00:21,  7.06it/s] 41%|████      | 106/257 [00:14<00:21,  7.07it/s] 42%|████▏     | 107/257 [00:14<00:21,  7.14it/s] 42%|████▏     | 108/257 [00:14<00:21,  6.96it/s] 42%|████▏     | 109/257 [00:14<00:20,  7.28it/s] 43%|████▎     | 110/257 [00:15<00:19,  7.62it/s] 43%|████▎     | 111/257 [00:15<00:19,  7.58it/s] 44%|████▎     | 112/257 [00:15<00:18,  7.67it/s] 44%|████▍     | 113/257 [00:15<00:18,  7.97it/s] 44%|████▍     | 114/257 [00:15<00:18,  7.88it/s] 45%|████▍     | 115/257 [00:15<00:18,  7.75it/s] 45%|████▌     | 116/257 [00:15<00:17,  7.99it/s] 46%|████▌     | 117/257 [00:15<00:16,  8.28it/s] 46%|████▌     | 118/257 [00:16<00:16,  8.48it/s] 46%|████▋     | 119/257 [00:16<00:16,  8.61it/s] 47%|████▋     | 120/257 [00:16<00:16,  8.34it/s] 47%|████▋     | 121/257 [00:16<00:16,  8.27it/s] 47%|████▋     | 122/257 [00:16<00:16,  7.96it/s] 48%|████▊     | 123/257 [00:16<00:17,  7.77it/s] 48%|████▊     | 124/257 [00:16<00:16,  7.93it/s] 49%|████▊     | 125/257 [00:16<00:16,  8.05it/s] 49%|████▉     | 126/257 [00:17<00:16,  7.97it/s] 49%|████▉     | 127/257 [00:17<00:15,  8.19it/s] 50%|████▉     | 128/257 [00:17<00:14,  8.62it/s] 50%|█████     | 129/257 [00:17<00:14,  8.58it/s] 51%|█████     | 130/257 [00:17<00:15,  8.29it/s] 51%|█████     | 131/257 [00:17<00:15,  8.22it/s] 51%|█████▏    | 132/257 [00:17<00:15,  8.14it/s] 52%|█████▏    | 133/257 [00:17<00:15,  8.17it/s] 52%|█████▏    | 134/257 [00:18<00:15,  7.90it/s] 53%|█████▎    | 135/257 [00:18<00:15,  8.07it/s] 53%|█████▎    | 136/257 [00:18<00:14,  8.32it/s] 53%|█████▎    | 137/257 [00:18<00:14,  8.05it/s] 54%|█████▍    | 139/257 [00:18<00:14,  8.26it/s] 54%|█████▍    | 140/257 [00:18<00:14,  8.31it/s] 55%|█████▍    | 141/257 [00:18<00:15,  7.70it/s] 55%|█████▌    | 142/257 [00:19<00:15,  7.46it/s] 56%|█████▌    | 143/257 [00:19<00:15,  7.57it/s] 56%|█████▌    | 144/257 [00:19<00:14,  7.80it/s] 56%|█████▋    | 145/257 [00:19<00:13,  8.02it/s] 57%|█████▋    | 146/257 [00:19<00:13,  8.42it/s] 57%|█████▋    | 147/257 [00:19<00:13,  8.46it/s] 58%|█████▊    | 148/257 [00:19<00:13,  8.28it/s] 58%|█████▊    | 149/257 [00:19<00:12,  8.32it/s] 58%|█████▊    | 150/257 [00:20<00:13,  7.97it/s] 59%|█████▉    | 151/257 [00:20<00:13,  7.83it/s] 59%|█████▉    | 152/257 [00:20<00:13,  8.05it/s] 60%|█████▉    | 153/257 [00:20<00:13,  8.00it/s] 60%|█████▉    | 154/257 [00:20<00:12,  7.97it/s] 60%|██████    | 155/257 [00:20<00:13,  7.59it/s] 61%|██████    | 156/257 [00:20<00:13,  7.51it/s] 61%|██████    | 157/257 [00:20<00:12,  7.80it/s] 61%|██████▏   | 158/257 [00:21<00:12,  7.68it/s] 62%|██████▏   | 159/257 [00:21<00:13,  7.05it/s] 62%|██████▏   | 160/257 [00:21<00:14,  6.79it/s] 63%|██████▎   | 161/257 [00:21<00:14,  6.55it/s] 63%|██████▎   | 162/257 [00:21<00:15,  6.32it/s] 63%|██████▎   | 163/257 [00:21<00:14,  6.64it/s] 64%|██████▍   | 164/257 [00:21<00:13,  6.85it/s] 64%|██████▍   | 165/257 [00:22<00:13,  6.84it/s] 65%|██████▍   | 166/257 [00:22<00:14,  6.45it/s] 65%|██████▍   | 167/257 [00:22<00:12,  6.97it/s] 65%|██████▌   | 168/257 [00:22<00:12,  6.97it/s] 66%|██████▌   | 169/257 [00:22<00:13,  6.73it/s] 66%|██████▌   | 170/257 [00:22<00:12,  7.20it/s] 67%|██████▋   | 171/257 [00:22<00:11,  7.49it/s] 67%|██████▋   | 172/257 [00:23<00:11,  7.22it/s] 67%|██████▋   | 173/257 [00:23<00:11,  7.05it/s] 68%|██████▊   | 174/257 [00:23<00:12,  6.60it/s] 68%|██████▊   | 175/257 [00:23<00:12,  6.76it/s] 68%|██████▊   | 176/257 [00:23<00:11,  7.31it/s] 69%|██████▉   | 177/257 [00:23<00:10,  7.62it/s] 69%|██████▉   | 178/257 [00:23<00:09,  8.17it/s] 70%|██████▉   | 179/257 [00:24<00:09,  8.26it/s] 70%|███████   | 180/257 [00:24<00:09,  8.40it/s] 70%|███████   | 181/257 [00:24<00:09,  7.87it/s] 71%|███████   | 182/257 [00:24<00:09,  7.55it/s] 71%|███████   | 183/257 [00:24<00:09,  7.40it/s] 72%|███████▏  | 184/257 [00:24<00:09,  7.51it/s] 72%|███████▏  | 185/257 [00:24<00:09,  7.88it/s] 72%|███████▏  | 186/257 [00:24<00:09,  7.65it/s] 73%|███████▎  | 187/257 [00:25<00:09,  7.62it/s] 73%|███████▎  | 188/257 [00:25<00:08,  7.69it/s] 74%|███████▎  | 189/257 [00:25<00:09,  7.39it/s] 74%|███████▍  | 190/257 [00:25<00:09,  6.93it/s] 74%|███████▍  | 191/257 [00:25<00:09,  6.87it/s] 75%|███████▍  | 192/257 [00:25<00:10,  6.19it/s] 75%|███████▌  | 193/257 [00:25<00:09,  6.97it/s] 75%|███████▌  | 194/257 [00:26<00:09,  6.54it/s] 76%|███████▌  | 195/257 [00:26<00:09,  6.71it/s] 76%|███████▋  | 196/257 [00:26<00:08,  7.32it/s] 77%|███████▋  | 197/257 [00:26<00:08,  7.46it/s] 77%|███████▋  | 198/257 [00:26<00:07,  7.47it/s] 77%|███████▋  | 199/257 [00:26<00:07,  7.77it/s] 78%|███████▊  | 200/257 [00:26<00:07,  7.67it/s] 78%|███████▊  | 201/257 [00:27<00:07,  7.76it/s] 79%|███████▊  | 202/257 [00:27<00:07,  7.61it/s] 79%|███████▉  | 203/257 [00:27<00:07,  7.34it/s] 79%|███████▉  | 204/257 [00:27<00:07,  7.11it/s] 80%|███████▉  | 205/257 [00:27<00:07,  6.96it/s] 80%|████████  | 206/257 [00:27<00:08,  6.28it/s] 81%|████████  | 207/257 [00:27<00:07,  6.33it/s] 81%|████████  | 208/257 [00:28<00:07,  6.21it/s] 81%|████████▏ | 209/257 [00:28<00:07,  6.56it/s] 82%|████████▏ | 210/257 [00:28<00:06,  6.73it/s] 82%|████████▏ | 211/257 [00:28<00:06,  6.86it/s] 82%|████████▏ | 212/257 [00:28<00:06,  7.23it/s] 83%|████████▎ | 213/257 [00:28<00:05,  7.65it/s] 83%|████████▎ | 214/257 [00:28<00:05,  7.53it/s] 84%|████████▎ | 215/257 [00:29<00:05,  7.81it/s] 84%|████████▍ | 216/257 [00:29<00:05,  7.79it/s] 84%|████████▍ | 217/257 [00:29<00:05,  7.38it/s] 85%|████████▍ | 218/257 [00:29<00:05,  7.33it/s] 85%|████████▌ | 219/257 [00:29<00:05,  7.21it/s] 86%|████████▌ | 220/257 [00:29<00:04,  7.41it/s] 86%|████████▌ | 221/257 [00:29<00:05,  7.05it/s] 86%|████████▋ | 222/257 [00:30<00:04,  7.05it/s] 87%|████████▋ | 223/257 [00:30<00:04,  7.37it/s] 87%|████████▋ | 224/257 [00:30<00:04,  7.14it/s] 88%|████████▊ | 225/257 [00:30<00:04,  6.76it/s] 88%|████████▊ | 226/257 [00:30<00:04,  6.89it/s] 88%|████████▊ | 227/257 [00:30<00:04,  7.12it/s] 89%|████████▊ | 228/257 [00:30<00:04,  6.77it/s] 89%|████████▉ | 229/257 [00:30<00:03,  7.40it/s] 89%|████████▉ | 230/257 [00:31<00:03,  7.62it/s] 90%|████████▉ | 231/257 [00:31<00:03,  7.58it/s] 90%|█████████ | 232/257 [00:31<00:03,  7.46it/s] 91%|█████████ | 233/257 [00:31<00:03,  7.73it/s] 91%|█████████ | 234/257 [00:31<00:03,  7.48it/s] 91%|█████████▏| 235/257 [00:31<00:02,  7.47it/s] 92%|█████████▏| 236/257 [00:31<00:02,  7.64it/s] 92%|█████████▏| 237/257 [00:32<00:02,  7.64it/s] 93%|█████████▎| 238/257 [00:32<00:02,  7.26it/s] 93%|█████████▎| 239/257 [00:32<00:02,  7.67it/s] 93%|█████████▎| 240/257 [00:32<00:02,  7.34it/s] 94%|█████████▍| 241/257 [00:32<00:02,  7.04it/s] 94%|█████████▍| 242/257 [00:32<00:01,  7.52it/s] 95%|█████████▍| 243/257 [00:32<00:01,  7.68it/s] 95%|█████████▍| 244/257 [00:32<00:01,  7.54it/s] 95%|█████████▌| 245/257 [00:33<00:01,  7.57it/s] 96%|█████████▌| 246/257 [00:33<00:01,  6.86it/s] 96%|█████████▌| 247/257 [00:33<00:01,  7.39it/s] 96%|█████████▋| 248/257 [00:33<00:01,  7.72it/s] 97%|█████████▋| 249/257 [00:33<00:01,  7.79it/s] 97%|█████████▋| 250/257 [00:33<00:00,  7.88it/s] 98%|█████████▊| 251/257 [00:33<00:00,  7.10it/s] 98%|█████████▊| 252/257 [00:34<00:00,  7.00it/s] 98%|█████████▊| 253/257 [00:34<00:00,  6.64it/s] 99%|█████████▉| 254/257 [00:34<00:00,  7.07it/s] 99%|█████████▉| 255/257 [00:34<00:00,  6.91it/s]100%|█████████▉| 256/257 [00:34<00:00,  6.47it/s]100%|██████████| 257/257 [00:34<00:00,  7.00it/s]100%|██████████| 257/257 [00:34<00:00,  7.37it/s]
+Begin training!
+Token indices sequence length is longer than the specified maximum sequence length for this model (266 > 248). Running this sequence through the model will result in indexing errors
+Epoch: 0 Loss: 0.20161630043665724 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 78.32
+Epoch: 1 Loss: 0.07463768653296195 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 79.50
+Epoch: 2 Loss: 0.06013807422093728 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 81.13
+Epoch: 3 Loss: 0.05160027933904923 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 82.50
+Epoch: 4 Loss: 0.04491888560311224 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 83.61
+Epoch: 5 Loss: 0.03912025844634797 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 83.70
+Epoch: 6 Loss: 0.03853236722709169 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 83.97
+Epoch: 7 Loss: 0.036164378600579174 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 83.35
+Epoch: 8 Loss: 0.03573158738322933 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 82.73
+Epoch: 9 Loss: 0.033972248087133415 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 84.16
+
+*** Best loss is updated to 0.046432909127828235 at 9.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+Batch 0 Batch Time 45.68s
+Batch 1 Batch Time 45.89s
+Batch 2 Batch Time 45.68s
+Batch 3 Batch Time 45.58s
+Batch 4 Batch Time 45.84s
+Batch 5 Batch Time 47.23s
+Batch 6 Batch Time 46.67s
+Batch 7 Batch Time 47.00s
+Batch 8 Batch Time 47.29s
+Batch 9 Batch Time 47.91s
+Batch 10 Batch Time 47.84s
+Batch 11 Batch Time 47.72s
+Batch 12 Batch Time 47.56s
+Batch 13 Batch Time 47.16s
+Batch 14 Batch Time 47.08s
+Batch 15 Batch Time 47.39s
+Batch 16 Batch Time 47.34s
+Batch 17 Batch Time 47.84s
+Batch 18 Batch Time 47.95s
+Batch 19 Batch Time 48.69s
+Batch 20 Batch Time 49.43s
+Batch 21 Batch Time 49.92s
+Batch 22 Batch Time 49.14s
+Batch 23 Batch Time 46.84s
+Batch 24 Batch Time 45.99s
+Batch 25 Batch Time 45.59s
+Batch 26 Batch Time 45.69s
+Batch 27 Batch Time 45.61s
+Batch 28 Batch Time 45.65s
+Batch 29 Batch Time 45.66s
+Batch 30 Batch Time 45.49s
+Batch 31 Batch Time 45.68s
+Batch 32 Batch Time 45.96s
+Batch 33 Batch Time 45.72s
+Batch 34 Batch Time 46.73s
+Batch 35 Batch Time 47.19s
+Batch 36 Batch Time 48.19s
+Batch 37 Batch Time 48.13s
+Batch 38 Batch Time 48.29s
+Batch 39 Batch Time 49.00s
+Batch 40 Batch Time 48.83s
+Batch 41 Batch Time 48.72s
+Batch 42 Batch Time 48.88s
+Batch 43 Batch Time 49.01s
+Batch 44 Batch Time 48.51s
+Batch 45 Batch Time 48.21s
+Batch 46 Batch Time 47.93s
+Batch 47 Batch Time 48.28s
+Batch 48 Batch Time 48.02s
+Batch 49 Batch Time 48.04s
+Batch 50 Batch Time 48.08s
+Batch 51 Batch Time 48.25s
+Batch 52 Batch Time 49.77s
+Batch 53 Batch Time 49.87s
+Batch 54 Batch Time 50.33s
+Batch 55 Batch Time 50.65s
+Batch 56 Batch Time 48.39s
+Batch 57 Batch Time 47.02s
+Batch 58 Batch Time 45.94s
+Batch 59 Batch Time 45.76s
+Batch 60 Batch Time 45.69s
+Batch 61 Batch Time 45.66s
+Batch 62 Batch Time 45.70s
+Batch 63 Batch Time 46.23s
+Batch 64 Batch Time 47.19s
+Batch 65 Batch Time 47.77s
+Batch 66 Batch Time 48.96s
+Batch 67 Batch Time 49.42s
+Batch 68 Batch Time 48.87s
+Batch 69 Batch Time 49.37s
+Batch 70 Batch Time 49.70s
+Batch 71 Batch Time 49.33s
+Batch 72 Batch Time 49.11s
+Batch 73 Batch Time 16.21s
+Done!
+FID:  7.054253685392332
+JFTSD:  7.691512427585714
+CTTP  10.822218814469359
+Epoch: 10 Loss: 0.033139331751876305 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.47
+Epoch: 11 Loss: 0.03034945917116471 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.91
+Epoch: 12 Loss: 0.03246657287245363 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 86.17
+Epoch: 13 Loss: 0.03162618423721496 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.66
+Epoch: 14 Loss: 0.030482278518915062 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.99
+Epoch: 15 Loss: 0.02958867013008707 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 86.12
+Epoch: 16 Loss: 0.029280899600796256 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 87.31
+Epoch: 17 Loss: 0.027325512132886434 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 86.22
+Epoch: 18 Loss: 0.030935603422239596 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.81
+Epoch: 19 Loss: 0.02989397872717696 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 86.32
+
+*** Best loss is updated to 0.042443500982748496 at 19.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+Batch 0 Batch Time 45.73s
+Batch 1 Batch Time 45.94s
+Batch 2 Batch Time 46.12s
+Batch 3 Batch Time 46.54s
+Batch 4 Batch Time 47.38s
+Batch 5 Batch Time 47.35s
+Batch 6 Batch Time 48.27s
+Batch 7 Batch Time 48.41s
+Batch 8 Batch Time 48.79s
+Batch 9 Batch Time 48.97s
+Batch 10 Batch Time 48.79s
+Batch 11 Batch Time 48.31s
+Batch 12 Batch Time 48.37s
+Batch 13 Batch Time 47.98s
+Batch 14 Batch Time 47.51s
+Batch 15 Batch Time 48.08s
+Batch 16 Batch Time 48.01s
+Batch 17 Batch Time 48.39s
+Batch 18 Batch Time 48.69s
+Batch 19 Batch Time 49.60s
+Batch 20 Batch Time 50.48s
+Batch 21 Batch Time 50.76s
+Batch 22 Batch Time 48.91s
+Batch 23 Batch Time 46.87s
+Batch 24 Batch Time 45.79s
+Batch 25 Batch Time 45.61s
+Batch 26 Batch Time 45.71s
+Batch 27 Batch Time 46.90s
+Batch 28 Batch Time 46.00s
+Batch 29 Batch Time 46.99s
+Batch 30 Batch Time 47.89s
+Batch 31 Batch Time 48.17s
+Batch 32 Batch Time 48.34s
+Batch 33 Batch Time 49.15s
+Batch 34 Batch Time 48.84s
+Batch 35 Batch Time 48.61s
+Batch 36 Batch Time 49.08s
+Batch 37 Batch Time 49.69s
+Batch 38 Batch Time 49.95s
+Batch 39 Batch Time 49.75s
+Batch 40 Batch Time 50.22s
+Batch 41 Batch Time 49.55s
+Batch 42 Batch Time 49.27s
+Batch 43 Batch Time 48.37s
+Batch 44 Batch Time 48.11s
+Batch 45 Batch Time 47.60s
+Batch 46 Batch Time 48.81s
+Batch 47 Batch Time 48.18s
+Batch 48 Batch Time 48.26s
+Batch 49 Batch Time 49.36s
+Batch 50 Batch Time 49.94s
+Batch 51 Batch Time 50.57s
+Batch 52 Batch Time 50.54s
+Batch 53 Batch Time 47.98s
+Batch 54 Batch Time 46.60s
+Batch 55 Batch Time 45.82s
+Batch 56 Batch Time 45.91s
+Batch 57 Batch Time 45.76s
+Batch 58 Batch Time 46.03s
+Batch 59 Batch Time 47.25s
+Batch 60 Batch Time 46.32s
+Batch 61 Batch Time 47.05s
+Batch 62 Batch Time 47.57s
+Batch 63 Batch Time 48.06s
+Batch 64 Batch Time 48.38s
+Batch 65 Batch Time 49.13s
+Batch 66 Batch Time 48.69s
+Batch 67 Batch Time 48.92s
+Batch 68 Batch Time 49.03s
+Batch 69 Batch Time 48.85s
+Batch 70 Batch Time 48.38s
+Batch 71 Batch Time 48.50s
+Batch 72 Batch Time 48.54s
+Batch 73 Batch Time 16.23s
+Done!
+FID:  6.704914578939409
+JFTSD:  7.316439703112284
+CTTP  10.907003108396149
+Epoch: 20 Loss: 0.028756985192618364 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 84.96
+Epoch: 21 Loss: 0.026141945766430016 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.81
+Epoch: 22 Loss: 0.02624498160305915 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.81
+Epoch: 23 Loss: 0.028349532274681538 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.63
+Epoch: 24 Loss: 0.026044605656777027 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 86.01
+Epoch: 25 Loss: 0.026223275754763836 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.76
+Epoch: 26 Loss: 0.02647067433864545 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.75
+Epoch: 27 Loss: 0.026809300897563247 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.80
+Epoch: 28 Loss: 0.02558307503966129 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.70
+Epoch: 29 Loss: 0.026132331429056622 Updated: 257 Skipped: 0 SkipRatio: 0.00% Time: 85.31
+
+*** Best loss is updated to 0.0415376570780535 at 29.
+
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+Batch 0 Batch Time 46.30s
+Batch 1 Batch Time 47.34s
+Batch 2 Batch Time 48.40s
+Batch 3 Batch Time 48.48s
+Batch 4 Batch Time 48.46s
+Batch 5 Batch Time 48.78s
+Batch 6 Batch Time 48.19s
+Batch 7 Batch Time 48.15s
+Batch 8 Batch Time 48.75s
+Batch 9 Batch Time 48.43s
+Batch 10 Batch Time 48.44s
+Batch 11 Batch Time 48.72s
+Batch 12 Batch Time 47.78s
+Batch 13 Batch Time 47.46s
+Batch 14 Batch Time 47.10s
+Batch 15 Batch Time 47.33s
+Batch 16 Batch Time 47.38s
+Batch 17 Batch Time 47.81s
+Batch 18 Batch Time 48.45s
+Batch 19 Batch Time 48.03s
+Batch 20 Batch Time 49.20s
+Batch 21 Batch Time 48.43s
+Batch 22 Batch Time 46.98s
+Batch 23 Batch Time 46.02s
+Batch 24 Batch Time 46.17s
+Batch 25 Batch Time 45.53s
+Batch 26 Batch Time 45.62s
+Batch 27 Batch Time 45.56s
+Batch 28 Batch Time 45.70s
+Batch 29 Batch Time 45.51s
+Batch 30 Batch Time 45.54s
+Batch 31 Batch Time 45.70s
+Batch 32 Batch Time 45.97s
+Batch 33 Batch Time 46.35s
+Batch 34 Batch Time 47.24s
+Batch 35 Batch Time 47.54s
+Batch 36 Batch Time 48.08s
+Batch 37 Batch Time 48.75s
+Batch 38 Batch Time 48.79s
+Batch 39 Batch Time 48.58s
+Batch 40 Batch Time 48.71s
+Batch 41 Batch Time 48.82s
+Batch 42 Batch Time 49.23s
+Batch 43 Batch Time 48.78s
+Batch 44 Batch Time 48.90s
+Batch 45 Batch Time 48.43s
+Batch 46 Batch Time 48.11s
+Batch 47 Batch Time 47.90s
+Batch 48 Batch Time 47.78s
+Batch 49 Batch Time 47.53s
+Batch 50 Batch Time 47.87s
+Batch 51 Batch Time 48.22s
+Batch 52 Batch Time 48.22s
+Batch 53 Batch Time 49.32s
+Batch 54 Batch Time 50.54s
+Batch 55 Batch Time 50.50s
+Batch 56 Batch Time 48.87s
+Batch 57 Batch Time 46.99s
+Batch 58 Batch Time 46.12s
+Batch 59 Batch Time 46.25s
+Batch 60 Batch Time 45.71s
+Batch 61 Batch Time 45.69s
+Batch 62 Batch Time 46.53s
+Batch 63 Batch Time 45.64s
+Batch 64 Batch Time 45.97s
+Batch 65 Batch Time 46.18s
+Batch 66 Batch Time 47.08s
+Batch 67 Batch Time 47.98s
+Batch 68 Batch Time 47.82s
+Batch 69 Batch Time 48.43s
+Batch 70 Batch Time 48.67s
+Batch 71 Batch Time 48.66s
+Batch 72 Batch Time 48.80s
+Batch 73 Batch Time 16.56s
+Done!
+FID:  6.595399245731013
+JFTSD:  7.142507850859069
+CTTP  10.866562393721818
+Learn from scratch
+
+***** Evaluate Configs *****
+{
+    "data": {
+        "name": "custom",
+        "folder": "/data/kangjiale/verbalts-graph/data/smd_nl"
+    },
+    "eval": {
+        "n_samples": 10,
+        "model_path": "./save/smd_nl_graph_identity_epoch30_lr5e5_bs16_eval10_2/0/ckpts/model_best_loss.pth",
+        "batch_size": 16,
+        "num_workers": 4,
+        "display_interval": 1,
+        "device": "cuda:0",
+        "cache_folder": "./cache/smd_nl_cttp_graph_identity_epoch30_lr5e5_2",
+        "clip_model_path": "./save/SMD_NL_cttp/clip_model_best.pth",
+        "clip_config_path": "./save/SMD_NL_cttp/model_configs.yaml"
+    }
+}
+Loading pretrained model from ./save/smd_nl_graph_identity_epoch30_lr5e5_bs16_eval10_2/0/ckpts/model_best_loss.pth
+Split: test, total samples 1173.
+cache_folder:  ./cache/smd_nl_cttp_graph_identity_epoch30_lr5e5_2
+
+-------------------------------
+Evaluating the model with mode=cond_gen and sampler=ddim
+Token indices sequence length is longer than the specified maximum sequence length for this model (311 > 248). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (311 > 248). Running this sequence through the model will result in indexing errors
+Batch 0 Batch Time 45.67s
+Batch 1 Batch Time 46.47s
+Batch 2 Batch Time 47.99s
+Batch 3 Batch Time 48.15s
+Batch 4 Batch Time 48.43s
+Batch 5 Batch Time 48.73s
+Batch 6 Batch Time 47.87s
+Batch 7 Batch Time 47.84s
+Batch 8 Batch Time 47.46s
+Batch 9 Batch Time 47.57s
+Batch 10 Batch Time 47.41s
+Batch 11 Batch Time 48.10s
+Batch 12 Batch Time 48.20s
+Batch 13 Batch Time 49.05s
+Batch 14 Batch Time 49.69s
+Batch 15 Batch Time 50.18s
+Batch 16 Batch Time 48.66s
+Batch 17 Batch Time 46.60s
+Batch 18 Batch Time 45.69s
+Batch 19 Batch Time 45.69s
+Batch 20 Batch Time 45.87s
+Batch 21 Batch Time 45.69s
+Batch 22 Batch Time 45.74s
+Batch 23 Batch Time 45.62s
+Batch 24 Batch Time 45.87s
+Batch 25 Batch Time 45.77s
+Batch 26 Batch Time 45.68s
+Batch 27 Batch Time 46.43s
+Batch 28 Batch Time 47.36s
+Batch 29 Batch Time 47.70s
+Batch 30 Batch Time 48.06s
+Batch 31 Batch Time 47.99s
+Batch 32 Batch Time 48.54s
+Batch 33 Batch Time 48.79s
+Batch 34 Batch Time 48.60s
+Batch 35 Batch Time 48.62s
+Batch 36 Batch Time 48.53s
+Batch 37 Batch Time 49.11s
+Batch 38 Batch Time 48.98s
+Batch 39 Batch Time 48.90s
+Batch 40 Batch Time 48.80s
+Batch 41 Batch Time 47.65s
+Batch 42 Batch Time 47.40s
+Batch 43 Batch Time 47.60s
+Batch 44 Batch Time 47.63s
+Batch 45 Batch Time 47.67s
+Batch 46 Batch Time 48.08s
+Batch 47 Batch Time 48.59s
+Batch 48 Batch Time 49.26s
+Batch 49 Batch Time 49.66s
+Batch 50 Batch Time 50.30s
+Batch 51 Batch Time 48.08s
+Batch 52 Batch Time 45.86s
+Batch 53 Batch Time 45.66s
+Batch 54 Batch Time 45.86s
+Batch 55 Batch Time 45.77s
+Batch 56 Batch Time 45.88s
+Batch 57 Batch Time 45.67s
+Batch 58 Batch Time 45.94s
+Batch 59 Batch Time 46.76s
+Batch 60 Batch Time 46.30s
+Batch 61 Batch Time 46.40s
+Batch 62 Batch Time 46.56s
+Batch 63 Batch Time 46.00s
+Batch 64 Batch Time 45.77s
+Batch 65 Batch Time 45.62s
+Batch 66 Batch Time 45.86s
+Batch 67 Batch Time 45.67s
+Batch 68 Batch Time 45.76s
+Batch 69 Batch Time 45.67s
+Batch 70 Batch Time 45.66s
+Batch 71 Batch Time 45.75s
+Batch 72 Batch Time 46.22s
+Batch 73 Batch Time 16.02s
+Done!
+FID:  6.242045402211545
+JFTSD:  6.824872361651053
+CTTP  10.890516926667066
