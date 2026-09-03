@@ -1,0 +1,8 @@
+device: cuda:0
+cond_modal: attr
+generator_pretrain_path: ""
+
+# Structured metadata conditioning (global/compute/memory/disk/network states).
+# num_attr_ops is auto-filled by run.py from dataset meta.json: [3, 3, 3, 3, 3]
+attrs:
+  attr_emb: 64

@@ -341,7 +341,7 @@ class VerbalTS(nn.Module):
         if attr_emb_raw is None:
             attr_emb = torch.zeros_like(x_in)
         else:
-            if "scale" in self.config["text_projector"]:
+            if "scale" in self.config.get("text_projector", ""):
                 assert len(scale_length) == attr_emb_raw.shape[2]
                 mscale_attr_list = []
                 for i in range(len(scale_length)):
