@@ -98,6 +98,11 @@ cd /data/kangjiale/verbalts-graph && git fsck                   # 仓库完整
 - 若 T2S 需要重新产出：按 §4 重建代码后重训（结果应与 §3 在 seed 噪声内一致）。
 - 论文投稿（PIC 2026，CMT 截稿 2026-09-30）**不依赖本盘任何内容**。
 
-## 6. 抢救执行记录
+## 6. 抢救执行记录（已终结）
 
-- 2026-09-07：确认盘故障（ro + I/O error）；verbalts-graph 经 GitHub 验证完整（22815b5）并克隆恢复至 `/home/kangjiale/data_rescue_20260907/vgr/`；T2S 未提交代码确认不可读；本手册提交入 GitHub。
+- 2026-09-07 上午：确认盘故障（ro + I/O error）；verbalts-graph 经 GitHub 验证完整（22815b5）并克隆恢复；T2S 未提交代码确认不可读。
+- 2026-09-07 10:58：用户终端执行 rescue.sh → NAS 写入正常，但盘持续恶化，权重/数据集内容全部 I/O error (5)，仅目录结构落地（verbalts_save 388K、t2s_results 68K、datasets 20K）。
+- 2026-09-07 11:20：执行 5 项定向打包（pack_for_local.sh）→ **全部为空壳 tar（各 10K，0 文件）**。文件系统层面抢救终结：坏盘已无法读出任何文件内容。
+- **最终状态**：可安全放弃该盘。所有投稿必需资产在 GitHub（4b43669）与 /home 系统盘；丢失项全部可按 §2.3 成本重建。
+- **遗留选项**：旧盘断电静置 1–2 天后可能短暂恢复，届时以用户终端重跑 rescue.sh 即可（免费机会，不承诺成功率）；专业数据恢复不值得。
+- NAS 路径清理：`rm /nas_data/kangjiale/local_backup_20260907/*.tar*`（5 个空壳包）与 `rescue_20260907/`（空目录结构）可删。
